@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="ch.hevs.alexpira.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_addpatient"
         tools:layout="@layout/fragment_adduser" />
 
     <fragment
@@ -39,5 +39,5 @@
         android:id="@+id/nav_send"
         android:name="ch.hevs.alexpira.ui.send.SendFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/display_user" />
 </navigation>
