@@ -23,8 +23,7 @@
     <string name="NPA">NPA</string>
     <string name="birthdate">Birthdate</string>
     <string name="submitPatient">Add new patient</string>
-    <string name="Patient">Patient</string>
-
+    <date name="dateoutput" >01.06.1996</date>
 
 
 

@@ -6,21 +6,21 @@
     android:layout_height="match_parent">
 
 
-    <EditText
+    <TextView
         android:id="@+id/et_firstname"
         android:layout_width="173dp"
         android:layout_height="63dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/firstName"
         app:layout_constraintBottom_toTopOf="@+id/et_lastname"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_lastname"
         android:layout_width="173dp"
         android:layout_height="63dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/lastName"
         app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
@@ -28,20 +28,20 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
+        android:layout_width="201dp"
+        android:layout_height="200dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/androidmemes" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/address"
         app:layout_constraintBottom_toTopOf="@+id/et_city"
@@ -49,28 +49,31 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="250dp"
         android:hint="@string/city"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_birthdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/birthdate"
+        android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/et_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
