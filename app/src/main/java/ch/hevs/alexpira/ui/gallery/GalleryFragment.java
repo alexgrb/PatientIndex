@@ -16,6 +16,7 @@ import ch.hevs.alexpira.R;
 
 public class GalleryFragment extends Fragment {
 
+
     private GalleryViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -32,4 +33,6 @@ public class GalleryFragment extends Fragment {
         });
         return root;
     }
+
+
 }

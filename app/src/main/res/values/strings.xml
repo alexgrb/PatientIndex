@@ -7,15 +7,15 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <!-- for the left menu -->
+    <!-- LEFT MENU -->
     <string name="menu_home">Home</string>
     <string name="menu_addpatient">Add patient</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_addbed">Add bed</string>
     <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_send">Show patient</string>
 
-    <!-- for the "Patient in" form -->
+    <!-- PATIENT IN -->
     <string name="firstName">Firstname</string>
     <string name="lastName">Lastname</string>
     <string name="address">Adress</string>
@@ -23,5 +23,27 @@
     <string name="NPA">NPA</string>
     <string name="birthdate">Birthdate</string>
     <string name="submitPatient">Add new patient</string>
+
+    <!-- PATIENT DISPLAY -->
+    <string name="firstNamebrut">Alex</string>
+    <string name="lastNamebrut">Gharbi</string>
+    <string name="addressbrut">Avenue de Edouard-Rod 30</string>
+    <string name="citybrut">Lausanne</string>
+    <string name="NPAbrut">1007</string>
+    <string name="birthdatebrut">01.06.1996</string>
+
+    <!-- ADD BED -->
+    <string name="adjust">Adjustable settings</string>
+    <string name="nonadjust">Non-adjustable settings</string>
+    <string-array name="bedsizes_array">
+        <item>Baby size (90cm)</item>
+        <item>Regular size (90 - 180cm)</item>
+        <item>King size (180 - 230cm)</item>
+    </string-array>
+    <string name="titlesettings">Settings</string>
+    <string name="titlesize">Size</string>
+
+
+
 
 </resources>

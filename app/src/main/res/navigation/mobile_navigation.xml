@@ -26,8 +26,8 @@
     <fragment
         android:id="@+id/nav_tools"
         android:name="ch.hevs.alexpira.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:label="@string/menu_addbed"
+        tools:layout="@layout/fragment_addbed" />
 
     <fragment
         android:id="@+id/nav_share"
