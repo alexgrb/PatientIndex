@@ -1,10 +1,9 @@
-package ch.hevs.alexpira.ui.tools;
+package ch.hevs.alexpira.ui.addUser;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -14,22 +13,26 @@ import androidx.lifecycle.ViewModelProviders;
 
 import ch.hevs.alexpira.R;
 
-public class ToolsFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+public class GalleryFragment extends Fragment {
+
+
+    private GalleryViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_addbed, container, false);
-       // final TextView textView = root.findViewById(R.id.);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        galleryViewModel =
+                ViewModelProviders.of(this).get(GalleryViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_adduser, container, false);
+        //final TextView textView = root.findViewById(R.id.text_gallery);
+        galleryViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-        //        textView.setText(s);
+              //  textView.setText(s);
             }
         });
         return root;
     }
+
+
 }

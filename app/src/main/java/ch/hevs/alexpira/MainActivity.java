@@ -28,14 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
 
-    //trying to link this one as well
-    private Button submit;
-    private EditText firstName;
-    private EditText lastName;
-    private EditText address;
-    private EditText birthdate;
-    private EditText city;
-    private EditText npa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

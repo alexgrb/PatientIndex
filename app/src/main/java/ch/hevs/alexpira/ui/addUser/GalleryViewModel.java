@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.ui.gallery;
+package ch.hevs.alexpira.ui.addUser;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -10,10 +10,10 @@
     <!-- LEFT MENU -->
     <string name="menu_home">Home</string>
     <string name="menu_addpatient">Add patient</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_searchpatients">Search by patient</string>
     <string name="menu_addbed">Add bed</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Show patient</string>
+    <string name="menu_searchbed">Search by bed</string>
+    <string name="menu_displaypatient">Display a patient</string>
 
     <!-- PATIENT IN -->
     <string name="firstName">Firstname</string>
@@ -35,11 +35,13 @@
     <!-- ADD BED -->
     <string name="adjust">Adjustable settings</string>
     <string name="nonadjust">Non-adjustable settings</string>
+
     <string-array name="bedsizes_array">
         <item>Baby size (90cm)</item>
         <item>Regular size (90 - 180cm)</item>
         <item>King size (180 - 230cm)</item>
     </string-array>
+
     <string name="titlesettings">Settings</string>
     <string name="titlesize">Size</string>
 
