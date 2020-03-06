@@ -13,4 +13,13 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+
+    <string name="home_text">Welcome on Valais Hospital App</string>
+    <string name="home_in_button">Patient IN</string>
+    <string name="home_searchPatient_button">Search by Patient</string>
+    <string name="home_searchRoom_button">Search by Bed</string>
+    <string name="home_statistic_button">Statistic</string>
+    <string name="home_bedState_button">Bed State</string>
+
 </resources>
