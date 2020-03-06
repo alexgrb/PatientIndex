@@ -11,7 +11,7 @@
 
 
     <EditText
-        android:id="@+id/et_firstname"
+        android:id="@+id/tv_firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -43,13 +43,24 @@
 
     <EditText
         android:id="@+id/et_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_width="184dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="48dp"
         android:hint="@string/city"
         app:layout_constraintBottom_toTopOf="@+id/btn_submit"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_NPA"
+        android:layout_width="184dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="48dp"
+        android:hint="@string/NPA"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_city" />
 
     <EditText
         android:id="@+id/et_birthdate"
@@ -57,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:hint="@string/birthdate"
-        app:layout_constraintBottom_toTopOf="@+id/et_city"
+        app:layout_constraintBottom_toTopOf="@+id/et_NPA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -78,7 +89,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="30dp"
         android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/et_firstname"
+        app:layout_constraintBottom_toTopOf="@+id/tv_firstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

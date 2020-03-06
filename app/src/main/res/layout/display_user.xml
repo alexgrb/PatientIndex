@@ -7,22 +7,24 @@
 
 
     <TextView
-        android:id="@+id/et_firstname"
-        android:layout_width="173dp"
-        android:layout_height="63dp"
+        android:id="@+id/tv_firstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:hint="@string/firstName"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/et_lastname"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/et_lastname"
-        android:layout_width="173dp"
-        android:layout_height="63dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:hint="@string/lastName"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -30,11 +32,12 @@
         android:id="@+id/imageView3"
         android:layout_width="201dp"
         android:layout_height="200dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_address"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/androidmemes" />
+        app:srcCompat="@drawable/adroidselffie" />
 
     <TextView
         android:id="@+id/et_address"
@@ -42,8 +45,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:hint="@string/address"
+        android:textSize="25sp"
+        android:textColor="@color/textbody"
         app:layout_constraintBottom_toTopOf="@+id/et_city"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -51,29 +56,39 @@
 
     <TextView
         android:id="@+id/et_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="250dp"
         android:hint="@string/city"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/et_birthdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:id="@+id/et_city3"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="48dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="250dp"
+        android:hint="@string/NPA"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_city" />
+
+    <TextView
+        android:id="@+id/et_birthdate"
+        android:layout_width="113dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
         android:hint="@string/birthdate"
         android:inputType="date"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/et_address"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

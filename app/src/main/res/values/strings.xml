@@ -9,7 +9,7 @@
 
     <!-- for the left menu -->
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_addpatient">Add patient</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
@@ -23,8 +23,5 @@
     <string name="NPA">NPA</string>
     <string name="birthdate">Birthdate</string>
     <string name="submitPatient">Add new patient</string>
-    <date name="dateoutput" >01.06.1996</date>
-
-
 
 </resources>
