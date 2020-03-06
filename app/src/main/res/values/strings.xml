@@ -14,6 +14,8 @@
     <string name="menu_addbed">Add bed</string>
     <string name="menu_searchbed">Search by bed</string>
     <string name="menu_displaypatient">Display a patient</string>
+    <string name="menu_stats">Statistics</string>
+
 
     <!-- PATIENT IN -->
     <string name="firstName">Firstname</string>
@@ -44,6 +46,9 @@
 
     <string name="titlesettings">Settings</string>
     <string name="titlesize">Size</string>
+
+    <!-- ADD BED -->
+    <string name="occupation">Hospital Occupancy</string>
 
 
 
