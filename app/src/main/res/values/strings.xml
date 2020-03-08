@@ -15,8 +15,9 @@
     <string name="menu_searchbed">Search by bed</string>
     <string name="menu_displaypatient">Display a patient</string>
     <string name="menu_stats">Statistics</string>
+    <string name="menu_settings">Settings</string>
 
-
+    <!-- HOME PAGE -->
     <string name="text_home">Welcome on Valais Hospital App</string>
     <string name="home_in_button">Patient IN</string>
     <string name="home_searchPatient_button">Search by Patient</string>
@@ -24,6 +25,13 @@
     <string name="home_statistic_button">Statistic</string>
     <string name="home_bedState_button">Bed State</string>
     <string name="home_settings_button">Settings</string>
+
+    <!-- Settings PAGE -->
+    <string name="settings_french_radio">FR</string>
+    <string name="settings_english_radio">EN</string>
+    <string name="settings_darktheme_switch">Dark Theme</string>
+    <string name="settings_aboutus_text">About us</string>
+    <string name="settings_loremipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
 
     <!-- for the "Patient in" form -->

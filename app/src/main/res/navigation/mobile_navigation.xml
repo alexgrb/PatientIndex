@@ -46,4 +46,10 @@
         android:name="ch.hevs.alexpira.ui.displayUser.SendFragment"
         android:label="@string/menu_displaypatient"
         tools:layout="@layout/display_user" />
+
+    <activity
+        android:id="@+id/settings"
+        android:name="ch.hevs.alexpira.SettingsActivity"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/settings_activity" />
 </navigation>
