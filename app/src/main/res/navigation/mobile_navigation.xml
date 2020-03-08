@@ -48,7 +48,7 @@
         tools:layout="@layout/display_user" />
 
     <activity
-        android:id="@+id/settings"
+        android:id="@+id/nav_settings"
         android:name="ch.hevs.alexpira.SettingsActivity"
         android:label="@string/menu_settings"
         tools:layout="@layout/settings_activity" />
