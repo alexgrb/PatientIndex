@@ -22,7 +22,7 @@
         <item
             android:id="@+id/nav_statistiques"
             android:icon="@drawable/ic_charts"
-            android:title="stattststst" />
+            android:title="stattststsst" />
 
 
 
