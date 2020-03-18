@@ -52,4 +52,10 @@
         android:name="ch.hevs.alexpira.SettingsActivity"
         android:label="@string/menu_settings"
         tools:layout="@layout/settings_activity" />
+
+    <activity
+        android:id="@+id/nav_statistiques"
+        android:name="ch.hevs.alexpira.Statistics"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/settings_activity" />
 </navigation>
