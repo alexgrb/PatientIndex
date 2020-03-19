@@ -54,8 +54,8 @@
         tools:layout="@layout/settings_activity" />
 
     <activity
-        android:id="@+id/nav_statistiques"
-        android:name="ch.hevs.alexpira.Statistics"
+        android:id="@+id/nav_addbed"
+        android:name="ch.hevs.alexpira.AddBedActivity"
         android:label="@string/menu_settings"
-        tools:layout="@layout/settings_activity" />
+        tools:layout="@layout/activity_add_bed" />
 </navigation>

@@ -66,4 +66,12 @@ q        <item
                 android:title="@string/menu_settings" />
         </menu>
     </item>
+    <item android:title="AddBed">
+        <menu>
+            <item
+                android:id="@+id/nav_addbed"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/menu_addbed" />
+        </menu>
+    </item>
 </menu>
