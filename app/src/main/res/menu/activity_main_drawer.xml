@@ -56,6 +56,12 @@ q        <item
                 android:icon="@drawable/ic_bed"
                 android:title="@string/menu_addbed" />
 
+            <item
+                android:id="@+id/nav_addbed"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/menu_addbed" />
+
+
         </menu>
     </item>
     <item android:title="Preferences">
@@ -64,14 +70,12 @@ q        <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
                 android:title="@string/menu_settings" />
+      
         </menu>
     </item>
     <item android:title="AddBed">
         <menu>
-            <item
-                android:id="@+id/nav_addbed"
-                android:icon="@drawable/ic_settings"
-                android:title="@string/menu_addbed" />
+
         </menu>
     </item>
 </menu>
