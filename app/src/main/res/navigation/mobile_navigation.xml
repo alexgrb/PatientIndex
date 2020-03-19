@@ -13,37 +13,31 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="ch.hevs.alexpira.ui.addUser.GalleryFragment"
         android:label="@string/menu_addpatient"
         tools:layout="@layout/fragment_adduser" />
 
     <fragment
         android:id="@+id/nav_stats"
-        android:name="ch.hevs.alexpira.ui.Stats.StatsFragment"
         android:label="@string/menu_stats"
         tools:layout="@layout/fragment_progressiveprogressbar" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="ch.hevs.alexpira.ui.searchByPatient.SlideshowFragment"
         android:label="@string/menu_searchpatients"
         tools:layout="@layout/fragment_searchpatient" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="ch.hevs.alexpira.ui.AddBed.ToolsFragment"
         android:label="@string/menu_addbed"
         tools:layout="@layout/fragment_addbed" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="ch.hevs.alexpira.ui.share.ShareFragment"
         android:label="@string/menu_searchbed"
         tools:layout="@layout/fragment_searchbed" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="ch.hevs.alexpira.ui.displayUser.SendFragment"
         android:label="@string/menu_displaypatient"
         tools:layout="@layout/display_user" />
 
