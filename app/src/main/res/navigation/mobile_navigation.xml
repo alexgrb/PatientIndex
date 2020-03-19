@@ -56,6 +56,43 @@
     <activity
         android:id="@+id/nav_addbed"
         android:name="ch.hevs.alexpira.AddBedActivity"
-        android:label="@string/menu_settings"
+        android:label="@string/menu_addbed"
         tools:layout="@layout/activity_add_bed" />
+
+    <activity
+        android:id="@+id/nav_a_adduser"
+        android:name="ch.hevs.alexpira.AddUser"
+        android:label="@string/menu_addpatient"
+        tools:layout="@layout/activity_add_user" />
+
+    <activity
+        android:id="@+id/nav_a_displayuser"
+        android:name="ch.hevs.alexpira.DisplayUser"
+        android:label="@string/menu_displaypatient"
+        tools:layout="@layout/activity_display_user" />
+
+    <activity
+        android:id="@+id/nav_a_home"
+        android:name="ch.hevs.alexpira.Home"
+        android:label="@string/menu_home"
+        tools:layout="@layout/activity_home" />
+
+    <activity
+        android:id="@+id/nav_a_searchbed"
+        android:name="ch.hevs.alexpira.SearchBed"
+        android:label="@string/menu_searchbed"
+        tools:layout="@layout/activity_search_bed" />
+
+    <activity
+        android:id="@+id/nav_a_searchpatient"
+        android:name="ch.hevs.alexpira.SearchPatient"
+        android:label="@string/menu_searchpatients"
+        tools:layout="@layout/activity_search_patient" />
+
+    <activity
+        android:id="@+id/nav_a_stats"
+        android:name="ch.hevs.alexpira.Statistics"
+        android:label="@string/menu_stats"
+        tools:layout="@layout/activity_statistics" />
+
 </navigation>
