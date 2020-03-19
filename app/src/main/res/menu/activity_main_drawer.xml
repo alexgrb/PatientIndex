@@ -4,25 +4,23 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_a_home"
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
 
         <item
-            android:id="@+id/nav_send"
+            android:id="@+id/nav_a_displayuser"
             android:icon="@drawable/ic_menu_send"
             android:title="@string/menu_displaypatient" />
 
         <item
-            android:id="@+id/nav_stats"
+            android:id="@+id/nav_a_stats"
             android:icon="@drawable/ic_charts"
             android:title="@string/menu_stats" />
 
-q        <item
-            android:id="@+id/nav_statistiques"
-            android:icon="@drawable/ic_charts"
-            android:title="stattststsst" />
 
 
 
@@ -30,13 +28,16 @@ q        <item
 
     <item android:title="Search">
         <menu>
+
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_a_searchbed"
                 android:icon="@drawable/ic_searchbed"
                 android:title="@string/menu_searchbed" />
 
+
+
             <item
-                android:id="@+id/nav_slideshow"
+                android:id="@+id/nav_a_searchpatient"
                 android:icon="@drawable/ic_searchperson"
                 android:title="@string/menu_searchpatients" />
 
@@ -46,19 +47,16 @@ q        <item
 
     <item android:title="Add">
         <menu>
+
             <item
-                android:id="@+id/nav_gallery"
+                android:id="@+id/nav_a_adduser"
                 android:icon="@drawable/ic_person_add"
                 android:title="@string/menu_addpatient" />
 
-            <item
-                android:id="@+id/nav_tools"
-                android:icon="@drawable/ic_bed"
-                android:title="@string/menu_addbed" />
 
             <item
                 android:id="@+id/nav_addbed"
-                android:icon="@drawable/ic_settings"
+                android:icon="@drawable/ic_bed"
                 android:title="@string/menu_addbed" />
 
 
@@ -70,12 +68,9 @@ q        <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
                 android:title="@string/menu_settings" />
-      
-        </menu>
-    </item>
-    <item android:title="AddBed">
-        <menu>
 
+
+      
         </menu>
     </item>
 </menu>
