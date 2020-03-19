@@ -19,7 +19,7 @@
             android:icon="@drawable/ic_charts"
             android:title="@string/menu_stats" />
 
-        <item
+q        <item
             android:id="@+id/nav_statistiques"
             android:icon="@drawable/ic_charts"
             android:title="stattststsst" />
@@ -62,7 +62,7 @@
         <menu>
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_person_add"
+                android:icon="@drawable/ic_settings"
                 android:title="@string/menu_settings" />
         </menu>
     </item>

@@ -59,6 +59,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //floating button
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -93,8 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    //button settings
     public void btnSettings_onClick(View view) {
         Intent intent=new Intent(this,SettingsActivity.class);
         startActivity(intent);
     }
+
+
 }
