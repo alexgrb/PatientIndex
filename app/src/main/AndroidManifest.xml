@@ -57,7 +57,7 @@
                 android:value="ch.hevs.alexpira.MainActivity" />
 
         </activity>
-        <activity android:name=".AddUser" >
+        <activity android:name=".AddPatient" >
             android:label="@string/menu_addpatient"
             android:parentActivityName=".MainActivity">
             <meta-data

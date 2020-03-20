@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddUser extends AppCompatActivity {
+public class AddPatient extends AppCompatActivity {
     private Button submit;
     private EditText firstName;
     private EditText lastName;
@@ -17,6 +17,7 @@ public class AddUser extends AppCompatActivity {
     private EditText birthdate;
     private EditText city;
     private EditText npa;
+    public static final String EXTRA_FIRSTNAME = "alexpira.EXTRA_TEXT";
 
 
     @Override
@@ -50,7 +51,12 @@ public class AddUser extends AppCompatActivity {
     }
 
     public void openActivity2(){
-        Intent intent = new Intent(this, DisplayUser.class);
+
+        EditText firstName = (EditText) findViewById(R.id.tv_firstName);
+        String text = firstName.getText().toString();
+
+        Intent intent = new Intent(this, Activity2.class);
+        intent.putExtra(EXTRA_FIRSTNAME, text);
         startActivity(intent);
     }
 }
