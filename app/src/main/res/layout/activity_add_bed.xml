@@ -45,13 +45,18 @@
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nonadjust" />
+            android:text="@string/nonadjust"
+            android:checked="true"
+            android:onClick="checkButton"
+            />
 
         <RadioButton
             android:id="@+id/radioButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adjust" />
+            android:text="@string/adjust"
+            android:onClick="checkButton"
+            />
         >
 
     </RadioGroup>
@@ -69,11 +74,43 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add new bed"
+        android:text="Display selection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.621" />
+
+    <TextView
+        android:id="@+id/text_view_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="160dp"
+        android:text="Your selection: "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_addbed"
+        android:layout_width="98dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="72dp"
+        android:text="Add Bed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_selected"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

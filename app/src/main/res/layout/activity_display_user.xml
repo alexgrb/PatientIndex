@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/et_npaaa"
+        android:id="@+id/et_enpea"
         android:layout_width="148dp"
         android:layout_height="36dp"
         android:layout_marginStart="48dp"
@@ -72,6 +72,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/et_city" />
+
 
     <TextView
         android:id="@+id/et_birthdate"

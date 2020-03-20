@@ -53,11 +53,10 @@ public class AddPatient extends AppCompatActivity {
         String textcity = city.getText().toString();
 
         /*
-        EditText npa = (EditText) findViewById(R.id.et_npaaa);
+        EditText npa = (EditText) findViewById(R.id.et_enpea);
         String textnpa = npa.getText().toString();
 
          */
-
 
 
 

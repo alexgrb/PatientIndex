@@ -39,7 +39,7 @@
     <string name="lastName">Lastname</string>
     <string name="address">Adress</string>
     <string name="city">City</string>
-    <string name="NPA">NPA</string>
+    <string name="NPA">NPA (laisser vide)</string>
     <string name="birthdate">Birthdate</string>
     <string name="submitPatient">Add new patient</string>
 

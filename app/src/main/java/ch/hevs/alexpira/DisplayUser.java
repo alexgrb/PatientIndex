@@ -35,7 +35,7 @@ public class DisplayUser extends AppCompatActivity {
         address = intent.getStringExtra(AddPatient.ADDRESS);
         birthday = intent.getStringExtra(AddPatient.BIRTHDATE);
         city = intent.getStringExtra(AddPatient.CITY);
-       // NPA = intent.getStringExtra(AddPatient.NPA);
+        //NPA = intent.getStringExtra(AddPatient.NPA);
 
 
 
@@ -44,7 +44,7 @@ public class DisplayUser extends AppCompatActivity {
         tv_address = (TextView) findViewById(R.id.et_address);
         tv_birthdate = (TextView) findViewById(R.id.et_birthdate);
         tv_city = (TextView) findViewById(R.id.et_city);
-       // tv_npa = (TextView) findViewById(R.id.et_address);
+        //tv_npa = (TextView) findViewById(R.id.et_enpea);
 
 
 
