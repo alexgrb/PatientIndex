@@ -9,13 +9,70 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Statistics"></activity>
-        <activity android:name=".SearchPatient" />
-        <activity android:name=".SearchBed" />
-        <activity android:name=".Home" />
-        <activity android:name=".DisplayUser" />
-        <activity android:name=".AddUser" />
-        <activity android:name=".AddBedActivity" />
+        <activity android:name=".Activity2">
+            android:label="@string/menu_addbed"
+            android:parentActivityName=".AddPatient">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
+        <activity android:name=".Statistics">
+            android:label="@string/menu_stats"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
+        <activity android:name=".SearchPatient" >
+            android:label="@string/menu_searchpatients"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
+        <activity android:name=".SearchBed" >
+            android:label="@string/menu_searchbed"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
+        <activity android:name=".Home" >
+            android:label="@string/menu_home"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
+        <activity android:name=".DisplayUser" >
+            android:label="@string/menu_displaypatient"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
+        <activity android:name=".AddUser" >
+            android:label="@string/menu_addpatient"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AddBedActivity" >
+            android:label="@string/menu_addbed"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.alexpira.MainActivity" />
+
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
