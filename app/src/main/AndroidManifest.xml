@@ -51,10 +51,10 @@
         </activity>
         <activity android:name=".DisplayUser" >
             android:label="@string/menu_displaypatient"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".AddPatient">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ch.hevs.alexpira.MainActivity" />
+                android:value="ch.hevs.alexpira.AddPatient" />
 
         </activity>
         <activity android:name=".AddPatient" >

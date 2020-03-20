@@ -20,6 +20,12 @@ public class DisplayUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user);
 
+        Intent intent = getIntent();
+        String text = intent.getStringExtra(AddPatient.FIRSTNAME);
+
+        TextView textview1 = (TextView) findViewById(R.id.tv_firstName);
+        textview1.setText(text);
+
         /*
         Intent intent = getIntent();
 

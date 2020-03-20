@@ -17,7 +17,14 @@ public class AddPatient extends AppCompatActivity {
     private EditText birthdate;
     private EditText city;
     private EditText npa;
-    public static final String EXTRA_FIRSTNAME = "alexpira.EXTRA_TEXT";
+    public static final String FIRSTNAME = "alexpira.EXTRA_TEXT";
+    public static final String LASTNAME= "alexpira.EXTRA_TEXT";
+    public static final String ADRESS = "alexpira.EXTRA_TEXT";
+    public static final String BIRTHDATE = "alexpira.EXTRA_TEXT";
+    public static final String CITY = "alexpira.EXTRA_TEXT";
+    public static final String NPA = "alexpira.EXTRA_TEXT";
+
+
 
 
     @Override
@@ -55,8 +62,9 @@ public class AddPatient extends AppCompatActivity {
         EditText firstName = (EditText) findViewById(R.id.tv_firstName);
         String text = firstName.getText().toString();
 
-        Intent intent = new Intent(this, Activity2.class);
-        intent.putExtra(EXTRA_FIRSTNAME, text);
+
+        Intent intent = new Intent(this, DisplayUser.class);
+        intent.putExtra(FIRSTNAME, text);
         startActivity(intent);
     }
 }

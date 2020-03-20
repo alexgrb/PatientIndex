@@ -14,7 +14,7 @@ public class Activity2 extends AppCompatActivity {
         setContentView(R.layout.activity_2);
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra(AddPatient.EXTRA_FIRSTNAME);
+        String text = intent.getStringExtra(AddPatient.FIRSTNAME);
 
         TextView textview1 = (TextView) findViewById(R.id.textviewactivité2);
         textview1.setText(text);
