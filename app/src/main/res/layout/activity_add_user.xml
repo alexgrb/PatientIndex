@@ -6,10 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".AddPatient">
 
+    <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="237dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Patient number: 3218"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/tv_firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/firstName"
         app:layout_constraintBottom_toTopOf="@+id/et_lastname"
@@ -21,6 +40,8 @@
         android:id="@+id/et_lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/lastName"
         app:layout_constraintBottom_toTopOf="@+id/et_address"
@@ -31,6 +52,8 @@
         android:id="@+id/et_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/address"
         app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
@@ -39,8 +62,9 @@
 
     <EditText
         android:id="@+id/et_city"
-        android:layout_width="184dp"
-        android:layout_height="50dp"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="48dp"
         android:hint="@string/city"
         app:layout_constraintBottom_toTopOf="@+id/btn_submit"
@@ -48,20 +72,20 @@
 
     <EditText
         android:id="@+id/et_NPA"
-        android:layout_width="184dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="7dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="48dp"
         android:hint="@string/NPA"
         app:layout_constraintBottom_toTopOf="@+id/btn_submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/et_city" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/et_birthdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/birthdate"
         app:layout_constraintBottom_toTopOf="@+id/et_NPA"
@@ -70,7 +94,7 @@
 
     <Button
         android:id="@+id/btn_submit"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:text="@string/submitPatient"
@@ -87,8 +111,10 @@
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/tv_firstName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_menu_gallery" />
 
 

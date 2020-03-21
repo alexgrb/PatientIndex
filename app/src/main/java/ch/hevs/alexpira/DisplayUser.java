@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DisplayUser extends AppCompatActivity {
@@ -55,24 +57,15 @@ public class DisplayUser extends AppCompatActivity {
         tv_city.setText(city);
         //tv_npa.setText(NPA);
 
+        //Button to go back on the AddPatient Activity
+        Button buttonEdit = findViewById(R.id.button_editPatient);
+        buttonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayUser.this, AddPatient.class);
+                startActivity(intent);
+            }
+        });
 
-        /*
-        Intent intent = getIntent();
-
-        firstName = (TextView) findViewById(R.id.tv_firstName);
-        lastName = (TextView) findViewById(R.id.et_lastname);
-        address = (TextView) findViewById(R.id.et_address);
-        city = (TextView) findViewById(R.id.et_city);
-        npa = (TextView) findViewById(R.id.et_NPA);
-        birthdate = (TextView) findViewById(R.id.et_birthdate);
-
-        firstName.setText(intent.getStringExtra("firstName"));
-        lastName.setText(intent.getStringExtra("lastName"));
-        address.setText(intent.getStringExtra("address"));
-        city.setText(intent.getStringExtra("city"));
-        npa.setText(intent.getStringExtra("NPA"));
-        birthdate.setText(intent.getStringExtra("birthdate"));
-
-         */
     }
 }

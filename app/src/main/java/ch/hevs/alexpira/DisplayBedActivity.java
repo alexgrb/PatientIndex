@@ -14,6 +14,7 @@ public class DisplayBedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_bed);
 
+        //Button to go back on the AddBedActivity
         Button buttonEdit = findViewById(R.id.button_edit);
         buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override

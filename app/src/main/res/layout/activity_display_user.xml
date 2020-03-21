@@ -7,82 +7,175 @@
     tools:context=".DisplayUser">
 
     <TextView
-        android:id="@+id/tv_firstName"
-        android:layout_width="0dp"
+        android:id="@+id/text_view_title"
+        android:layout_width="237dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="32dp"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_lastname"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Patient number: 3218"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView_firstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:text="Firstname"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
+
+
+    <TextView
+        android:id="@+id/tv_firstName"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_firstname" />
+
+    <TextView
+        android:id="@+id/textView_lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="40dp"
+        android:text="Lastname"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintStart_toEndOf="@+id/textView_firstname"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
 
     <TextView
         android:id="@+id/et_lastname"
-        android:layout_width="wrap_content"
+        android:layout_width="113dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="32dp"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="7dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_lastname" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="201dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/adroidselffie" />
+
+    <TextView
+        android:id="@+id/textView_adress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Adress"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_birthdate" />
+
 
     <TextView
         android:id="@+id/et_address"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:textSize="25sp"
-        android:textColor="@color/textbody"
-        app:layout_constraintBottom_toTopOf="@+id/et_city"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_adress" />
+
+    <TextView
+        android:id="@+id/textView_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="City"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_address" />
+
+    <TextView
+        android:id="@+id/textView_NPA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="32dp"
+        android:text="NPA"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintStart_toEndOf="@+id/textView_city"
+        app:layout_constraintTop_toBottomOf="@+id/et_address" />
 
     <TextView
         android:id="@+id/et_city"
-        android:layout_width="148dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="250dp"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_city" />
 
     <TextView
         android:id="@+id/et_enpea"
-        android:layout_width="148dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="250dp"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="68dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/et_city" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_NPA" />
 
+    <TextView
+        android:id="@+id/textView_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Birthday"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_firstName" />
 
     <TextView
         android:id="@+id/et_birthdate"
         android:layout_width="113dp"
         android:layout_height="27dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
         android:inputType="date"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_address"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_birthdate" />
+
+    <Button
+        android:id="@+id/button_editPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="68dp"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_city" />
+
+    <Button
+        android:id="@+id/button_deletePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="68dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_enpea" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
