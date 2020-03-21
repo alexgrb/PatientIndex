@@ -84,7 +84,6 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
     }
 
 
-
     @Override
     public void onYesClicked() {
         Toast.makeText(DisplayPatientActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
