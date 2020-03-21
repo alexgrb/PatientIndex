@@ -14,7 +14,7 @@ public class DisplayBedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_bed);
 
-        //Button to go back on the AddBedActivity
+        //Button edit to go back on the AddBedActivity
         Button buttonEdit = findViewById(R.id.button_edit);
         buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,5 +24,18 @@ public class DisplayBedActivity extends AppCompatActivity {
             }
         });
 
+        //Button delete to show dialog
+        Button buttonDelete = findViewById(R.id.button_deleteBed);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+    }
+
+    public void openDialog(){
+        DeleteBedDialog deleteBedDialog= new DeleteBedDialog();
+        deleteBedDialog.show(getSupportFragmentManager(), "delte bed diaog");
     }
 }
