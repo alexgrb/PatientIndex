@@ -67,5 +67,18 @@ public class DisplayUser extends AppCompatActivity {
             }
         });
 
+        //OnClick Listener to oppen a dialog message
+        Button buttonDelete = findViewById(R.id.button_deletePatient);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+    }
+
+    public void openDialog(){
+        DeletePatientDialog deletePatientDialog = new DeletePatientDialog();
+        deletePatientDialog.show(getSupportFragmentManager(), "delete patient dialog");
     }
 }
