@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDialog.ExampleDialogListener{
+public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDialog.BedDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

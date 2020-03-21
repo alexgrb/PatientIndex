@@ -1,12 +1,10 @@
 package ch.hevs.alexpira;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +12,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class DeleteBedDialog extends AppCompatDialogFragment  {
 
-    private ExampleDialogListener listener;
+    private BedDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -41,7 +39,7 @@ public class DeleteBedDialog extends AppCompatDialogFragment  {
         return builder.create();
     }
 
-    public interface ExampleDialogListener {
+    public interface BedDialogListener {
         void onYesClicked();
         void onNoClicked();
     }
@@ -51,7 +49,7 @@ public class DeleteBedDialog extends AppCompatDialogFragment  {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            listener = (ExampleDialogListener) context;
+            listener = (BedDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + "must implement ExampleDialogListener");
