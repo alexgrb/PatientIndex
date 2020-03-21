@@ -10,7 +10,7 @@ public class Activity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       /* super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
 
         Intent intent = getIntent();
@@ -18,6 +18,6 @@ public class Activity2 extends AppCompatActivity {
 
         TextView textview1 = (TextView) findViewById(R.id.textviewactivité2);
         textview1.setText(text);
-
+*/
     }
 }
