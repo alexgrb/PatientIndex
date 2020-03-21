@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class DisplayBedActivity extends AppCompatActivity {
+public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDialog.ExampleDialogListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,19 @@ public class DisplayBedActivity extends AppCompatActivity {
 
     public void openDialog(){
         DeleteBedDialog deleteBedDialog= new DeleteBedDialog();
-        deleteBedDialog.show(getSupportFragmentManager(), "delte bed diaog");
+        deleteBedDialog.show(getSupportFragmentManager(), "delete bed dialog");
+    }
+
+    @Override
+    public void onYesClicked() {
+        Toast.makeText(DisplayBedActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DisplayBedActivity.this, Home.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNoClicked() {
+        Toast.makeText(DisplayBedActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
+
     }
 }

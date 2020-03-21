@@ -60,7 +60,7 @@ public class AddPatient extends AppCompatActivity {
 
 
 
-        Intent intent = new Intent(this, DisplayUser.class);
+        Intent intent = new Intent(this, DisplayPatientActivity.class);
 
         intent.putExtra(FIRSTNAME, textfirstname);
         intent.putExtra(LASTNAME, textlastname);

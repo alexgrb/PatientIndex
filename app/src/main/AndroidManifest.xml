@@ -11,11 +11,11 @@
         android:theme="@style/AppTheme" >
         <activity android:name=".DisplayBedActivity" >
         </activity>
-        <activity android:name=".Statistics" />
-        <activity android:name=".SearchPatient" />
-        <activity android:name=".SearchBed" />
+        <activity android:name=".StatisticsActivity" />
+        <activity android:name=".SearchPatientActivity" />
+        <activity android:name=".SearchBedActivity" />
         <activity android:name=".Home" />
-        <activity android:name=".DisplayUser" />
+        <activity android:name=".DisplayPatientActivity" />
         <activity android:name=".AddPatient" />
         <activity android:name=".AddBedActivity" />
         <activity

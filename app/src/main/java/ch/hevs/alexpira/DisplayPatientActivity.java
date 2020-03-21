@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class DisplayUser extends AppCompatActivity {
+public class DisplayPatientActivity extends AppCompatActivity {
 
     private TextView tv_firstName;
     private TextView tv_lastName;
@@ -62,7 +62,7 @@ public class DisplayUser extends AppCompatActivity {
         buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DisplayUser.this, AddPatient.class);
+                Intent intent = new Intent(DisplayPatientActivity.this, AddPatient.class);
                 startActivity(intent);
             }
         });
