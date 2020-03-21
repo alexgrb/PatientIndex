@@ -61,7 +61,7 @@
 
     <activity
         android:id="@+id/nav_a_displayuser"
-        android:name="ch.hevs.alexpira.DisplayUser"
+        android:name="ch.hevs.alexpira.DisplayPatientActivity"
         android:label="@string/menu_displaypatient"
         tools:layout="@layout/activity_display_user" />
 
@@ -73,19 +73,19 @@
 
     <activity
         android:id="@+id/nav_a_searchbed"
-        android:name="ch.hevs.alexpira.SearchBed"
+        android:name="ch.hevs.alexpira.SearchBedActivity"
         android:label="@string/menu_searchbed"
         tools:layout="@layout/activity_search_bed" />
 
     <activity
         android:id="@+id/nav_a_searchpatient"
-        android:name="ch.hevs.alexpira.SearchPatient"
+        android:name="ch.hevs.alexpira.SearchPatientActivity"
         android:label="@string/menu_searchpatients"
         tools:layout="@layout/activity_search_patient" />
 
     <activity
         android:id="@+id/nav_a_stats"
-        android:name="ch.hevs.alexpira.Statistics"
+        android:name="ch.hevs.alexpira.StatisticsActivity"
         android:label="@string/menu_stats"
         tools:layout="@layout/activity_statistics" />
 

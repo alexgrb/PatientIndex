@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class DisplayUser extends AppCompatActivity {
+public class DisplayPatientActivity extends AppCompatActivity implements DeletePatientDialog.PatientDialogListener {
 
     private TextView tv_firstName;
     private TextView tv_lastName;
@@ -62,7 +63,7 @@ public class DisplayUser extends AppCompatActivity {
         buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DisplayUser.this, AddPatient.class);
+                Intent intent = new Intent(DisplayPatientActivity.this, AddPatient.class);
                 startActivity(intent);
             }
         });
@@ -80,5 +81,19 @@ public class DisplayUser extends AppCompatActivity {
     public void openDialog(){
         DeletePatientDialog deletePatientDialog = new DeletePatientDialog();
         deletePatientDialog.show(getSupportFragmentManager(), "delete patient dialog");
+    }
+
+
+
+    @Override
+    public void onYesClicked() {
+        Toast.makeText(DisplayPatientActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DisplayPatientActivity.this, Home.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNoClicked() {
+        Toast.makeText(DisplayPatientActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
     }
 }
