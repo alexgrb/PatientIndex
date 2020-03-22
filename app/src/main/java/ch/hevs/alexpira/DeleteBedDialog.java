@@ -12,13 +12,14 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class DeleteBedDialog extends AppCompatDialogFragment  {
 
+    //we want our Activity to be the listener of our Dialog
     private BedDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
+        //building the actual dialog
         builder.setTitle("Delete confirmation")
                 .setMessage("Are you sure you want to delete this bed? All data will be removed from the database.")
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
@@ -31,20 +32,19 @@ public class DeleteBedDialog extends AppCompatDialogFragment  {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //leaving here blank so the dialog will only close
                         listener.onNoClicked();
                     }
                 });
 
         return builder.create();
     }
-
+    //creating an interface to establish communication with the DisplayActivity
     public interface BedDialogListener {
         void onYesClicked();
         void onNoClicked();
     }
 
-    //In case the method does not implement
+    //Setting the listener to the activity
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

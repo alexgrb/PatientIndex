@@ -33,7 +33,6 @@ public class DeletePatientDialog extends AppCompatDialogFragment {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //leaving here blank so the dialog will only close
                         listener.onNoClicked();
 
                     }
@@ -48,6 +47,7 @@ public class DeletePatientDialog extends AppCompatDialogFragment {
         void onNoClicked();
     }
 
+    //Setting the listener to the activity
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
