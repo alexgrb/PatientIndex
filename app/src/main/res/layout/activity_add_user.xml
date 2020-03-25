@@ -16,7 +16,7 @@
 
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Patient number: 3218"
+        android:text="@string/activityAddUser_title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24sp"
         android:textStyle="bold"

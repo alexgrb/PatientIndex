@@ -16,7 +16,7 @@
 
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Patient number: 3218"
+        android:text="@string/activityAddUser_title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:text="Firstname"
+        android:text="@string/firstName"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="105dp"
         android:layout_marginTop="40dp"
-        android:text="Lastname"
+        android:text="@string/lastName"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toEndOf="@+id/textView_firstname"
         app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="Adress"
+        android:text="@string/address"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_birthdate" />
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="City"
+        android:text="@string/city"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_address" />
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="167dp"
         android:layout_marginTop="32dp"
-        android:text="NPA"
+        android:text="@string/NPA"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toEndOf="@+id/textView_city"
         app:layout_constraintTop_toBottomOf="@+id/et_address" />
@@ -138,7 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="Birthday"
+        android:text="@string/birthdate"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_firstName" />
@@ -161,7 +161,7 @@
         android:layout_marginStart="83dp"
         android:layout_marginTop="37dp"
         android:layout_marginBottom="68dp"
-        android:text="Edit"
+        android:text="@string/edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_city" />
@@ -173,7 +173,7 @@
         android:layout_marginTop="37dp"
         android:layout_marginEnd="83dp"
         android:layout_marginBottom="68dp"
-        android:text="Delete"
+        android:text="@string/delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_enpea" />

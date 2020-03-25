@@ -17,7 +17,7 @@
 
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Bed number: 280"
+        android:text="@string/activityAddBed_Title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="48dp"
-        android:text="Actual place"
+        android:text="@string/activityDisplayBed_actualPlace"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="10dp"
-        android:text="Insert actual room..."
+        android:text="@string/activityDisplayBed_inRoom"
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_actualplace" />
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="35dp"
-        android:text="Previous place"
+        android:text="@string/activityDisplayBed_prevPlace"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_insert_actual" />
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="10dp"
-        android:text="Insert prev room..."
+        android:text="@string/activityDisplayBed_prevRoom"
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_previousplace" />
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="35dp"
-        android:text="Settings"
+        android:text="@string/menu_settings"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_insert_prev" />
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
-        android:text="Adustable or non-adjustable..?"
+        android:text="@string/activityAddUser_adj"
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Settings" />
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="35dp"
-        android:text="Size"
+        android:text="@string/titlesize"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_insert_settings" />
@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="10dp"
-        android:text="Insert size..."
+        android:text="@string/activityAddUser_size"
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Type" />
@@ -120,7 +120,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="87dp"
-        android:text="Delete"
+        android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toEndOf="@+id/button_edit"
@@ -132,7 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="87dp"
         android:layout_marginTop="48dp"
-        android:text="Edit"
+        android:text="@string/edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_insert_size" />
 

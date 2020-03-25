@@ -74,7 +74,6 @@
             android:layout_height="wrap_content"
             android:onClick="checkButton"
             android:text="@string/adjust" />
-        >
 
     </RadioGroup>
 
@@ -91,7 +90,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Display selection"
+        android:text="@string/activityAddBed_YourSelection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +106,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginEnd="125dp"
         android:layout_marginBottom="160dp"
-        android:text="Your selection: "
+        android:text="@string/activityAddBed_YourSelection"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +121,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="157dp"
         android:layout_marginBottom="72dp"
-        android:text="Add Bed"
+        android:text="@string/activityAddBed_btnAddBed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
