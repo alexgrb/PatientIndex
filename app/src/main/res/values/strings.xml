@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <!-- LEFT MENU -->
+    <!-- Navigation drawer -->
     <string name="menu_home">Home</string>
     <string name="menu_addpatient">Add patient</string>
     <string name="menu_searchpatients">Search by patient</string>
@@ -82,6 +82,11 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- Activity AddBed -->
+    <string name="activityAddBed_Title">Bed number: 280</string>
+
+
 
 
 </resources>
