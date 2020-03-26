@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import ch.hevs.alexpira.database.AppDatabase;
+import ch.hevs.alexpira.database.entity.PatientEntity;
+
 public class AddPatient extends AppCompatActivity {
     private Button submit;
     public static final String FIRSTNAME = "FIRSTNAME";
@@ -16,7 +19,7 @@ public class AddPatient extends AppCompatActivity {
     public static final String BIRTHDATE = "BIRTHDATE";
     public static final String CITY = "CITY";
     public static final String NPA = "NPA";
-
+    public static AppDatabase appDatabase;
 
 
 
@@ -24,10 +27,13 @@ public class AddPatient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+        appDatabase = AppDatabase.getAppDatabase(this);
         submit = (Button) findViewById(R.id.btn_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 
                 openDisplayPatient();
             }
@@ -56,10 +62,11 @@ public class AddPatient extends AppCompatActivity {
         EditText npa = (EditText) findViewById(R.id.et_enpea);
         String textnpa = npa.getText().toString();
 
-         */
 
 
-
+        PatientEntity patient = new PatientEntity(textfirstname, textlastname);
+        appDatabase.patientDao().insertAll(patient);
+*/
         Intent intent = new Intent(this, DisplayPatientActivity.class);
 
         intent.putExtra(FIRSTNAME, textfirstname);

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ch.hevs.alexpira.database.AppDatabase;
+
 public class DisplayPatientActivity extends AppCompatActivity implements DeletePatientDialog.PatientDialogListener {
 
     private TextView tv_firstName;
@@ -24,12 +26,14 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
     private String birthday;
     private String city;
     private String NPA;
-
+    private static AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user);
+
+        //appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
 
         Intent intent = getIntent();
 
@@ -50,6 +54,13 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
         //tv_npa = (TextView) findViewById(R.id.et_enpea);
 
 
+       /* List<PatientEntity> patients = appDatabase.patientDao().getAll();
+
+        for(PatientEntity patient : patients)
+        {
+            firstname = patient.getPatientFirstName();
+            lastname = patient.getPatientLastName();
+        }*/
 
         tv_firstName.setText(firstname);
         tv_lastName.setText(lastname);
