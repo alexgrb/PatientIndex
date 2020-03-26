@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.uiActivities;
+package ch.hevs.alexpira;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import ch.hevs.alexpira.R;
 
 public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDialog.BedDialogListener {
 

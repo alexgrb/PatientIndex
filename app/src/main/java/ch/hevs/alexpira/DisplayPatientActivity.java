@@ -1,23 +1,12 @@
-package ch.hevs.alexpira.uiActivities;
+package ch.hevs.alexpira;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.ui.BaseActivity;
 import ch.hevs.alexpira.viewmodel.PatientViewModel;
-
-import static ch.hevs.alexpira.ui.BaseActivity.PREFS_USER;
 
 public class DisplayPatientActivity extends BaseActivity {
         //extends AppCompatActivity implements DeletePatientDialog.PatientDialogListener {
@@ -51,6 +40,7 @@ public class DisplayPatientActivity extends BaseActivity {
 /*
 
         //INITIATE VIEW
+
         SharedPreferences settings = getSharedPreferences(BaseActivity.PREFS_NAME, 0);
         String user = settings.getString(PREFS_USER, null);
 

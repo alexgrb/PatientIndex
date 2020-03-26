@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.uiActivities;
+package ch.hevs.alexpira;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,8 +24,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
-import ch.hevs.alexpira.R;
-
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -33,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //adding an up button to the AppBar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

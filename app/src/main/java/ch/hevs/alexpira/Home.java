@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.uiActivities;
+package ch.hevs.alexpira;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import ch.hevs.alexpira.R;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
 

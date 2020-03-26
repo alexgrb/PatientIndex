@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.uiActivities;
+package ch.hevs.alexpira;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import ch.hevs.alexpira.R;
 
 public class AddBedActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 

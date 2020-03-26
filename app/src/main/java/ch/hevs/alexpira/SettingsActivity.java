@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.uiActivities;
+package ch.hevs.alexpira;
 
 import android.os.Bundle;
 import android.view.View;
