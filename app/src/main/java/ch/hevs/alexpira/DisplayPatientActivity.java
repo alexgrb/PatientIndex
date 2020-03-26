@@ -1,8 +1,10 @@
 package ch.hevs.alexpira;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ch.hevs.alexpira.database.AppDatabase;
+import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.ui.BaseActivity;
+import ch.hevs.alexpira.viewmodel.PatientViewModel;
 
-public class DisplayPatientActivity extends AppCompatActivity implements DeletePatientDialog.PatientDialogListener {
+import static ch.hevs.alexpira.ui.BaseActivity.PREFS_USER;
+
+public class DisplayPatientActivity extends BaseActivity {
+        //extends AppCompatActivity implements DeletePatientDialog.PatientDialogListener {
 
     private TextView tv_firstName;
     private TextView tv_lastName;
@@ -28,13 +36,32 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
     private String NPA;
     private static AppDatabase appDatabase;
 
+    private PatientViewModel viewModel;
+
+    private PatientEntity patient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user);
+/*
 
-        //appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
+        //INITIATE VIEW
+        SharedPreferences settings = getSharedPreferences(BaseActivity.PREFS_NAME, 0);
+        String user = settings.getString(PREFS_USER, null);
 
+
+        PatientViewModel.Factory factory = new PatientViewModel.Factory(getApplication(), user);
+
+        viewModel = ViewModelProvider. //of(this,factory).get(PatientViewModel.class);
+        viewModel.getPatient().observe(this,bedEntitiy -> {
+            if(bedEntitiy != null){
+                patient = bedEntitiy;
+                updateContent();
+            }
+        });
+*/
+/*
         Intent intent = getIntent();
 
         firstname = intent.getStringExtra(AddPatient.FIRSTNAME);
@@ -61,7 +88,7 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
             firstname = patient.getPatientFirstName();
             lastname = patient.getPatientLastName();
         }*/
-
+/*
         tv_firstName.setText(firstname);
         tv_lastName.setText(lastname);
         tv_address.setText(address);
@@ -87,6 +114,7 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
                 openDialog();
             }
         });
+        */
     }
 
     public void openDialog(){
@@ -94,7 +122,7 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
         deletePatientDialog.show(getSupportFragmentManager(), "delete patient dialog");
     }
 
-
+/*
     @Override
     public void onYesClicked() {
         Toast.makeText(DisplayPatientActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
@@ -106,4 +134,11 @@ public class DisplayPatientActivity extends AppCompatActivity implements DeleteP
     public void onNoClicked() {
         Toast.makeText(DisplayPatientActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
     }
+
+    private void updateContent(){
+        if(patient!=null){
+            tv_firstName.setText(patient.getPatientFirstName());
+            tv_lastName.setText(patient.getPatientLastName());
+        }
+    }*/
 }
