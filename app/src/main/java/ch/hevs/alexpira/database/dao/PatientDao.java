@@ -2,6 +2,7 @@ package ch.hevs.alexpira.database.dao;
 
 import android.database.sqlite.SQLiteConstraintException;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -17,7 +18,10 @@ public interface PatientDao {
 
 
     @Query("SELECT * FROM patients")
-    List<PatientEntity> getAll();
+    LiveData<List<PatientEntity>> getAll();
+
+    @Query("SELECT * FROM patients WHERE id = :patientId")
+    LiveData<PatientEntity> getById(String patientId);
 
     @Query("SELECT * FROM patients WHERE id IN (:patientIds)")
     List<PatientEntity> loadAllByIds(int[] patientIds);
@@ -27,6 +31,9 @@ public interface PatientDao {
 
     @Insert
     void insertAll(PatientEntity... patients) throws SQLiteConstraintException;
+
+    @Insert
+    long insert(PatientEntity patient) throws SQLiteConstraintException;
 
     @Update
     void updateFruits(PatientEntity... patients);
