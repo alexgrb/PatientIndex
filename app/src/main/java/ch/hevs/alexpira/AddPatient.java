@@ -27,7 +27,7 @@ public class AddPatient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-        appDatabase = AppDatabase.getAppDatabase(this);
+      //  appDatabase = AppDatabase.getAppDatabase(this);
         submit = (Button) findViewById(R.id.btn_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
