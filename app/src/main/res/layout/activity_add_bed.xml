@@ -17,7 +17,7 @@
 
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Bed number: 280"
+        android:text="@string/activityAddBed_Title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="24sp"
         android:textStyle="bold"
