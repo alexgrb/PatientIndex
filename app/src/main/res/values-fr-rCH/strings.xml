@@ -48,4 +48,6 @@
     <string name="edit">Modifier</string>
     <string name="activityDisplayUser_">Modifier</string>
     <string name="searchhere">Chercher ici</string>
+    <string name="menu_detailpatient">Détails patient</string>
+    <string name="menu_detailbed">Détails lit</string>
 </resources>

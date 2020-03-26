@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.uiActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.ui.BaseActivity;
@@ -42,6 +43,9 @@ public class DisplayPatientActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //adding an up button to the AppBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user);
 /*

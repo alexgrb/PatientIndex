@@ -9,25 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".DisplayBedActivity" >
-        </activity>
-        <activity android:name=".StatisticsActivity" />
-        <activity android:name=".SearchPatientActivity" />
-        <activity android:name=".SearchBedActivity" />
-        <activity android:name=".Home" />
-        <activity android:name=".DisplayPatientActivity" />
-        <activity android:name=".AddPatient" />
-        <activity android:name=".AddBedActivity" />
+        <activity android:name=".uiActivities.DisplayBedActivity"
+            android:label="@string/menu_detailbed"
+            />
+        <activity android:name=".uiActivities.StatisticsActivity"
+            android:label="@string/menu_stats"
+            />
+        <activity android:name=".uiActivities.SearchPatientActivity"
+            android:label="@string/menu_searchpatients"
+            />
+        <activity android:name=".uiActivities.SearchBedActivity"
+            android:label="@string/menu_searchbed"
+            />
+        <activity android:name=".uiActivities.Home"
+            android:label="@string/menu_home"
+            />
+        <activity android:name=".uiActivities.DisplayPatientActivity"
+            android:label="@string/menu_detailpatient"
+            />
+        <activity android:name=".uiActivities.AddPatient"
+                    android:label="@string/menu_addpatient"
+            />
+        <activity android:name=".uiActivities.AddBedActivity" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".uiActivities.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".uiActivities.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ch.hevs.alexpira.MainActivity" />
+                android:value="ch.hevs.alexpira.uiActivities.MainActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".uiActivities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>

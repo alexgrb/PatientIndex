@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.uiActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ch.hevs.alexpira.R;
+
 public class AddBedActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     RadioGroup radioGroup;
@@ -24,6 +26,9 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bed);
+
+        //adding an up button to the AppBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Populating spinner with the array "bedsize_array"
         Spinner spinner = findViewById(R.id.spinner1);

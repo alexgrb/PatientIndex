@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.uiActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.AppDatabase;
-import ch.hevs.alexpira.database.entity.PatientEntity;
 
 public class AddPatient extends AppCompatActivity {
     private Button submit;
     public static final String FIRSTNAME = "FIRSTNAME";
-    public static final String LASTNAME= "LASTNAME";
+    public static final String LASTNAME = "LASTNAME";
     public static final String ADDRESS = "ADDRESS";
     public static final String BIRTHDATE = "BIRTHDATE";
     public static final String CITY = "CITY";
@@ -22,9 +22,11 @@ public class AddPatient extends AppCompatActivity {
     public static AppDatabase appDatabase;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //adding an up button to the AppBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
       //  appDatabase = AppDatabase.getAppDatabase(this);
@@ -32,16 +34,13 @@ public class AddPatient extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 openDisplayPatient();
             }
         });
 
     }
 
-    public void openDisplayPatient(){
+    public void openDisplayPatient() {
 
         EditText firstName = (EditText) findViewById(R.id.tv_firstName);
         String textfirstname = firstName.getText().toString();
@@ -75,8 +74,6 @@ public class AddPatient extends AppCompatActivity {
         intent.putExtra(BIRTHDATE, textbirthdate);
         intent.putExtra(CITY, textcity);
         //intent.putExtra(NPA, textnpa);
-
-
 
 
         startActivity(intent);

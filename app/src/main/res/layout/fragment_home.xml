@@ -7,62 +7,66 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="108dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="384dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/home_in_button"
-        android:onClick="btnAddPatient_onClick"
+        android:text="@string/menu_addpatient"
+        android:onClick="btnAddpatient_onClick"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="153dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="360dp"
         android:layout_marginEnd="32dp"
         android:text="@string/home_searchPatient_button"
+        android:onClick="btnSearchPatient_onClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="147dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:text="@string/home_searchRoom_button"
         app:layout_constraintBottom_toTopOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="btnSearchBed_onClick"
         app:layout_constraintTop_toBottomOf="@+id/button2"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="110dp"
-        android:layout_height="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="88dp"
         android:text="@string/home_statistic_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="btnStatistics_onClick"
         app:layout_constraintTop_toBottomOf="@+id/button5"
         app:layout_constraintVertical_bias="0.322" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="108dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/home_bedState_button"
+        android:text="@string/menu_addbed"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="btnAddBed_onClick"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <ImageView
@@ -78,8 +82,8 @@
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="140dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="60dp"
         android:onClick="btnSettings_onClick"

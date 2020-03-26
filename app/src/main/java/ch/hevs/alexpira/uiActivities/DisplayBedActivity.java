@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.uiActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import ch.hevs.alexpira.R;
+
 public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDialog.BedDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //adding an up button to the AppBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_bed);
 

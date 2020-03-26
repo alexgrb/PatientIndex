@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.uiActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +24,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
+import ch.hevs.alexpira.R;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //adding an up button to the AppBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -114,10 +118,35 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //bouton StatisticsActivity
+    public void btnStatistics_onClick(View view) {
+        Intent intent=new Intent(this,StatisticsActivity.class);
+        startActivity(intent);
+    }
+
+    //bouton search bed
+    public void btnSearchBed_onClick(View view) {
+        Intent intent=new Intent(this,SearchBedActivity.class);
+        startActivity(intent);
+    }
+
+    //bouton search patient
+    public void btnSearchPatient_onClick(View view) {
+        Intent intent=new Intent(this, SearchPatientActivity.class);
+        startActivity(intent);
+    }
     //btnAddPatient_onClick
-    public void btnAddPatient_onClick(View view) {
+    public void btnAddpatient_onClick(View view) {
         Intent intent=new Intent(this,AddPatient.class);
         startActivity(intent);
     }
+
+    //bouton display bed
+    public void btnAddBed_onClick(View view) {
+        Intent intent=new Intent(this,AddBedActivity.class);
+        startActivity(intent);
+    }
+
+
 
 }

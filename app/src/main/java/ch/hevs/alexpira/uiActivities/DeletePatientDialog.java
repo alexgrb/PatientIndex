@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.uiActivities;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class DeleteBedDialog extends AppCompatDialogFragment  {
+public class DeletePatientDialog extends AppCompatDialogFragment {
 
     //we want our Activity to be the listener of our Dialog
-    private BedDialogListener listener;
+    private PatientDialogListener listener;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         //building the actual dialog
         builder.setTitle("Delete confirmation")
-                .setMessage("Are you sure you want to delete this bed? All data will be removed from the database.")
+                .setMessage("Are you sure you want to delete this patient? All data will be removed from the database.")
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -33,13 +33,15 @@ public class DeleteBedDialog extends AppCompatDialogFragment  {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         listener.onNoClicked();
+
                     }
                 });
 
         return builder.create();
     }
+
     //creating an interface to establish communication with the DisplayActivity
-    public interface BedDialogListener {
+    public interface PatientDialogListener {
         void onYesClicked();
         void onNoClicked();
     }
@@ -49,11 +51,10 @@ public class DeleteBedDialog extends AppCompatDialogFragment  {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            listener = (BedDialogListener) context;
+            listener = (DeletePatientDialog.PatientDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + "must implement ExampleDialogListener");
         }
     }
-
 }
