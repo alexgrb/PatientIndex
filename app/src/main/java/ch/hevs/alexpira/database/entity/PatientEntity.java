@@ -1,16 +1,16 @@
 package ch.hevs.alexpira.database.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "patients", indices = {@Index(value = {"patientFirstName"}, unique = true)})
+@Entity(tableName = "patients", primaryKeys = {"id"})
 public class PatientEntity {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private int id;
+    @NonNull
+    private String id;
 
     @ColumnInfo(name = "patientFirstName")
     private String patientFirstName;
@@ -18,16 +18,17 @@ public class PatientEntity {
     @ColumnInfo(name = "patientLastName")
     private String patientLastName;
 
-    public PatientEntity(String patientFirstName, String patientLastName){
+    public PatientEntity(String id, String patientFirstName, String patientLastName){
+        this.id = id;
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
     }
 
-    public int getId(){
+    public String getId(){
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
