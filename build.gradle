@@ -18,8 +18,11 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
     }
+}
+
+ext {
+    roomVersion = '1.0.0-beta02'
 }
 
 task clean(type: Delete) {

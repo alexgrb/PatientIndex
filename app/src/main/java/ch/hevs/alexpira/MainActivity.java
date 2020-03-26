@@ -9,7 +9,6 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,14 +20,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.room.Room;
 
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-
-import ch.hevs.alexpira.db.AppDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
