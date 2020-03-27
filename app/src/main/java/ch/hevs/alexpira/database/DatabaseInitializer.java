@@ -17,7 +17,7 @@ public class DatabaseInitializer {
         task.execute();
     }
     //This method will call patientDao and insert one patient.
-    private static void addPatient(final AppDatabase db, final String id, final String firstname, final String lastname) {
+    private static void addPatient(final AppDatabase db, final int id, final String firstname, final String lastname) {
         PatientEntity patient = new PatientEntity(id, firstname, lastname);
         db.patientDao().insert(patient);
     }
@@ -26,7 +26,7 @@ public class DatabaseInitializer {
     private static void populateWithTestData(AppDatabase db) {
         db.patientDao().deleteAll();
 
-        addPatient(db,"1", "Yvan", "Neuilly");
+        addPatient(db,1, "Yvan", "Neuilly");
 
         try{
             Thread.sleep(1000);

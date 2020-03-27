@@ -24,7 +24,7 @@ public class PatientViewModel extends AndroidViewModel {
     private final MediatorLiveData<PatientEntity> observablePatient;
 
     //This will create the patient on the screen
-    public PatientViewModel(@NonNull Application application, final String patientId, PatientRepository patientRepository){
+    public PatientViewModel(@NonNull Application application, final int patientId, PatientRepository patientRepository){
         super(application);
 
         this.application = application;
@@ -43,11 +43,11 @@ public class PatientViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final String patientId;
+        private final int patientId;
 
         private final PatientRepository repository;
 
-        public Factory(@NonNull Application application, String patientId){
+        public Factory(@NonNull Application application, int patientId){
             this.application = application;
             this.patientId = patientId;
             repository = ((BaseApp) application).getPatientRepository();
