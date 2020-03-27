@@ -15,7 +15,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.fragment_home);
 
         Button button = findViewById(R.id.button);
         Button button2 = findViewById(R.id.button2);

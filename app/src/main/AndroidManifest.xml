@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ch.hevs.alexpira" >
+    package="ch.hevs.alexpira">
 
     <application
         android:name=".BaseApp"
@@ -9,33 +9,41 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".DisplayBedActivity"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".DisplayBedActivity"
             android:label="@string/menu_detailbed"
-            />
-        <activity android:name=".StatisticsActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".StatisticsActivity"
             android:label="@string/menu_stats"
-            />
-        <activity android:name=".SearchPatientActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".SearchPatientActivity"
             android:label="@string/menu_searchpatients"
-            />
-        <activity android:name=".SearchBedActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".SearchBedActivity"
             android:label="@string/menu_searchbed"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Home"
+            android:label="@string/menu_home" />
+        <activity
+            android:name=".DisplayPatientActivity"
+            android:label="@string/menu_detailpatient"/>
+        <activity
+            android:name=".AddPatient"
+            android:label="@string/menu_addpatient"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".AddBedActivity"
+            android:label="@string/menu_addbed"
+            android:parentActivityName=".MainActivity"
             />
-        <activity android:name=".Home"
-            android:label="@string/menu_home"
-            />
-        <activity android:name=".DisplayPatientActivity"
-            android:label="@string/menu_detailpatient"
-            />
-        <activity android:name=".AddPatient"
-                    android:label="@string/menu_addpatient"
-            />
-        <activity android:name=".AddBedActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ch.hevs.alexpira.MainActivity" />
@@ -43,7 +51,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

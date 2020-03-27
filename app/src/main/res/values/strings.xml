@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">PatientIndex</string>
+    <string name="app_name">Patient Index</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title" translatable="false">Android Studio</string>
-    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
-    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <!-- Navigation drawer -->
@@ -13,18 +13,17 @@
     <string name="menu_searchpatients">Search by patient</string>
     <string name="menu_addbed">Add bed</string>
     <string name="menu_searchbed">Search by bed</string>
-    <string name="menu_detailpatient">Patient detail</string>
-    <string name="menu_detailbed">Bed detail</string>
+    <string name="menu_detailpatient">Patient details</string>
+    <string name="menu_detailbed">Bed details</string>
     <string name="menu_stats">Statistics</string>
     <string name="menu_settings">Settings</string>
 
     <!-- HOME PAGE -->
     <string name="text_home">Welcome on Valais Hospital App</string>
-    <string name="home_in_button">Patient IN</string>
     <string name="home_searchPatient_button">Search by Patient</string>
     <string name="home_searchRoom_button">Search by Bed</string>
     <string name="home_statistic_button">Statistic</string>
-    <string name="home_bedState_button">Bed State</string>
+    <string name="home_bedState_button">Add bed</string>
     <string name="home_settings_button">Settings</string>
 
 
@@ -112,8 +111,6 @@
 
     <!-- Activity Statistics -->
     <string name="percentageBrute" translatable="false">80%</string>
-
-
 
 
 
