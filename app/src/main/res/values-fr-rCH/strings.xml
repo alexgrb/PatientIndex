@@ -2,9 +2,9 @@
 <resources>
     <string name="app_name">Patient Index</string>
     <string name="action_settings">Réglages</string>
-    <string name="menu_addpatient">Ajouter un patient</string>
-    <string name="menu_searchpatients">Chercher un patient</string>
-    <string name="menu_addbed">Ajout lit</string>
+    <string name="menu_addpatient">Ajouter patient</string>
+    <string name="menu_searchpatients">Chercher patient</string>
+    <string name="menu_addbed">Ajouter lit</string>
     <string name="menu_searchbed">Chercher lit</string>
     <string name="menu_detailpatient">Détails patient</string>
     <string name="menu_detailbed">Détails lit</string>
@@ -48,7 +48,7 @@
     <string name="activityDisplayUser_">Modifier</string>
     <string name="searchhere">Chercher ici</string>
     <string name="navigation_drawer_close">Open navigation drawer</string>
-    <string name="menu_home">Hom</string>
+    <string name="menu_home">Home</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_title">Android Studio</string>
