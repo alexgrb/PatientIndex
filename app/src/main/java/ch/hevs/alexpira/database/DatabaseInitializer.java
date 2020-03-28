@@ -27,6 +27,7 @@ public class DatabaseInitializer {
         db.patientDao().deleteAll();
 
         addPatient(db,1, "Yvan", "Neuilly");
+        addPatient(db,2, "Yvick", "Exact");
 
         try{
             Thread.sleep(1000);

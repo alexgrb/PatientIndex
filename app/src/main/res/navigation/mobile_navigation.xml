@@ -66,6 +66,12 @@
         tools:layout="@layout/activity_display_user" />
 
     <activity
+        android:id="@+id/nav_a_displayusers"
+        android:name="ch.hevs.alexpira.ui.patient.DisplayPatientsActivity"
+        android:label="@string/menu_detailpatients"
+        tools:layout="@layout/activity_display_patients" />
+
+    <activity
         android:id="@+id/nav_a_home"
         android:name="ch.hevs.alexpira.ui.HomeActivity"
         android:label="@string/menu_home"

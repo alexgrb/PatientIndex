@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Patient Index</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -112,6 +112,8 @@
     <!-- Activity Statistics -->
     <string name="percentageBrute" translatable="false">80%</string>
 
+    <!-- Activity Display Users-->
+    <string name="menu_detailpatients" translatable="false" tools:ignore="MissingTranslation">Display Patients</string>
 
 
 </resources>

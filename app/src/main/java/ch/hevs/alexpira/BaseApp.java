@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.ui;
+package ch.hevs.alexpira;
 
 import android.app.Application;
 

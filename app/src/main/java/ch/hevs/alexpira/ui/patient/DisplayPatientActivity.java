@@ -47,7 +47,7 @@ public class DisplayPatientActivity extends BaseActivity {
         String user = settings.getString(PREFS_USER, null);
 
 
-        PatientViewModel.Factory factory = new PatientViewModel.Factory(getApplication(), 1);
+        PatientViewModel.Factory factory = new PatientViewModel.Factory(getApplication(), 2);
 
 
 
