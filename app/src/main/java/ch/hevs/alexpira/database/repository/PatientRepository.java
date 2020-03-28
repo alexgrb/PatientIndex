@@ -26,7 +26,7 @@ public class PatientRepository {
         return instance;
     }
 
-    public LiveData<PatientEntity> getPatient(final String patientId, Application application){
+    public LiveData<PatientEntity> getPatient(final int patientId, Application application){
         return ((BaseApp) application).getDatabase().patientDao().getById(patientId);
     }
 }

@@ -7,26 +7,28 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import java.util.List;
 
 import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 
 @Dao
 public interface PatientDao {
 
 
-    @Query("SELECT * FROM patients")
+    @Query("SELECT *, `rowid` FROM patients")
     LiveData<List<PatientEntity>> getAll();
 
-    @Query("SELECT * FROM patients WHERE id = :patientId")
-    LiveData<PatientEntity> getById(String patientId);
+    @Query("SELECT *,`rowid` FROM patients WHERE rowid = :rowid")
+    LiveData<PatientEntity> getById(int rowid);
 
-    @Query("SELECT * FROM patients WHERE id IN (:patientIds)")
-    List<PatientEntity> loadAllByIds(int[] patientIds);
+    @Query("SELECT *,`rowid` FROM patients WHERE rowid IN (:rowid)")
+    List<PatientEntity> loadAllByIds(int[] rowid);
 
-    @Query("SELECT * FROM patients WHERE patientFirstName LIKE :patientFirstName LIMIT 1")
+    @Query("SELECT *,`rowid` FROM patients WHERE patientFirstName LIKE :patientFirstName LIMIT 1")
     PatientEntity findByName(String patientFirstName);
 
     @Insert
@@ -43,4 +45,8 @@ public interface PatientDao {
 
     @Query("DELETE FROM patients")
     void deleteAll();
+
+    @Transaction
+    @Query("SELECT *, `rowid` FROM patients")
+    public LiveData<List<PatientWithBed>> getPatientWithBed();
 }
