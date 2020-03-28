@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import ch.hevs.alexpira.database.AppDatabase;
 
-public class AddPatient extends AppCompatActivity {
+public class AddPatientActivity extends AppCompatActivity {
     private Button submit;
     public static final String FIRSTNAME = "FIRSTNAME";
     public static final String LASTNAME = "LASTNAME";

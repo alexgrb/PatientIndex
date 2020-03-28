@@ -27,13 +27,13 @@
             android:label="@string/menu_searchbed"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".Home"
+            android:name=".HomeActivity"
             android:label="@string/menu_home" />
         <activity
             android:name=".DisplayPatientActivity"
             android:label="@string/menu_detailpatient"/>
         <activity
-            android:name=".AddPatient"
+            android:name=".AddPatientActivity"
             android:label="@string/menu_addpatient"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".AddBedActivity"

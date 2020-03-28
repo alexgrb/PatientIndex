@@ -1,16 +1,11 @@
 package ch.hevs.alexpira;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.entity.PatientEntity;
@@ -57,11 +52,11 @@ public class DisplayPatientActivity extends BaseActivity {
 
         Intent intent = getIntent();
 
-        firstname = intent.getStringExtra(AddPatient.FIRSTNAME);
-        lastname = intent.getStringExtra(AddPatient.LASTNAME);
-        address = intent.getStringExtra(AddPatient.ADDRESS);
-        birthday = intent.getStringExtra(AddPatient.BIRTHDATE);
-        city = intent.getStringExtra(AddPatient.CITY);
+        firstname = intent.getStringExtra(AddPatientActivity.FIRSTNAME);
+        lastname = intent.getStringExtra(AddPatientActivity.LASTNAME);
+        address = intent.getStringExtra(AddPatientActivity.ADDRESS);
+        birthday = intent.getStringExtra(AddPatientActivity.BIRTHDATE);
+        city = intent.getStringExtra(AddPatientActivity.CITY);
         //NPA = intent.getStringExtra(AddPatient.NPA);
 
 

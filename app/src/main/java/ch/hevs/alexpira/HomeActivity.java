@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Home extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,27 +37,27 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                Intent intent = new Intent(Home.this, AddPatient.class);
+                Intent intent = new Intent(HomeActivity.this, AddPatientActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button2:
-                Intent intent2 = new Intent(Home.this, SearchPatientActivity.class);
+                Intent intent2 = new Intent(HomeActivity.this, SearchPatientActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.button3:
-                Intent intent3 = new Intent(Home.this, SearchBedActivity.class);
+                Intent intent3 = new Intent(HomeActivity.this, SearchBedActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.button4:
-                Intent intent4 = new Intent(Home.this, StatisticsActivity.class);
+                Intent intent4 = new Intent(HomeActivity.this, StatisticsActivity.class);
                 startActivity(intent4);
                 break;
             case R.id.button5:
-                Intent intent5 = new Intent(Home.this, AddBedActivity.class);
+                Intent intent5 = new Intent(HomeActivity.this, AddBedActivity.class);
                 startActivity(intent5);
                 break;
             case R.id.button6:
-                Intent intent6 = new Intent(Home.this, SettingsActivity.class);
+                Intent intent6 = new Intent(HomeActivity.this, SettingsActivity.class);
                 startActivity(intent6);
                 break;
         }

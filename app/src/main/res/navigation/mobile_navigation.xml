@@ -55,7 +55,7 @@
 
     <activity
         android:id="@+id/nav_a_adduser"
-        android:name="ch.hevs.alexpira.AddPatient"
+        android:name="ch.hevs.alexpira.AddPatientActivity"
         android:label="@string/menu_addpatient"
         tools:layout="@layout/activity_add_user" />
 
@@ -67,7 +67,7 @@
 
     <activity
         android:id="@+id/nav_a_home"
-        android:name="ch.hevs.alexpira.Home"
+        android:name="ch.hevs.alexpira.HomeActivity"
         android:label="@string/menu_home"
         tools:layout="@layout/activity_home" />
 

@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //btnAddPatient_onClick
     public void btnAddpatient_onClick(View view) {
-        Intent intent=new Intent(this,AddPatient.class);
+        Intent intent=new Intent(this, AddPatientActivity.class);
         startActivity(intent);
     }
 

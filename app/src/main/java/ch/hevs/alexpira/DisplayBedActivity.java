@@ -46,7 +46,7 @@ public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDi
     @Override
     public void onYesClicked() {
         Toast.makeText(DisplayBedActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(DisplayBedActivity.this, Home.class);
+        Intent intent = new Intent(DisplayBedActivity.this, HomeActivity.class);
         startActivity(intent);
     }
 
