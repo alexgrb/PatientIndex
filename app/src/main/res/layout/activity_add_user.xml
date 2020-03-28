@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/tv_firstName"
+        android:id="@+id/et_firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/address"
-        app:layout_constraintBottom_toTopOf="@+id/tv_birthdate"
+        app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -80,8 +80,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_submit"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_birthdate"
+    <EditText
+        android:id="@+id/et_birthdate"
+        android:inputType="none"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -103,7 +104,7 @@
         android:text="@string/btn_pickdate"
         app:layout_constraintBottom_toTopOf="@+id/et_NPA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_birthdate"
+        app:layout_constraintStart_toEndOf="@+id/et_birthdate"
         app:layout_constraintTop_toBottomOf="@+id/et_address" />
 
     <Button
@@ -112,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:text="@string/submitPatient"
-
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -124,7 +125,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="30dp"
         android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/tv_firstName"
+        app:layout_constraintBottom_toTopOf="@+id/et_firstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"

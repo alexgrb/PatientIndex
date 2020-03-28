@@ -62,10 +62,10 @@ public class DisplayPatientActivity extends BaseActivity {
 
 
 
-        tv_firstName = (TextView) findViewById(R.id.tv_firstName);
+        tv_firstName = (TextView) findViewById(R.id.et_firstName);
         tv_lastName = (TextView) findViewById(R.id.et_lastname);
         tv_address = (TextView) findViewById(R.id.et_address);
-        tv_birthdate = (TextView) findViewById(R.id.tv_birthdate);
+        tv_birthdate = (TextView) findViewById(R.id.et_birthdate);
         tv_city = (TextView) findViewById(R.id.et_city);
         //tv_npa = (TextView) findViewById(R.id.et_enpea);
 

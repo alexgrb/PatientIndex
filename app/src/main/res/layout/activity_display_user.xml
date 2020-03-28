@@ -37,7 +37,7 @@
 
 
     <TextView
-        android:id="@+id/tv_firstName"
+        android:id="@+id/et_firstName"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -77,7 +77,7 @@
         android:text="@string/address"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_birthdate" />
+        app:layout_constraintTop_toBottomOf="@+id/et_birthdate" />
 
 
     <TextView
@@ -141,10 +141,10 @@
         android:text="@string/birthdate"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_firstName" />
+        app:layout_constraintTop_toBottomOf="@+id/et_firstName" />
 
     <TextView
-        android:id="@+id/tv_birthdate"
+        android:id="@+id/et_birthdate"
         android:layout_width="113dp"
         android:layout_height="27dp"
         android:layout_marginStart="24dp"
