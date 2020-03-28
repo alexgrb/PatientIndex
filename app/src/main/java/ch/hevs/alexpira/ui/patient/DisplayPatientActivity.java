@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui.patient;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.ui.BaseActivity;
@@ -64,7 +65,7 @@ public class DisplayPatientActivity extends BaseActivity {
         tv_firstName = (TextView) findViewById(R.id.tv_firstName);
         tv_lastName = (TextView) findViewById(R.id.et_lastname);
         tv_address = (TextView) findViewById(R.id.et_address);
-        tv_birthdate = (TextView) findViewById(R.id.et_birthdate);
+        tv_birthdate = (TextView) findViewById(R.id.tv_birthdate);
         tv_city = (TextView) findViewById(R.id.et_city);
         //tv_npa = (TextView) findViewById(R.id.et_enpea);
 
@@ -119,6 +120,7 @@ public class DisplayPatientActivity extends BaseActivity {
     }
 
 /*
+    //method overriden from the DeleteBedDialog
     @Override
     public void onYesClicked() {
         Toast.makeText(DisplayPatientActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
@@ -126,6 +128,7 @@ public class DisplayPatientActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    //method overriden from the DeleteBedDialog
     @Override
     public void onNoClicked() {
         Toast.makeText(DisplayPatientActivity.this, "Canceled", Toast.LENGTH_SHORT).show();

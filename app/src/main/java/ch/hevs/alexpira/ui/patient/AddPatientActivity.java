@@ -1,17 +1,26 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import java.text.DateFormat;
+
+import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.AppDatabase;
 
-public class AddPatientActivity extends AppCompatActivity {
+public class AddPatientActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private Button submit;
+    private Button pickdate;
     public static final String FIRSTNAME = "FIRSTNAME";
     public static final String LASTNAME = "LASTNAME";
     public static final String ADDRESS = "ADDRESS";
@@ -29,11 +38,20 @@ public class AddPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
       //  appDatabase = AppDatabase.getAppDatabase(this);
-        submit = (Button) findViewById(R.id.btn_submit);
+        submit = findViewById(R.id.btn_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDisplayPatient();
+            }
+        });
+
+        pickdate= findViewById(R.id.btn_pickdate);
+        pickdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerDialogFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
             }
         });
 
@@ -50,7 +68,7 @@ public class AddPatientActivity extends AppCompatActivity {
         EditText adress = (EditText) findViewById(R.id.et_address);
         String textadress = adress.getText().toString();
 
-        EditText birthdate = (EditText) findViewById(R.id.et_birthdate);
+        EditText birthdate = (EditText) findViewById(R.id.tv_birthdate);
         String textbirthdate = birthdate.getText().toString();
 
         EditText city = (EditText) findViewById(R.id.et_city);
@@ -76,5 +94,22 @@ public class AddPatientActivity extends AppCompatActivity {
 
 
         startActivity(intent);
+    }
+
+    // we have set AddPatientActivity to the OnDateSetListener. This is why this method is overriden.
+    // in this method we are setting our textview to the date we picked.
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        //setting the calendar variable to the date we picked in our DatePicker fragment
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        //we are using this date picker to create our text
+        String currentDateString = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
+        TextView textView = (TextView) findViewById(R.id.tv_birthdate);
+        textView.setText(currentDateString);
+
     }
 }

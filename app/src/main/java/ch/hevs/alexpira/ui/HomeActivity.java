@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import ch.hevs.alexpira.R;
+import ch.hevs.alexpira.ui.admin.SettingsActivity;
+import ch.hevs.alexpira.ui.admin.StatisticsActivity;
+import ch.hevs.alexpira.ui.bed.AddBedActivity;
+import ch.hevs.alexpira.ui.bed.SearchBedActivity;
+import ch.hevs.alexpira.ui.patient.AddPatientActivity;
+import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 

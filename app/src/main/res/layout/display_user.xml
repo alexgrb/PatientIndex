@@ -25,7 +25,7 @@
         android:layout_marginBottom="32dp"
         android:hint="@string/lastNamebrut"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_birthdate"
+        app:layout_constraintBottom_toTopOf="@+id/tv_birthdate"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -79,7 +79,7 @@
         app:layout_constraintStart_toEndOf="@+id/et_city" />
 
     <TextView
-        android:id="@+id/et_birthdate"
+        android:id="@+id/tv_birthdate"
         android:layout_width="113dp"
         android:layout_height="27dp"
         android:layout_marginStart="32dp"

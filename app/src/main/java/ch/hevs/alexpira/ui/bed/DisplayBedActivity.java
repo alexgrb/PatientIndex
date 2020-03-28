@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui.bed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import ch.hevs.alexpira.R;
+import ch.hevs.alexpira.ui.HomeActivity;
 
 public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDialog.BedDialogListener {
 
@@ -43,6 +46,7 @@ public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDi
         deleteBedDialog.show(getSupportFragmentManager(), "delete bed dialog");
     }
 
+    //method overriden from the DeleteBedDialog
     @Override
     public void onYesClicked() {
         Toast.makeText(DisplayBedActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
@@ -50,6 +54,7 @@ public class DisplayBedActivity extends AppCompatActivity implements DeleteBedDi
         startActivity(intent);
     }
 
+    //method overriden from the DeleteBedDialog
     @Override
     public void onNoClicked() {
         Toast.makeText(DisplayBedActivity.this, "Canceled", Toast.LENGTH_SHORT).show();

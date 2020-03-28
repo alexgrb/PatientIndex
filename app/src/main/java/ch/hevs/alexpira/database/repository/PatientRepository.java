@@ -4,7 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import ch.hevs.alexpira.BaseApp;
+import ch.hevs.alexpira.ui.BaseApp;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 
 public class PatientRepository {

@@ -43,49 +43,49 @@
 
     <activity
         android:id="@+id/nav_settings"
-        android:name="ch.hevs.alexpira.SettingsActivity"
+        android:name="ch.hevs.alexpira.ui.admin.SettingsActivity"
         android:label="@string/menu_settings"
         tools:layout="@layout/settings_activity" />
 
     <activity
         android:id="@+id/nav_addbed"
-        android:name="ch.hevs.alexpira.AddBedActivity"
+        android:name="ch.hevs.alexpira.ui.bed.AddBedActivity"
         android:label="@string/menu_addbed"
         tools:layout="@layout/activity_add_bed" />
 
     <activity
         android:id="@+id/nav_a_adduser"
-        android:name="ch.hevs.alexpira.AddPatientActivity"
+        android:name="ch.hevs.alexpira.ui.patient.AddPatientActivity"
         android:label="@string/menu_addpatient"
         tools:layout="@layout/activity_add_user" />
 
     <activity
         android:id="@+id/nav_a_displayuser"
-        android:name="ch.hevs.alexpira.DisplayPatientActivity"
+        android:name="ch.hevs.alexpira.ui.patient.DisplayPatientActivity"
         android:label="@string/menu_detailpatient"
         tools:layout="@layout/activity_display_user" />
 
     <activity
         android:id="@+id/nav_a_home"
-        android:name="ch.hevs.alexpira.HomeActivity"
+        android:name="ch.hevs.alexpira.ui.HomeActivity"
         android:label="@string/menu_home"
         tools:layout="@layout/activity_home" />
 
     <activity
         android:id="@+id/nav_a_searchbed"
-        android:name="ch.hevs.alexpira.SearchBedActivity"
+        android:name="ch.hevs.alexpira.ui.bed.SearchBedActivity"
         android:label="@string/menu_searchbed"
         tools:layout="@layout/activity_search_bed" />
 
     <activity
         android:id="@+id/nav_a_searchpatient"
-        android:name="ch.hevs.alexpira.SearchPatientActivity"
+        android:name="ch.hevs.alexpira.ui.patient.SearchPatientActivity"
         android:label="@string/menu_searchpatients"
         tools:layout="@layout/activity_search_patient" />
 
     <activity
         android:id="@+id/nav_a_stats"
-        android:name="ch.hevs.alexpira.StatisticsActivity"
+        android:name="ch.hevs.alexpira.ui.admin.StatisticsActivity"
         android:label="@string/menu_stats"
         tools:layout="@layout/activity_statistics" />
 

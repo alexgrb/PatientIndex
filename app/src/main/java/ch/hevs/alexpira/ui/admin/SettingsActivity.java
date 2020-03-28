@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui.admin;
 
 import android.os.Bundle;
 import android.view.View;

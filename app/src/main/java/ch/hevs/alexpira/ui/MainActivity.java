@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +23,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Toast;
+
+import ch.hevs.alexpira.R;
+import ch.hevs.alexpira.ui.admin.SettingsActivity;
+import ch.hevs.alexpira.ui.admin.StatisticsActivity;
+import ch.hevs.alexpira.ui.bed.AddBedActivity;
+import ch.hevs.alexpira.ui.bed.SearchBedActivity;
+import ch.hevs.alexpira.ui.patient.AddPatientActivity;
+import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,SettingsActivity.class);
+                Intent intent=new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });
@@ -117,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
 
     //bouton StatisticsActivity
     public void btnStatistics_onClick(View view) {
-        Intent intent=new Intent(this,StatisticsActivity.class);
+        Intent intent=new Intent(this, StatisticsActivity.class);
         startActivity(intent);
     }
 
     //bouton search bed
     public void btnSearchBed_onClick(View view) {
-        Intent intent=new Intent(this,SearchBedActivity.class);
+        Intent intent=new Intent(this, SearchBedActivity.class);
         startActivity(intent);
     }
 
@@ -140,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
     //bouton display bed
     public void btnAddBed_onClick(View view) {
-        Intent intent=new Intent(this,AddBedActivity.class);
+        Intent intent=new Intent(this, AddBedActivity.class);
         startActivity(intent);
     }
 

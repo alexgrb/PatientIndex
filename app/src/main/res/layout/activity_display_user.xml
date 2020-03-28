@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayPatientActivity">
+    tools:context=".ui.patient.DisplayPatientActivity">
 
     <TextView
         android:id="@+id/text_view_title"
@@ -77,7 +77,7 @@
         android:text="@string/address"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_birthdate" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_birthdate" />
 
 
     <TextView
@@ -144,7 +144,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_firstName" />
 
     <TextView
-        android:id="@+id/et_birthdate"
+        android:id="@+id/tv_birthdate"
         android:layout_width="113dp"
         android:layout_height="27dp"
         android:layout_marginStart="24dp"

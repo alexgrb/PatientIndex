@@ -1,4 +1,4 @@
-package ch.hevs.alexpira;
+package ch.hevs.alexpira.ui.patient;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
