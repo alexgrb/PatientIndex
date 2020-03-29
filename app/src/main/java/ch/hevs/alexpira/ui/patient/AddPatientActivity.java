@@ -29,6 +29,7 @@ public class AddPatientActivity extends AppCompatActivity implements DatePickerD
     private EditText city;
     private EditText npa;
 
+    public static final String ID = "ID";
     public static final String FIRSTNAME = "FIRSTNAME";
     public static final String LASTNAME = "LASTNAME";
     public static final String ADDRESS = "ADDRESS";
@@ -86,6 +87,16 @@ public class AddPatientActivity extends AppCompatActivity implements DatePickerD
 
 
 
+        Intent intent = getIntent();
+        if(intent.hasExtra(ID)){
+            setTitle("Edit Patient");
+            lastname.setText(intent.getStringExtra(LASTNAME));
+            firstname.setText(intent.getStringExtra(FIRSTNAME));
+
+        }
+        else {
+            setTitle("Add Patient");
+        }
     }
 
     public void openDisplayPatient() {

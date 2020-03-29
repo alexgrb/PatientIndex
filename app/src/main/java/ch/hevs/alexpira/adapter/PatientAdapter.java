@@ -16,6 +16,7 @@ import ch.hevs.alexpira.database.entity.PatientEntity;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientHolder> {
     private List<PatientEntity> patients = new ArrayList<>();
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -31,8 +32,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
             PatientEntity currentPatient = patients.get(position);
             holder.textViewLastName.setText(currentPatient.getPatientLastName());
             holder.textViewFirstName.setText(currentPatient.getPatientFirstName());
-        }
-        else{
+        } else {
             holder.textViewLastName.setText("NomFamille");
             holder.textViewFirstName.setText("Pas trouvé");
         }
@@ -40,14 +40,14 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
     @Override
     public int getItemCount() {
-        if(patients!=null)
+        if (patients != null)
             return patients.size();
         else
             return 1;
     }
 
     public void setPatients(List<PatientEntity> patients) {
-        if(patients!=null) {
+        if (patients != null) {
             this.patients = patients;
         }
         notifyDataSetChanged();
@@ -61,6 +61,26 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
             super(itemView);
             textViewLastName = itemView.findViewById(R.id.text_view_title);
             textViewFirstName = itemView.findViewById(R.id.text_view_description);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(patients.get(position));
+                    }
+                }
+            });
+
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(PatientEntity patient);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

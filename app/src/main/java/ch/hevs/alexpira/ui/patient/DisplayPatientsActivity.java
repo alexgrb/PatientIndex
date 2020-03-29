@@ -23,6 +23,8 @@ import ch.hevs.alexpira.viewmodel.PatientListViewModel;
 
 public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity {
 
+    public static final int EDIT_NOTE_REQUEST = 2;
+
     private static final String TAG = "DisplayPatientsActivity";
 
     private List<PatientEntity> patients;
@@ -57,6 +59,22 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
                 Toast.makeText(DisplayPatientsActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
+        adapter.setOnItemClickListener(new PatientAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(PatientEntity patient) {
+                Intent intent = new Intent(DisplayPatientsActivity.this, AddPatientActivity.class);
+                intent.putExtra(AddPatientActivity.ID, patient.getRowid());
+                intent.putExtra(AddPatientActivity.LASTNAME, patient.getPatientLastName());
+                intent.putExtra(AddPatientActivity.FIRSTNAME, patient.getPatientFirstName());
+                startActivityForResult(intent, EDIT_NOTE_REQUEST);
+            }
+        });
+
+
 
 /*
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
