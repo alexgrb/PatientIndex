@@ -12,28 +12,28 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/text_view_priority"
+            android:id="@+id/text_view_prioritybed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Bed N°"
+            android:text="Patient N°"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/text_view_title"
+            android:id="@+id/text_view_titlebed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="LastName"
+            android:text="Bed Number"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/text_view_description"
+            android:id="@+id/text_view_descriptionbed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_title"
+            android:layout_below="@id/text_view_titlebed"
             android:text="Firstname" />
 
     </RelativeLayout>

@@ -72,6 +72,12 @@
         tools:layout="@layout/activity_display_patients" />
 
     <activity
+        android:id="@+id/nav_a_displaybeds"
+        android:name="ch.hevs.alexpira.ui.bed.ListBedActivity"
+        android:label="@string/menu_detailbeds"
+        tools:layout="@layout/activity_display_patients" />
+
+    <activity
         android:id="@+id/nav_a_home"
         android:name="ch.hevs.alexpira.ui.HomeActivity"
         android:label="@string/menu_home"

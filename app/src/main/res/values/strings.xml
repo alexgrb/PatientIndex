@@ -108,6 +108,8 @@
     <!-- Activity DisplayUser -->
     <string name="activityDisplayUser_">Edit</string>
     <string name="menu_detailpatients" translatable="false">List patient</string>
+    <string name="menu_detailbeds" translatable="false">List Beds</string>
+
 
 
     <!-- Activity DisplayUser -->
@@ -116,6 +118,7 @@
     <!-- Activity Statistics -->
     <string name="percentageBrute" translatable="false">80%</string>
 
+    <!-- Activity DisplayPatient -->
 
 
 

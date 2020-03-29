@@ -10,40 +10,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.bed.ListBedActivity"></activity>
         <activity
             android:name=".ui.bed.DisplayBedActivity"
             android:label="@string/menu_detailbed"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.admin.StatisticsActivity"
             android:label="@string/menu_stats"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.patient.SearchPatientActivity"
             android:label="@string/menu_searchpatients"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.bed.SearchBedActivity"
             android:label="@string/menu_searchbed"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.HomeActivity"
             android:label="@string/menu_home" />
         <activity
             android:name=".ui.patient.DisplayPatientActivity"
-            android:label="@string/menu_detailpatient"/>
+            android:label="@string/menu_detailpatient" />
         <activity
             android:name=".ui.patient.AddPatientActivity"
             android:label="@string/menu_addpatient"
-            android:parentActivityName=".ui.MainActivity"/>
-        <activity android:name=".ui.bed.AddBedActivity"
+            android:parentActivityName=".ui.MainActivity" />
+        <activity
+            android:name=".ui.bed.AddBedActivity"
             android:label="@string/menu_addbed"
-            android:parentActivityName=".ui.MainActivity"
-            />
-        <activity android:name=".ui.patient.DisplayPatientsActivity"
+            android:parentActivityName=".ui.MainActivity" />
+        <activity
+            android:name=".ui.patient.DisplayPatientsActivity"
             android:label="@string/menu_detailpatients"
-            android:parentActivityName=".ui.MainActivity"
-            />
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.admin.SettingsActivity"
             android:label="@string/title_activity_settings"

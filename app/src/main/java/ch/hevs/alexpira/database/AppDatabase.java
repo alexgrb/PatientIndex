@@ -14,6 +14,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.Executors;
 
+import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
@@ -29,6 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "hospital-database";
 
     public abstract PatientDao patientDao();
+    public abstract BedDao bedDao();
 
     //public abstract BedDao bedDao();
 
