@@ -14,7 +14,7 @@ import java.util.List;
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PatientHolder> {
+public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientHolder> {
     private List<PatientEntity> patients = new ArrayList<>();
 
     @NonNull
@@ -27,32 +27,40 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.PatientHolder>
 
     @Override
     public void onBindViewHolder(@NonNull PatientHolder holder, int position) {
-        PatientEntity currentPatient = patients.get(position);
-        holder.textViewTitle.setText(currentPatient.getPatientLastName());
-        holder.textViewDescription.setText(currentPatient.getPatientFirstName());
-
+        if (patients != null) {
+            PatientEntity currentPatient = patients.get(position);
+            holder.textViewLastName.setText(currentPatient.getPatientLastName());
+            holder.textViewFirstName.setText(currentPatient.getPatientFirstName());
+        }
+        else{
+            holder.textViewLastName.setText("NomFamille");
+            holder.textViewFirstName.setText("Pas trouvé");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return patients.size();
+        if(patients!=null)
+            return patients.size();
+        else
+            return 1;
     }
 
-    public void setNotes(List<PatientEntity> patients) {
-        this.patients = patients;
+    public void setPatients(List<PatientEntity> patients) {
+        if(patients!=null) {
+            this.patients = patients;
+        }
         notifyDataSetChanged();
     }
 
     class PatientHolder extends RecyclerView.ViewHolder {
-        private TextView textViewTitle;
-        private TextView textViewDescription;
-        private TextView textViewPriority;
+        private TextView textViewLastName;
+        private TextView textViewFirstName;
 
         public PatientHolder(View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.text_view_title);
-            textViewDescription = itemView.findViewById(R.id.text_view_description);
-            //textViewPriority = itemView.findViewById(R.id.text_view_priority);
+            textViewLastName = itemView.findViewById(R.id.text_view_title);
+            textViewFirstName = itemView.findViewById(R.id.text_view_description);
         }
     }
 }

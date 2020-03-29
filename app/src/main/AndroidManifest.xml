@@ -40,6 +40,10 @@
             android:label="@string/menu_addbed"
             android:parentActivityName=".ui.MainActivity"
             />
+        <activity android:name=".ui.patient.DisplayPatientsActivity"
+            android:label="@string/menu_detailpatients"
+            android:parentActivityName=".ui.MainActivity"
+            />
         <activity
             android:name=".ui.admin.SettingsActivity"
             android:label="@string/title_activity_settings"

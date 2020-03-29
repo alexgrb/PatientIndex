@@ -115,5 +115,6 @@
     <!-- Activity Display Users-->
     <string name="menu_detailpatients" translatable="false" tools:ignore="MissingTranslation">Display Patients</string>
 
+    <string name="btn_pickdate">Pick date</string>
 
 </resources>

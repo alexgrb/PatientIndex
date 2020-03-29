@@ -1,14 +1,11 @@
 package ch.hevs.alexpira.database.entity;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Fts4;
-import androidx.room.Ignore;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Fts4 //This is added so we can support search in the table
+//@Fts4 //This is added so we can support search in the table
 @Entity(tableName = "patients")
 public class PatientEntity {
 

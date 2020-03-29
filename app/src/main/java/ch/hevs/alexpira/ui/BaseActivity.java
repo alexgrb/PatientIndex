@@ -29,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
-        frameLayout = findViewById(R.id.fab);
+        //frameLayout = findViewById(R.id.fab);
     }
 
 

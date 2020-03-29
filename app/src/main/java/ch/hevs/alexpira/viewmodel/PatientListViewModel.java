@@ -17,11 +17,27 @@ import ch.hevs.alexpira.database.repository.PatientRepository;
 
 public class PatientListViewModel extends AndroidViewModel {
 
-    private Application application;
+    //private Application application;
 
     private PatientRepository patientRepository;
-
     private final MediatorLiveData<List<PatientEntity>> observablePatients;
+
+    /////////////////////////////
+    //TEST CODIN FLOW
+    public PatientListViewModel(@NonNull Application application){
+        super(application);
+        observablePatients = new MediatorLiveData<>();
+        observablePatients.setValue(null);
+
+        patientRepository = new PatientRepository(application);
+
+        LiveData<List<PatientEntity>> allPatients = patientRepository.getAllPatients();
+
+        observablePatients.addSource(allPatients, observablePatients::setValue);
+    }
+
+    ////////////////////////////
+
 
     public PatientListViewModel(@NonNull Application application, PatientRepository patientRepository){
         super(application);

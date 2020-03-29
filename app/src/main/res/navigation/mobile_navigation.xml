@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/nav_send"
         android:label="@string/menu_detailpatient"
-        tools:layout="@layout/display_user" />
+        tools:layout="@layout/activity_display_user" />
 
     <activity
         android:id="@+id/nav_settings"
