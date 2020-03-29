@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Patient Index</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -89,6 +89,8 @@
     <string name="activityAddBed_ButtonDisplay">Display selection</string>
     <string name="activityAddBed_YourSelection">Your selection: </string>
     <string name="activityAddBed_btnAddBed">Add Bed</string>
+    <string name="btn_pickdate">Pick date</string>
+
 
     <!-- Activity AddUser -->
     <string name="activityAddUser_title">Patient number: 3218</string>
@@ -105,6 +107,8 @@
 
     <!-- Activity DisplayUser -->
     <string name="activityDisplayUser_">Edit</string>
+    <string name="menu_detailpatients" translatable="false">List patient</string>
+
 
     <!-- Activity DisplayUser -->
     <string name="searchhere">Search here</string>
@@ -112,9 +116,7 @@
     <!-- Activity Statistics -->
     <string name="percentageBrute" translatable="false">80%</string>
 
-    <!-- Activity Display Users-->
-    <string name="menu_detailpatients" translatable="false" tools:ignore="MissingTranslation">Display Patients</string>
 
-    <string name="btn_pickdate">Pick date</string>
+
 
 </resources>

@@ -14,10 +14,11 @@ import java.util.List;
 import ch.hevs.alexpira.BaseApp;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.repository.PatientRepository;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class PatientListViewModel extends AndroidViewModel {
 
-    //private Application application;
+    private Application application;
 
     private PatientRepository patientRepository;
     private final MediatorLiveData<List<PatientEntity>> observablePatients;
@@ -73,5 +74,9 @@ public class PatientListViewModel extends AndroidViewModel {
 
     public LiveData<List<PatientEntity>> getPatients() {
         return observablePatients;
+    }
+
+    public void insert(PatientEntity patientEntity, OnAsyncEventListener onAsyncEventListener) {
+        patientRepository.insert(patientEntity, onAsyncEventListener, application);
     }
 }

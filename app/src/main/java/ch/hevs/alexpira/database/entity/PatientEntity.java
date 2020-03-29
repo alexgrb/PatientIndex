@@ -3,6 +3,7 @@ package ch.hevs.alexpira.database.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Fts4;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 //@Fts4 //This is added so we can support search in the table
@@ -19,9 +20,14 @@ public class PatientEntity {
     @ColumnInfo(name = "patientLastName")
     private String patientLastName;
 
-
+@Ignore
     public PatientEntity(int rowid, String patientFirstName, String patientLastName){
         this.rowid = rowid;
+        this.patientFirstName = patientFirstName;
+        this.patientLastName = patientLastName;
+    }
+
+    public PatientEntity(String patientFirstName, String patientLastName){
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
     }

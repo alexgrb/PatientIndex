@@ -78,7 +78,10 @@
         android:layout_marginBottom="48dp"
         android:hint="@string/NPA"
         app:layout_constraintBottom_toTopOf="@+id/btn_submit"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLength="4"
+        android:inputType="number"
+        />
 
     <EditText
         android:id="@+id/et_birthdate"

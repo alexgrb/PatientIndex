@@ -18,7 +18,7 @@ import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 
-@Database(entities = {PatientEntity.class, BedEntity.class}, exportSchema = false,version = 1)
+@Database(entities = {PatientEntity.class, BedEntity.class}, exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     //This tag will be used in our logs.

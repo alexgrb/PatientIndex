@@ -12,4 +12,12 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/patient_item" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"
+        android:src="@drawable/ic_add" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

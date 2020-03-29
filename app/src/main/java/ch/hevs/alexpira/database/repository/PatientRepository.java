@@ -8,8 +8,10 @@ import ch.hevs.alexpira.BaseApp;
 import java.util.List;
 
 import ch.hevs.alexpira.database.AppDatabase;
+import ch.hevs.alexpira.database.async.patient.CreatePatient;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class PatientRepository {
 
@@ -52,4 +54,10 @@ public class PatientRepository {
     public LiveData<List<PatientEntity>> getPatients(Application application){
         return ((BaseApp) application).getDatabase().patientDao().getAll();
     }
+
+    public void insert(final PatientEntity client, OnAsyncEventListener callback,
+                       Application application) {
+        new CreatePatient(application, callback).execute(client);
+    }
+
 }
