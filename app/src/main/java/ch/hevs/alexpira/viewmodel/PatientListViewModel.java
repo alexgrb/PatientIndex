@@ -76,7 +76,12 @@ public class PatientListViewModel extends AndroidViewModel {
         return observablePatients;
     }
 
-    public void insert(PatientEntity patientEntity, OnAsyncEventListener onAsyncEventListener) {
+    /*public void insert(PatientEntity patientEntity, OnAsyncEventListener onAsyncEventListener) {
         patientRepository.insert(patientEntity, onAsyncEventListener, application);
+    }*/
+
+
+    public void insert(PatientEntity patient){
+    patientRepository.insert(patient);
     }
 }

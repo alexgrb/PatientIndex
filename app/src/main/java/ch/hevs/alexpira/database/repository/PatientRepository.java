@@ -1,6 +1,7 @@
 package ch.hevs.alexpira.database.repository;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -55,9 +56,27 @@ public class PatientRepository {
         return ((BaseApp) application).getDatabase().patientDao().getAll();
     }
 
-    public void insert(final PatientEntity client, OnAsyncEventListener callback,
+   /* public void insert(final PatientEntity client, OnAsyncEventListener callback,
                        Application application) {
         new CreatePatient(application, callback).execute(client);
+    }*/
+
+    public void insert(PatientEntity patient) {
+        new InsertPatientAsyncTask(patientDao).execute(patient);
+    }
+
+    private static class InsertPatientAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+        private PatientDao patientDao;
+
+        private InsertPatientAsyncTask(PatientDao patientDao) {
+            this.patientDao= patientDao;
+        }
+
+        @Override
+        protected Void doInBackground(PatientEntity... patients) {
+            patientDao.insert(patients[0]);
+            return null;
+        }
     }
 
 }

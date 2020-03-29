@@ -129,7 +129,8 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
 
             PatientEntity patient = new PatientEntity(firstname, lastname);
-            viewModel.insert(patient, new OnAsyncEventListener() {
+            viewModel.insert(patient);
+           /* viewModel.insert(patient, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
                     Log.d(TAG, "createAccount: success");
@@ -140,6 +141,8 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
                     Log.d(TAG, "createAccount: failure");
                 }
             });
+
+            */
 
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
         } else {
