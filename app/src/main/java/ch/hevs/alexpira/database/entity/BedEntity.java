@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "beds")
 public class BedEntity {
 
-    @PrimaryKey
+    @PrimaryKey (autoGenerate = true)
     @ColumnInfo(name="rowid")
     private int id;
 

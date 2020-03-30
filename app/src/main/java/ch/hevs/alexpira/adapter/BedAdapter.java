@@ -13,10 +13,10 @@ import java.util.List;
 
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.entity.BedEntity;
-import ch.hevs.alexpira.database.entity.PatientEntity;
 
 public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     private List<BedEntity> beds = new ArrayList<>();
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -28,15 +28,14 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BedHolder holder, int position) {
-        BedEntity currentpatient = beds.get(position);
         if (beds != null) {
             BedEntity currentBed = beds.get(position);
-            holder.textViewTitle.setText(currentpatient.getId());
-            holder.textViewDescription.setText(currentpatient.getBedNumber());
+            holder.textViewBedID.setText(String.valueOf(currentBed.getPatientId()));
+            holder.textViewBedNumber.setText(String.valueOf(currentBed.getBedNumber()));
 
         } else {
-            holder.textViewTitle.setText("Numéro introuvable");
-            holder.textViewDescription.setText("Pas trouvé");
+            holder.textViewBedID.setText("Numéro introuvable");
+            holder.textViewBedNumber.setText("Pas trouvé");
         }
     }
     @Override
@@ -55,15 +54,34 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     }
 
     class BedHolder extends RecyclerView.ViewHolder {
-        private TextView textViewTitle;
-        private TextView textViewDescription;
-        private TextView textViewPriority;
+        private TextView textViewBedID;
+        private TextView textViewBedNumber;
+        private TextView textViewPatientID;
 
         public BedHolder(View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.text_view_titlebed);
-            textViewDescription = itemView.findViewById(R.id.text_view_descriptionbed);
-            textViewPriority = itemView.findViewById(R.id.text_view_prioritybed);
+            textViewBedID = itemView.findViewById(R.id.text_view_titlebed);
+            textViewBedNumber = itemView.findViewById(R.id.text_view_descriptionbed);
+            textViewPatientID = itemView.findViewById(R.id.text_view_prioritybed);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(beds.get(position));
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(BedEntity patient);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

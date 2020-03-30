@@ -18,6 +18,10 @@ import ch.hevs.alexpira.R;
 
 public class AddBedActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    public static final String ID = "ID";
+    public static final String PATIENTID = "PATIENTID";
+    public static final String BEDNUMBER = "BEDNUMBER";
+
     RadioGroup radioGroup;
     RadioButton radioButton;
     TextView textView;
