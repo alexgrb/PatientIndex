@@ -24,7 +24,6 @@ public class PatientListViewModel extends AndroidViewModel {
     private final MediatorLiveData<List<PatientEntity>> observablePatients;
 
     /////////////////////////////
-    //TEST CODIN FLOW
     public PatientListViewModel(@NonNull Application application){
         super(application);
         observablePatients = new MediatorLiveData<>();
@@ -84,4 +83,14 @@ public class PatientListViewModel extends AndroidViewModel {
     public void insert(PatientEntity patient){
     patientRepository.insert(patient);
     }
+    public void delete(PatientEntity patient) {
+        patientRepository.delete(patient);
+    }
+    public void deleteAllPatients() {
+        patientRepository.deleteAllNotes();
+    }
+    public void update(PatientEntity patient) {
+        patientRepository.update(patient);
+    }
+
 }

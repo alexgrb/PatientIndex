@@ -40,6 +40,9 @@ public interface PatientDao {
     @Update
     void updateFruits(PatientEntity... patients);
 
+    @Update
+    void update(PatientEntity patients);
+
     @Delete
     void delete(PatientEntity patients);
 

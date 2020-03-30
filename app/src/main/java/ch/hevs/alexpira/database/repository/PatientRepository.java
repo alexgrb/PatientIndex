@@ -64,6 +64,29 @@ public class PatientRepository {
     public void insert(PatientEntity patient) {
         new InsertPatientAsyncTask(patientDao).execute(patient);
     }
+    public void delete(PatientEntity patient) {
+        new DeleteNoteAsyncTask(patientDao).execute(patient);
+    }
+    public void deleteAllNotes() {
+        new DeleteAllNotesAsyncTask(patientDao).execute();
+    }
+    public void update(PatientEntity patient) {
+        new UpdateNoteAsyncTask(patientDao).execute(patient);
+    }
+
+    private static class UpdateNoteAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+        private PatientDao patientDao;
+
+        private UpdateNoteAsyncTask(PatientDao patientDao) {
+            this.patientDao= patientDao;
+        }
+
+        @Override
+        protected Void doInBackground(PatientEntity... patients) {
+            patientDao.update(patients[0]);
+            return null;
+        }
+    }
 
     private static class InsertPatientAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
         private PatientDao patientDao;
@@ -79,4 +102,31 @@ public class PatientRepository {
         }
     }
 
+    private static class DeleteAllNotesAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+        private PatientDao patientDao;
+
+        private DeleteAllNotesAsyncTask(PatientDao patientDao) {
+            this.patientDao= patientDao;
+        }
+
+        @Override
+        protected Void doInBackground(PatientEntity... patients) {
+            patientDao.deleteAll();
+            return null;
+        }
+    }
+
+    private static class DeleteNoteAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+        private PatientDao patientDao;
+
+        private DeleteNoteAsyncTask(PatientDao patientDao) {
+            this.patientDao = patientDao;
+        }
+
+        @Override
+        protected Void doInBackground(PatientEntity... patients) {
+            patientDao.delete(patients[0]);
+            return null;
+        }
+    }
 }

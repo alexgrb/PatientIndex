@@ -118,6 +118,10 @@
     <!-- Activity Statistics -->
     <string name="percentageBrute" translatable="false">80%</string>
 
+    <string name="deletepatient">Delete all patients</string>
+
+
+
     <!-- Activity DisplayPatient -->
 
 

@@ -3,14 +3,19 @@ package ch.hevs.alexpira.ui.patient;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,9 +42,8 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
     private PatientListViewModel viewModel;
 
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //getLayoutInflater().inflate(R.layout.activity_display_patients, frameLayout);
@@ -76,7 +80,22 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             }
         });
 
+        //delete an item by swipping
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                viewModel.delete(adapter.getPatientAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(DisplayPatientsActivity.this, "Note deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
+
+        //delete all items (button in the menu)
 
 
         adapter.setOnItemClickListener(new PatientAdapter.OnItemClickListener() {
@@ -123,7 +142,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //check if this is the correct request and if everything went ok!
-        if (requestCode == ADD_PATIENT_REQUEST && resultCode == RESULT_OK){
+        if (requestCode == ADD_PATIENT_REQUEST && resultCode == RESULT_OK) {
             String firstname = data.getStringExtra(AddPatientActivity.FIRSTNAME);
             String lastname = data.getStringExtra(AddPatientActivity.LASTNAME);
             //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
@@ -147,6 +166,26 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
-        }        }
+        }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.patient_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_all_patients:
+                viewModel.deleteAllPatients();
+                Toast.makeText(this, "All patients deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+}
 

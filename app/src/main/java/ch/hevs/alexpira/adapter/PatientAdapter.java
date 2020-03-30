@@ -46,6 +46,11 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
             return 1;
     }
 
+    //this method is used to get a patient at a certain position
+    public PatientEntity getPatientAt (int position){
+        return patients.get(position);
+    }
+
     public void setPatients(List<PatientEntity> patients) {
         if (patients != null) {
             this.patients = patients;
