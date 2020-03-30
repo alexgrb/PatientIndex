@@ -1,5 +1,7 @@
 package ch.hevs.alexpira.database.dao;
 
+import android.database.sqlite.SQLiteConstraintException;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -14,8 +16,9 @@ import ch.hevs.alexpira.database.entity.PatientEntity;
 @Dao
 public interface BedDao {
 
+
     @Insert
-    void insert(BedEntity bed);
+    long insert(BedEntity bed) throws SQLiteConstraintException;
 
     @Update
     void update(BedEntity bed);

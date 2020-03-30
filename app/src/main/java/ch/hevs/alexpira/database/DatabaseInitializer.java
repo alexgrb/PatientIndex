@@ -3,6 +3,7 @@ package ch.hevs.alexpira.database;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 
 public class DatabaseInitializer {
@@ -22,12 +23,22 @@ public class DatabaseInitializer {
         db.patientDao().insert(patient);
     }
 
+    private static void addBed(final AppDatabase db, final int bedNumber, final int patientId) {
+        BedEntity bed = new BedEntity(bedNumber, patientId);
+        db.bedDao().insert(bed);
+    }
+
     //This method is deleting everything in the database and then populate it.
     private static void populateWithTestData(AppDatabase db) {
         db.patientDao().deleteAll();
 
         addPatient(db,1, "Yvan", "Neuilly");
         addPatient(db,2, "Yvick", "Exact");
+
+        db.bedDao().deleteAllNotes();
+
+        addBed(db,100, 1);
+        addBed(db,200, 2);
 
         try{
             Thread.sleep(1000);
