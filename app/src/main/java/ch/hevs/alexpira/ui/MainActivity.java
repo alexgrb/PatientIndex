@@ -49,14 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -71,16 +64,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //floating button
-
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
     }
@@ -100,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent intent=new Intent(this,SettingsActivity.class);
                 startActivity(intent);
-                return true;
-            case R.id.action_anotheritem :
-                Toast.makeText(this, "Item selected", Toast.LENGTH_SHORT).show();
                 return true;
             default :
                 return super.onOptionsItemSelected(item);

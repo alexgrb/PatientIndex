@@ -40,7 +40,7 @@
     <string name="lastName">Lastname</string>
     <string name="address">Address</string>
     <string name="city">City</string>
-    <string name="NPA">NPA (leave blank)</string>
+    <string name="NPA">NPA</string>
     <string name="birthdate">Birthdate</string>
     <string name="submitPatient">Add new patient</string>
 
@@ -93,7 +93,7 @@
 
 
     <!-- Activity AddUser -->
-    <string name="activityAddUser_title">Patient number: 3218</string>
+    <string name="activityDisplaypatient">Patient details</string>
 
     <!-- Activity DisplayBed -->
     <string name="activityDisplayBed_actualPlace">Actual place</string>
@@ -119,6 +119,8 @@
     <string name="percentageBrute" translatable="false">80%</string>
 
     <string name="deletepatient">Delete all patients</string>
+    <string name="patientmenu">Delete all patients</string>
+
 
 
 

@@ -35,7 +35,7 @@
         <activity
             android:name=".ui.patient.AddEditPatientActivity"
             android:label="@string/menu_addpatient"
-            android:parentActivityName=".ui.MainActivity" />
+            android:parentActivityName=".ui.patient.DisplayPatientsActivity" />
         <activity
             android:name=".ui.bed.AddBedActivity"
             android:label="@string/menu_addbed"

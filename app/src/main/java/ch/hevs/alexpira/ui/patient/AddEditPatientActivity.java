@@ -35,8 +35,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
     public static final String CITY = "CITY";
     public static final String NPA = "NPA";
 
-
-    private Button submit;
     private Button pickdate;
     private EditText firstname;
     private EditText lastname;
@@ -53,7 +51,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         setContentView(R.layout.activity_add_user);
 
         //  appDatabase = AppDatabase.getAppDatabase(this);
-        submit = findViewById(R.id.btn_submit);
        /* submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,15 +74,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         birthdate = findViewById(R.id.et_birthdate);
         city = findViewById(R.id.et_city);
         npa = findViewById(R.id.et_NPA);
-/*
-        //adding a TextChangedListener to every EditText attributes
-        firstname.addTextChangedListener(addPatientTextWatcher);
-        lastname.addTextChangedListener(addPatientTextWatcher);
-        adress.addTextChangedListener(addPatientTextWatcher);
-        birthdate.addTextChangedListener(addPatientTextWatcher);
-        city.addTextChangedListener(addPatientTextWatcher);
-        npa.addTextChangedListener(addPatientTextWatcher);
-*/
         //setting the edit text uneditable
         birthdate.setEnabled(false);
 
@@ -131,7 +119,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         data.putExtra(CITY, s_city);
         data.putExtra(NPA, s_npa);
 
-        //data.putExtra(EXTRA_PRIORITY, priority);
 
         //get the id of the selected patient so the DB knows which patient needs to be edited
         int id = getIntent().getIntExtra(ID, -1);
@@ -207,28 +194,4 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         }
     }
 
-
-    /*private TextWatcher addPatientTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String firstnameInput = firstname.getText().toString().trim();
-            String lastnameInput = lastname.getText().toString().trim();
-            String adressInput = adress.getText().toString().trim();
-            String birthdateInput = birthdate.getText().toString().trim();
-            String cityInput = city.getText().toString().trim();
-            String npaInput = npa.getText().toString().trim();
-
-            //Button buton = findViewById(R.id.btn_submit);
-            submit.setEnabled(!firstnameInput.isEmpty() && !lastnameInput.isEmpty() && !adressInput.isEmpty()
-                    && !birthdateInput.isEmpty() && !cityInput.isEmpty() && !npaInput.isEmpty());
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-        }
-    };*/
 }

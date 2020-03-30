@@ -41,7 +41,7 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
         //adding an up button to the AppBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        editTextBedNumber = findViewById(R.id.edit_text_bedNumber);
+        //editTextBedNumber = findViewById(R.id.edit_text_bedNumber);
 
         //Populating spinner with the array "bedsize_array"
         bedSizeList = findViewById(R.id.spinner1);
