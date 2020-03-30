@@ -52,7 +52,7 @@ public class BedRepository {
         return ((BaseApp) application).getDatabase().bedDao().getById(bedid);
     }
 
-    public LiveData<List<PatientEntity>> getBeds (Application application){
+    public LiveData<List<BedEntity>> getBeds (Application application){
         return ((BaseApp) application).getDatabase().bedDao().getAll();
     }
 
@@ -65,7 +65,7 @@ public class BedRepository {
         new BedRepository.InsertBedAsyncTask(bedDao).execute(bedEntity);
     }
 
-    private static class InsertBedAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+    private static class InsertBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
         private BedDao bedDao;
 
         private InsertBedAsyncTask(BedDao bedDao) {

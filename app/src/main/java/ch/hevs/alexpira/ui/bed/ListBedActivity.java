@@ -13,5 +13,4 @@ public class ListBedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_bed);
     }
-public class ListBedActivity extends AppCompatActivity {
 }

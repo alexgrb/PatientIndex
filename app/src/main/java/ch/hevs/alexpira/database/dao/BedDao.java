@@ -1,6 +1,7 @@
 package ch.hevs.alexpira.database.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
-
+@Dao
 public interface BedDao {
 
     @Insert
@@ -28,6 +29,6 @@ public interface BedDao {
     @Query("SELECT * FROM beds ORDER BY bedNumber DESC")
     LiveData<List<BedEntity>> getAll();
 
-    @Query("SELECT *,`rowid` FROM beds WHERE bedid = :bedid")
+    @Query("SELECT *,`rowid` FROM beds WHERE rowid = :bedid")
     LiveData<BedEntity> getById(int bedid);
 }
