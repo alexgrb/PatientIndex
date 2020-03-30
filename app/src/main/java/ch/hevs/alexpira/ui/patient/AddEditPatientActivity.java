@@ -93,22 +93,32 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         Intent intent = getIntent();
         if (intent.hasExtra(ID)) {
             setTitle("Edit Patient");
-            lastname.setText(intent.getStringExtra(LASTNAME));
+
             firstname.setText(intent.getStringExtra(FIRSTNAME));
+            lastname.setText(intent.getStringExtra(LASTNAME));
+            adress.setText(intent.getStringExtra(ADDRESS));
+            birthdate.setText(intent.getStringExtra(BIRTHDATE));
+            city.setText(intent.getStringExtra(CITY));
+            npa.setText(intent.getStringExtra(NPA));
         } else {
             setTitle("Add Patient");
         }
     }
 
     public void savePatient() {
+        //getting the input from the edittextfields
         String s_firstname = firstname.getText().toString();
         String s_lastname = lastname.getText().toString();
-       // int priority = numberPickerPriority.getValue();
+        String s_adress = adress.getText().toString();
+        String s_birthdate = birthdate.getText().toString();
+        String s_city = city.getText().toString();
+        String s_npa = npa.getText().toString();
 
         //Just in case the user left an empty textfield (not our case since we have the TextWatcher right?)
 
-        if (s_firstname.trim().isEmpty() || s_lastname.trim().isEmpty()) {
-            Toast.makeText(this, "Please insert a firstname and lastname", Toast.LENGTH_SHORT).show();
+        if (s_firstname.trim().isEmpty() || s_lastname.trim().isEmpty() || s_adress.trim().isEmpty()
+                || s_birthdate.trim().isEmpty() || s_city.trim().isEmpty() || s_npa.trim().isEmpty()) {
+            Toast.makeText(this, "Please fill all the values", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -116,6 +126,11 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         Intent data = new Intent();
         data.putExtra(FIRSTNAME, s_firstname);
         data.putExtra(LASTNAME, s_lastname);
+        data.putExtra(ADDRESS, s_adress);
+        data.putExtra(BIRTHDATE, s_birthdate);
+        data.putExtra(CITY, s_city);
+        data.putExtra(NPA, s_npa);
+
         //data.putExtra(EXTRA_PRIORITY, priority);
 
         //get the id of the selected patient so the DB knows which patient needs to be edited
@@ -124,7 +139,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
             //put id inside the intent
             data.putExtra(ID, id);
         }
-        //actually sending the data back to the DisplayPatientsActivity
+        //actually sending the data back to the DisplayPatientsActivity and closing the activity
         setResult(RESULT_OK, data);
         finish();
     }

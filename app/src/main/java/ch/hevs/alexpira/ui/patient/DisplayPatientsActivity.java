@@ -73,7 +73,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             public void onChanged(@Nullable List<PatientEntity> patientEntities) {
                 adapter.setPatients(patientEntities);
                 //adapter.onCreateViewHolder(patientEntities)
-                Toast.makeText(DisplayPatientsActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DisplayPatientsActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -99,6 +99,12 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
                 intent.putExtra(AddEditPatientActivity.ID, patient.getRowid());
                 intent.putExtra(AddEditPatientActivity.LASTNAME, patient.getPatientLastName());
                 intent.putExtra(AddEditPatientActivity.FIRSTNAME, patient.getPatientFirstName());
+                intent.putExtra(AddEditPatientActivity.ADDRESS, patient.getPatientAdress());
+                intent.putExtra(AddEditPatientActivity.BIRTHDATE, patient.getPatientDate());
+                intent.putExtra(AddEditPatientActivity.CITY, patient.getPatientcity());
+                intent.putExtra(AddEditPatientActivity.NPA, patient.getPatientNPA());
+
+
                 startActivityForResult(intent, EDIT_PATIENT_REQUEST);
             }
         });
@@ -139,9 +145,12 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
         if (requestCode == ADD_PATIENT_REQUEST && resultCode == RESULT_OK) {
             String firstname = data.getStringExtra(AddEditPatientActivity.FIRSTNAME);
             String lastname = data.getStringExtra(AddEditPatientActivity.LASTNAME);
-            //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
+            String adress = data.getStringExtra(AddEditPatientActivity.ADDRESS);
+            String birthdate = data.getStringExtra(AddEditPatientActivity.BIRTHDATE);
+            String city = data.getStringExtra(AddEditPatientActivity.CITY);
+            String npa = data.getStringExtra(AddEditPatientActivity.NPA);
 
-            PatientEntity patient = new PatientEntity(firstname, lastname);
+            PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa);
             viewModel.insert(patient);
            /* viewModel.insert(patient, new OnAsyncEventListener() {
                 @Override
@@ -169,13 +178,18 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
 
             String firstname = data.getStringExtra(AddEditPatientActivity.FIRSTNAME);
             String lastname = data.getStringExtra(AddEditPatientActivity.LASTNAME);
+            String adress = data.getStringExtra(AddEditPatientActivity.ADDRESS);
+            String birthdate = data.getStringExtra(AddEditPatientActivity.BIRTHDATE);
+            String city = data.getStringExtra(AddEditPatientActivity.CITY);
+            String npa = data.getStringExtra(AddEditPatientActivity.NPA);
+
             //int priority = data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1);
 
-            PatientEntity patient = new PatientEntity(firstname, lastname);
+            PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate,city, npa);
             patient.setRowid(id);
             viewModel.update(patient);
 
-            Toast.makeText(this, "Note updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Patient updated", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Patient not saved", Toast.LENGTH_SHORT).show();
