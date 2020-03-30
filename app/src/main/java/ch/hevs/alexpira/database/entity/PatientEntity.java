@@ -56,4 +56,8 @@ public class PatientEntity {
     public void setPatientLastName(String patientLastName) {
         this.patientLastName = patientLastName;
     }
+
+    public void setId(int rowid) {
+        this.rowid = rowid;
+    }
 }

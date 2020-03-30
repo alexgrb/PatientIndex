@@ -33,7 +33,7 @@
             android:name=".ui.patient.DisplayPatientActivity"
             android:label="@string/menu_detailpatient" />
         <activity
-            android:name=".ui.patient.AddPatientActivity"
+            android:name=".ui.patient.AddEditPatientActivity"
             android:label="@string/menu_addpatient"
             android:parentActivityName=".ui.MainActivity" />
         <activity

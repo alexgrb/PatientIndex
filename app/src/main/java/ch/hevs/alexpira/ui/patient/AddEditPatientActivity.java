@@ -24,7 +24,7 @@ import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.AppDatabase;
 
 
-public class AddPatientActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class AddEditPatientActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
 
     public static final String ID = "ID";
@@ -89,6 +89,7 @@ public class AddPatientActivity extends AppCompatActivity implements DatePickerD
         //setting the edit text uneditable
         birthdate.setEnabled(false);
 
+        //getting the data back from the list
         Intent intent = getIntent();
         if (intent.hasExtra(ID)) {
             setTitle("Edit Patient");
@@ -104,15 +105,7 @@ public class AddPatientActivity extends AppCompatActivity implements DatePickerD
         String s_lastname = lastname.getText().toString();
        // int priority = numberPickerPriority.getValue();
 
-        /* Just in case the user left an empty textfield (not our case since we have the TextWatcher right?)
-
-
-        if (title.trim().isEmpty() || description.trim().isEmpty()) {
-            Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-         */
+        //Just in case the user left an empty textfield (not our case since we have the TextWatcher right?)
 
         if (s_firstname.trim().isEmpty() || s_lastname.trim().isEmpty()) {
             Toast.makeText(this, "Please insert a firstname and lastname", Toast.LENGTH_SHORT).show();
@@ -125,6 +118,12 @@ public class AddPatientActivity extends AppCompatActivity implements DatePickerD
         data.putExtra(LASTNAME, s_lastname);
         //data.putExtra(EXTRA_PRIORITY, priority);
 
+        //get the id of the selected patient so the DB knows which patient needs to be edited
+        int id = getIntent().getIntExtra(ID, -1);
+        if (id != -1) {
+            //put id inside the intent
+            data.putExtra(ID, id);
+        }
         //actually sending the data back to the DisplayPatientsActivity
         setResult(RESULT_OK, data);
         finish();

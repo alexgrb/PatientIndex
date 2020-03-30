@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,15 +17,10 @@ import java.util.List;
 
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.BedAdapter;
-import ch.hevs.alexpira.adapter.PatientAdapter;
 import ch.hevs.alexpira.adapter.RecyclerAdapter;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
-import ch.hevs.alexpira.ui.HomeActivity;
-import ch.hevs.alexpira.ui.patient.AddPatientActivity;
-import ch.hevs.alexpira.ui.patient.DisplayPatientsActivity;
 import ch.hevs.alexpira.viewmodel.BedListViewModel;
-import ch.hevs.alexpira.viewmodel.PatientListViewModel;
 
 public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 

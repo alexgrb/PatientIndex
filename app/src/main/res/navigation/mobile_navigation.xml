@@ -55,7 +55,7 @@
 
     <activity
         android:id="@+id/nav_a_adduser"
-        android:name="ch.hevs.alexpira.ui.patient.AddPatientActivity"
+        android:name="ch.hevs.alexpira.ui.patient.AddEditPatientActivity"
         android:label="@string/menu_addpatient"
         tools:layout="@layout/activity_add_user" />
 

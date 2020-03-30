@@ -2,12 +2,10 @@ package ch.hevs.alexpira.ui.patient;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,13 +25,12 @@ import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.PatientAdapter;
 import ch.hevs.alexpira.adapter.RecyclerAdapter;
 import ch.hevs.alexpira.database.entity.PatientEntity;
-import ch.hevs.alexpira.util.OnAsyncEventListener;
 import ch.hevs.alexpira.viewmodel.PatientListViewModel;
 
 public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity {
 
     public static final int ADD_PATIENT_REQUEST = 1;
-    public static final int EDIT_NOTE_REQUEST = 2;
+    public static final int EDIT_PATIENT_REQUEST = 2;
 
     private static final String TAG = "DisplayPatientsActivity";
 
@@ -54,7 +51,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
         buttonAddPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DisplayPatientsActivity.this, AddPatientActivity.class);
+                Intent intent = new Intent(DisplayPatientsActivity.this, AddEditPatientActivity.class);
                 //instead of the usual startActivity, this way we can get our input back
                 startActivityForResult(intent, ADD_PATIENT_REQUEST);
             }
@@ -94,18 +91,15 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
                 Toast.makeText(DisplayPatientsActivity.this, "Note deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
-
-        //delete all items (button in the menu)
-
-
+        //implement the interface
         adapter.setOnItemClickListener(new PatientAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(PatientEntity patient) {
-                Intent intent = new Intent(DisplayPatientsActivity.this, AddPatientActivity.class);
-                intent.putExtra(AddPatientActivity.ID, patient.getRowid());
-                intent.putExtra(AddPatientActivity.LASTNAME, patient.getPatientLastName());
-                intent.putExtra(AddPatientActivity.FIRSTNAME, patient.getPatientFirstName());
-                startActivityForResult(intent, EDIT_NOTE_REQUEST);
+                Intent intent = new Intent(DisplayPatientsActivity.this, AddEditPatientActivity.class);
+                intent.putExtra(AddEditPatientActivity.ID, patient.getRowid());
+                intent.putExtra(AddEditPatientActivity.LASTNAME, patient.getPatientLastName());
+                intent.putExtra(AddEditPatientActivity.FIRSTNAME, patient.getPatientFirstName());
+                startActivityForResult(intent, EDIT_PATIENT_REQUEST);
             }
         });
 
@@ -143,8 +137,8 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
         super.onActivityResult(requestCode, resultCode, data);
         //check if this is the correct request and if everything went ok!
         if (requestCode == ADD_PATIENT_REQUEST && resultCode == RESULT_OK) {
-            String firstname = data.getStringExtra(AddPatientActivity.FIRSTNAME);
-            String lastname = data.getStringExtra(AddPatientActivity.LASTNAME);
+            String firstname = data.getStringExtra(AddEditPatientActivity.FIRSTNAME);
+            String lastname = data.getStringExtra(AddEditPatientActivity.LASTNAME);
             //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
 
             PatientEntity patient = new PatientEntity(firstname, lastname);
@@ -163,9 +157,28 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
 
             */
 
-            Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Patient saved", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK) {
+            int id = data.getIntExtra(AddEditPatientActivity.ID, -1);
+
+            //something went wrong
+            if (id == -1) {
+                Toast.makeText(this, "Patient can't be updated", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String firstname = data.getStringExtra(AddEditPatientActivity.FIRSTNAME);
+            String lastname = data.getStringExtra(AddEditPatientActivity.LASTNAME);
+            //int priority = data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1);
+
+            PatientEntity patient = new PatientEntity(firstname, lastname);
+            patient.setRowid(id);
+            viewModel.update(patient);
+
+            Toast.makeText(this, "Note updated", Toast.LENGTH_SHORT).show();
+
         } else {
-            Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Patient not saved", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -29,7 +29,7 @@ import ch.hevs.alexpira.ui.admin.SettingsActivity;
 import ch.hevs.alexpira.ui.admin.StatisticsActivity;
 import ch.hevs.alexpira.ui.bed.AddBedActivity;
 import ch.hevs.alexpira.ui.bed.SearchBedActivity;
-import ch.hevs.alexpira.ui.patient.AddPatientActivity;
+import ch.hevs.alexpira.ui.patient.AddEditPatientActivity;
 import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //btnAddPatient_onClick
     public void btnAddpatient_onClick(View view) {
-        Intent intent=new Intent(this, AddPatientActivity.class);
+        Intent intent=new Intent(this, AddEditPatientActivity.class);
         startActivity(intent);
     }
 

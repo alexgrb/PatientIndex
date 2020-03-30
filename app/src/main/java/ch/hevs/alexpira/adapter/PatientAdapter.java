@@ -47,7 +47,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
     }
 
     //this method is used to get a patient at a certain position
-    public PatientEntity getPatientAt (int position){
+    public PatientEntity getPatientAt(int position) {
         return patients.get(position);
     }
 
@@ -67,11 +67,14 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
             textViewLastName = itemView.findViewById(R.id.text_view_title);
             textViewFirstName = itemView.findViewById(R.id.text_view_description);
 
+            //we click on our itemView
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+                    //get the position
                     int position = getAdapterPosition();
+                    //verify if the position is not -1 (or no-position)
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onItemClick(patients.get(position));
                     }

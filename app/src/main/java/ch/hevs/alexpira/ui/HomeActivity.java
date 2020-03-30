@@ -12,7 +12,7 @@ import ch.hevs.alexpira.ui.admin.SettingsActivity;
 import ch.hevs.alexpira.ui.admin.StatisticsActivity;
 import ch.hevs.alexpira.ui.bed.AddBedActivity;
 import ch.hevs.alexpira.ui.bed.SearchBedActivity;
-import ch.hevs.alexpira.ui.patient.AddPatientActivity;
+import ch.hevs.alexpira.ui.patient.AddEditPatientActivity;
 import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                Intent intent = new Intent(HomeActivity.this, AddPatientActivity.class);
+                Intent intent = new Intent(HomeActivity.this, AddEditPatientActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button2:

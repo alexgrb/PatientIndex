@@ -53,11 +53,11 @@ public class DisplayPatientActivity extends BaseActivity {
 
         Intent intent = getIntent();
 
-        firstname = intent.getStringExtra(AddPatientActivity.FIRSTNAME);
-        lastname = intent.getStringExtra(AddPatientActivity.LASTNAME);
-        address = intent.getStringExtra(AddPatientActivity.ADDRESS);
-        birthday = intent.getStringExtra(AddPatientActivity.BIRTHDATE);
-        city = intent.getStringExtra(AddPatientActivity.CITY);
+        firstname = intent.getStringExtra(AddEditPatientActivity.FIRSTNAME);
+        lastname = intent.getStringExtra(AddEditPatientActivity.LASTNAME);
+        address = intent.getStringExtra(AddEditPatientActivity.ADDRESS);
+        birthday = intent.getStringExtra(AddEditPatientActivity.BIRTHDATE);
+        city = intent.getStringExtra(AddEditPatientActivity.CITY);
         //NPA = intent.getStringExtra(AddPatient.NPA);
 
 
