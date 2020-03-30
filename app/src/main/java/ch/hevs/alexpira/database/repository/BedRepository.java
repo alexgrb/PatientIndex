@@ -29,7 +29,7 @@ public class BedRepository {
         allBeds = bedDao.getAll();
     }
 
-    public LiveData<List<BedEntity>> getAllPatients() {
+    public LiveData<List<BedEntity>> getAllBeds() {
         return allBeds;
     }
 
@@ -109,6 +109,24 @@ public class BedRepository {
         @Override
         protected Void doInBackground(Void... voids) {
             bedDao.deleteAllNotes();
+            return null;
+        }
+    }
+
+    public void update(BedEntity bed) {
+        new UpdateBedAsyncTask(bedDao).execute(bed);
+    }
+
+    private static class UpdateBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
+        private BedDao bedDao;
+
+        private UpdateBedAsyncTask(BedDao bedDao) {
+            this.bedDao = bedDao;
+        }
+
+        @Override
+        protected Void doInBackground(BedEntity... bed) {
+            bedDao.update(bed[0]);
             return null;
         }
     }

@@ -15,6 +15,29 @@ public class BedEntity {
     @ColumnInfo(name="bedNumber")
     private int bedNumber;
 
+    @ColumnInfo(name="bedSize")
+    private String bedSize;
+
+    public String getBedSize() {
+        return bedSize;
+    }
+
+    public void setBedSize(String bedSize) {
+        this.bedSize = bedSize;
+    }
+
+    public String getBedAdjustablee() {
+        return bedAdjustablee;
+    }
+
+    public void setBedAdjustablee(String bedAdjustablee) {
+        this.bedAdjustablee = bedAdjustablee;
+    }
+
+    @ColumnInfo(name="bedAdjustable")
+    private String bedAdjustablee;
+
+
     public int getId() {
         return id;
     }
@@ -47,9 +70,11 @@ public class BedEntity {
     }
 
     @Ignore
-    public BedEntity(int bedNumber, int patientId ){
+    public BedEntity(int bedNumber, int patientId, String bedSize, String bedAdjustablee ){
         this.bedNumber=bedNumber;
         this.patientId = patientId;
+        this.bedSize = bedSize;
+        this.bedAdjustablee = bedAdjustablee;
     }
 }
 

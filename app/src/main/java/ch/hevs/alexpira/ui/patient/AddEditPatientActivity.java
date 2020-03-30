@@ -175,7 +175,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         birthdate.setText(currentDateString);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

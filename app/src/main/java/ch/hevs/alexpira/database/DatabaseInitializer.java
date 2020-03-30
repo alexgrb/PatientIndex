@@ -23,8 +23,8 @@ public class DatabaseInitializer {
         db.patientDao().insert(patient);
     }
 
-    private static void addBed(final AppDatabase db, final int bedNumber, final int patientId) {
-        BedEntity bed = new BedEntity(bedNumber, patientId);
+    private static void addBed(final AppDatabase db, final int bedNumber, final int patientId, String bedSize, String bedAdjustable) {
+        BedEntity bed = new BedEntity(bedNumber, patientId, bedSize, bedAdjustable);
         db.bedDao().insert(bed);
     }
 
@@ -37,8 +37,8 @@ public class DatabaseInitializer {
 
         db.bedDao().deleteAllNotes();
 
-        addBed(db,100, 1);
-        addBed(db,200, 2);
+        addBed(db,100, 1, "Baby size", "Adjustable");
+        addBed(db,200, 2, "King size", "Non-Adjustable");
 
         try{
             Thread.sleep(1000);

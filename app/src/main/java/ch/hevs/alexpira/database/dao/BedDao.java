@@ -34,4 +34,5 @@ public interface BedDao {
 
     @Query("SELECT *,`rowid` FROM beds WHERE rowid = :bedid")
     LiveData<BedEntity> getById(int bedid);
+
 }

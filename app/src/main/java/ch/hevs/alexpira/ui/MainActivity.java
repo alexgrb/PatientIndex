@@ -27,7 +27,7 @@ import android.widget.Toast;
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.ui.admin.SettingsActivity;
 import ch.hevs.alexpira.ui.admin.StatisticsActivity;
-import ch.hevs.alexpira.ui.bed.AddBedActivity;
+import ch.hevs.alexpira.ui.bed.AddEditBedActivity;
 import ch.hevs.alexpira.ui.bed.SearchBedActivity;
 import ch.hevs.alexpira.ui.patient.AddEditPatientActivity;
 import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     //bouton display bed
     public void btnAddBed_onClick(View view) {
-        Intent intent=new Intent(this, AddBedActivity.class);
+        Intent intent=new Intent(this, AddEditBedActivity.class);
         startActivity(intent);
     }
 

@@ -32,7 +32,7 @@ public class BedListViewModel extends AndroidViewModel {
 
         bedRepository = new BedRepository(application);
 
-        LiveData<List<BedEntity>> allBeds = bedRepository.getAllPatients();
+        LiveData<List<BedEntity>> allBeds = bedRepository.getAllBeds();
 
         observableBeds.addSource(allBeds, observableBeds::setValue);
     }
@@ -91,5 +91,10 @@ public class BedListViewModel extends AndroidViewModel {
 
     public void deleteAllBeds() {
         bedRepository.deleteAllBeds();
+    }
+
+
+    public void update(BedEntity bed) {
+        bedRepository.update(bed);
     }
 }

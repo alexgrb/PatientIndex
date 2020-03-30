@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import ch.hevs.alexpira.R;
 
-public class AddBedActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddEditBedActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String ID = "ID";
     public static final String PATIENTID = "PATIENTID";
@@ -30,6 +30,8 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
 
     private RadioGroup radioGroup;
     private EditText editTextBedNumber;
+    private EditText editTextBedAdjustable;
+    private EditText editTextBedSize;
     private RadioButton radioButton;
     private Spinner bedSizeList;
 
@@ -41,8 +43,11 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
         //adding an up button to the AppBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //editTextBedNumber = findViewById(R.id.edit_text_bedNumber);
+        editTextBedNumber = findViewById(R.id.edit_text_bedNumber);
+        editTextBedSize = findViewById(R.id.edit_text_bedSize);
+        editTextBedAdjustable = findViewById(R.id.edit_text_bedAdjustable);
 
+        /*
         //Populating spinner with the array "bedsize_array"
         bedSizeList = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -54,27 +59,44 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
         //Radio buttons
         radioGroup = findViewById(R.id.radioGroup);
 
+*/
+        Intent intent = getIntent();
+        if (intent.hasExtra(ID)) {
+            setTitle("Edit Bed");
+            /*int radioId = radioGroup.getCheckedRadioButtonId();
 
-        setTitle("Add Bed");
+            radioButton = findViewById(radioId);
+            if(radioButton.toString().equals(intent.getStringExtra(BEDADJUSTABLE))) {
+                radioButton.setChecked(true);
+            }
+            else{
+                radioButton.setChecked(false);
+            }*/
+            editTextBedAdjustable.setText(intent.getStringExtra(BEDADJUSTABLE));
+            editTextBedSize.setText(intent.getStringExtra(BEDSIZE));
+            editTextBedNumber.setText(intent.getStringExtra(BEDNUMBER));
+        } else {
+            setTitle("Add Bed");
+        }
 
     }
 
     private void saveBed(){
-        String bedNumber = editTextBedNumber.getText().toString();
-        String bedSize = bedSizeList.toString();
-        String bedAdjustable = String.valueOf(radioGroup.getCheckedRadioButtonId());
-
-        //Trim to avoid blank space
-        if(bedNumber.trim().isEmpty()){
-            Toast.makeText(this, "Please insert a bed number", Toast.LENGTH_SHORT);
-            return;
-        }
+        int bedNumber = Integer.valueOf(editTextBedNumber.getText().toString());
+        String bedSize = editTextBedSize.getText().toString();
+        String bedAdjustable = editTextBedAdjustable.getText().toString();
 
         //To keep it simple we are going to send this info back to the List activity and it will insert it.
         Intent data = new Intent();
         data.putExtra(BEDNUMBER, bedNumber);
         data.putExtra(BEDSIZE, bedSize);
         data.putExtra(BEDADJUSTABLE, bedAdjustable);
+
+        int id = getIntent().getIntExtra(ID,  -1);
+        if(id!=-1){
+            data.putExtra(ID,id);
+        }
+
 
         setResult(RESULT_OK, data);
         //Finish the activity
@@ -101,16 +123,6 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
             }
     }
 
-    public void checkButton(View v) {
-
-        //a toast message showing us the value of what we selected
-        int radioId = radioGroup.getCheckedRadioButtonId();
-
-        radioButton = findViewById(radioId);
-
-        Toast.makeText(this, "Selected Radio Button: " + radioButton.getText(),
-                Toast.LENGTH_SHORT).show();
-    }
 
     //method to
     @Override

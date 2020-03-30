@@ -26,50 +26,6 @@
 
 
     <TextView
-        android:id="@+id/textView_actualplace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/activityDisplayBed_actualPlace"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
-
-    <TextView
-        android:id="@+id/textView_insert_actual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/activityDisplayBed_inRoom"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_actualplace" />
-
-    <TextView
-        android:id="@+id/textView_previousplace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="35dp"
-        android:text="@string/activityDisplayBed_prevPlace"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_insert_actual" />
-
-    <TextView
-        android:id="@+id/textView_insert_prev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/activityDisplayBed_prevRoom"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_previousplace" />
-
-    <TextView
         android:id="@+id/textView_Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,7 +34,7 @@
         android:text="@string/menu_settings"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_insert_prev" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
 
     <TextView
         android:id="@+id/textView_insert_settings"
@@ -113,28 +69,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Type" />
 
-    <Button
-        android:id="@+id/button_deleteBed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="87dp"
-        android:text="@string/delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintStart_toEndOf="@+id/button_edit"
-        app:layout_constraintTop_toBottomOf="@+id/textView_insert_size" />
-
-    <Button
-        android:id="@+id/button_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_insert_size" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

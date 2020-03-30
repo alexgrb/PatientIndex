@@ -3,6 +3,7 @@ package ch.hevs.alexpira;
 import android.app.Application;
 
 import ch.hevs.alexpira.database.AppDatabase;
+import ch.hevs.alexpira.database.repository.BedRepository;
 import ch.hevs.alexpira.database.repository.PatientRepository;
 
 public class BaseApp extends Application {
@@ -18,5 +19,9 @@ public class BaseApp extends Application {
 
     public PatientRepository getPatientRepository(){
         return PatientRepository.getInstance();
+    }
+
+    public BedRepository getBedRepository(){
+        return BedRepository.getInstance();
     }
 }

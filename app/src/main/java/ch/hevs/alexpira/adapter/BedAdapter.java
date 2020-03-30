@@ -60,13 +60,13 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     class BedHolder extends RecyclerView.ViewHolder {
         private TextView textViewBedID;
         private TextView textViewBedNumber;
-        private TextView textViewPatientID;
+        private TextView textViewBedSize;
 
         public BedHolder(View itemView) {
             super(itemView);
             textViewBedID = itemView.findViewById(R.id.text_view_titlebed);
-            textViewBedNumber = itemView.findViewById(R.id.text_view_descriptionbed);
-            textViewPatientID = itemView.findViewById(R.id.text_view_prioritybed);
+            textViewBedNumber = itemView.findViewById(R.id.edit_text_bedNumber);
+            textViewBedSize = itemView.findViewById(R.id.edit_text_bedSize);
 
             itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -82,7 +82,7 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(BedEntity patient);
+        void onItemClick(BedEntity bed);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

@@ -23,9 +23,7 @@ import java.util.List;
 
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.BedAdapter;
-import ch.hevs.alexpira.adapter.RecyclerAdapter;
 import ch.hevs.alexpira.database.entity.BedEntity;
-import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.viewmodel.BedListViewModel;
 
 public class ListBedActivity extends AppCompatActivity { //BaseActivity {
@@ -49,7 +47,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             buttonAddBed.setOnClickListener(new View.OnClickListener(){
                 @Override
                         public void onClick(View v){
-                    Intent intent = new Intent(ListBedActivity.this, AddBedActivity.class);
+                    Intent intent = new Intent(ListBedActivity.this, AddEditBedActivity.class);
                     startActivityForResult(intent,ADD_BED_REQUEST);
                 }
             });
@@ -63,13 +61,12 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             //PatientListViewModel.Factory factory = new PatientListViewModel.Factory(getApplication());
 
             viewModel = new ViewModelProvider(this).get(BedListViewModel.class);
-            //viewModel = new ViewModelProvider(this, factory).get(PatientListViewModel.class);
             viewModel.getBeds().observe(this, new Observer<List<BedEntity>>() {
                 @Override
                 public void onChanged(@Nullable List<BedEntity> bedEntities) {
                     adapter.setBeds(bedEntities);
                     //adapter.onCreateViewHolder(patientEntities)
-                    Toast.makeText(ch.hevs.alexpira.ui.bed.ListBedActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ch.hevs.alexpira.ui.bed.ListBedActivity.this, "Bed list loaded", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -91,10 +88,11 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             adapter.setOnItemClickListener(new BedAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BedEntity bed) {
-                    Intent intent = new Intent(ch.hevs.alexpira.ui.bed.ListBedActivity.this, AddBedActivity.class);
-                    intent.putExtra(AddBedActivity.ID, bed.getId());
-                    intent.putExtra(AddBedActivity.PATIENTID, bed.getPatientId());
-                    intent.putExtra(AddBedActivity.BEDNUMBER, bed.getBedNumber());
+                    Intent intent = new Intent(ch.hevs.alexpira.ui.bed.ListBedActivity.this, AddEditBedActivity.class);
+                    intent.putExtra(AddEditBedActivity.ID, bed.getId());
+                    intent.putExtra(AddEditBedActivity.BEDSIZE, bed.getBedSize());
+                    intent.putExtra(AddEditBedActivity.BEDNUMBER, String.valueOf(bed.getBedNumber()));
+                    intent.putExtra(AddEditBedActivity.BEDADJUSTABLE, bed.getBedAdjustablee());
                     startActivityForResult(intent, EDIT_BED_REQUEST);
                 }
             });
@@ -105,14 +103,28 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             super.onActivityResult(requestCode, resultCode, data);
             //check if this is the correct request and if everything went ok!
             if (requestCode == ADD_BED_REQUEST && resultCode == RESULT_OK){
-                String bedNumber = data.getStringExtra(AddBedActivity.BEDNUMBER);
-                String bedSize = data.getStringExtra(AddBedActivity.BEDSIZE);
-                String bedAdjustable = data.getStringExtra(AddBedActivity.BEDADJUSTABLE);
+                int bedNumber = data.getIntExtra(AddEditBedActivity.BEDNUMBER, 299);
+                String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
+                String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
                 //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
 
-                BedEntity bed = new BedEntity(258/*Integer.getInteger(bedNumber)*/, 1);
+                BedEntity bed = new BedEntity(bedNumber, 1, bedSize, bedAdjustable);
                 viewModel.insert(bed);
                 Toast.makeText(this, "Bed saved", Toast.LENGTH_SHORT).show();
+            } else if (requestCode == EDIT_BED_REQUEST && resultCode == RESULT_OK){
+
+                int id = data.getIntExtra(AddEditBedActivity.ID, -1);
+                if(id==-1){
+                    Toast.makeText(this,"not can't be updated", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int bedNumber = data.getIntExtra(AddEditBedActivity.BEDNUMBER, 299);
+                String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
+                String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
+
+                BedEntity bed = new BedEntity(bedNumber,1,bedSize, bedAdjustable);
+                bed.setId(id);
+                viewModel.update(bed);
             } else {
                 Toast.makeText(this, "Bed not saved", Toast.LENGTH_SHORT).show();
             }

@@ -10,7 +10,7 @@ import android.widget.Button;
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.ui.admin.SettingsActivity;
 import ch.hevs.alexpira.ui.admin.StatisticsActivity;
-import ch.hevs.alexpira.ui.bed.AddBedActivity;
+import ch.hevs.alexpira.ui.bed.AddEditBedActivity;
 import ch.hevs.alexpira.ui.bed.SearchBedActivity;
 import ch.hevs.alexpira.ui.patient.AddEditPatientActivity;
 import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent4);
                 break;
             case R.id.button5:
-                Intent intent5 = new Intent(HomeActivity.this, AddBedActivity.class);
+                Intent intent5 = new Intent(HomeActivity.this, AddEditBedActivity.class);
                 startActivity(intent5);
                 break;
             case R.id.button6:
