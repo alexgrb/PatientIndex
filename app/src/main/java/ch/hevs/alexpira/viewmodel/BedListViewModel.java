@@ -84,4 +84,12 @@ public class BedListViewModel extends AndroidViewModel {
     public void insert(BedEntity bed){
         bedRepository.insert(bed);
     }
+
+    public void delete(BedEntity bed) {
+        bedRepository.delete(bed);
+    }
+
+    public void deleteAllBeds() {
+        bedRepository.deleteAllBeds();
+    }
 }

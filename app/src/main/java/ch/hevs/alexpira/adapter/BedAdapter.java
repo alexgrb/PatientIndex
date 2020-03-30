@@ -53,6 +53,10 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
         notifyDataSetChanged();
     }
 
+    public BedEntity getBedAt(int position){
+        return beds.get(position);
+    }
+
     class BedHolder extends RecyclerView.ViewHolder {
         private TextView textViewBedID;
         private TextView textViewBedNumber;

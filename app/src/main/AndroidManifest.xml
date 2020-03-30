@@ -39,7 +39,7 @@
         <activity
             android:name=".ui.bed.AddBedActivity"
             android:label="@string/menu_addbed"
-            android:parentActivityName=".ui.MainActivity" />
+            android:parentActivityName=".ui.bed.ListBedActivity" />
         <activity
             android:name=".ui.patient.DisplayPatientsActivity"
             android:label="@string/menu_detailpatients"
@@ -54,6 +54,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
+            android:launchMode="singleTop"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
