@@ -1,14 +1,20 @@
 package ch.hevs.alexpira.ui.bed;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,8 +35,6 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 
         private static final String TAG = "DisplayPatientsActivity";
 
-        private List<BedEntity> patients;
-        private RecyclerAdapter<PatientEntity> adapter;
         private BedListViewModel viewModel;
 
 
@@ -39,20 +43,16 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
 
-            //getLayoutInflater().inflate(R.layout.activity_display_patients, frameLayout);
-
             setContentView(R.layout.activity_list_bed);
 
-            FloatingActionButton buttonAddPatient = findViewById(R.id.btn_add_patient);
-           /* buttonAddPatient.setOnClickListener(new View.OnClickListener() {
+            FloatingActionButton buttonAddBed = findViewById(R.id.button_add_bed);
+            buttonAddBed.setOnClickListener(new View.OnClickListener(){
                 @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ch.hevs.alexpira.ui.bed.ListBedActivity.this, AddBedActivity.class);
-                    //instead of the usual startActivity, this way we can get our input back
-                    startActivityForResult(intent, ADD_BED_REQUEST);
+                        public void onClick(View v){
+                    Intent intent = new Intent(ListBedActivity.this, AddBedActivity.class);
+                    startActivityForResult(intent,ADD_BED_REQUEST);
                 }
             });
-*/
             RecyclerView recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setHasFixedSize(true);
@@ -74,6 +74,18 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             });
 
 
+            new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+                @Override
+                public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                    return false;
+                }
+
+                @Override
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                    viewModel.delete(adapter.getBedAt(viewHolder.getAdapterPosition()));
+                    Toast.makeText(ListBedActivity.this, "Bed deleted", Toast.LENGTH_SHORT).show();
+                }
+            }).attachToRecyclerView(recyclerView);
 
 
             adapter.setOnItemClickListener(new BedAdapter.OnItemClickListener() {
@@ -86,34 +98,6 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
                     startActivityForResult(intent, EDIT_BED_REQUEST);
                 }
             });
-
-
-/*
-        adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-
-            }
-
-            @Override
-            public void onItemLongClick(View v, int position) {
-
-            }
-        });
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(DisplayPatientsActivity.this, SearchPatientActivity.class);
-                    intent.setFlags(
-                            Intent.FLAG_ACTIVITY_NO_ANIMATION |
-                                    Intent.FLAG_ACTIVITY_NO_HISTORY
-                    );
-                    startActivity(intent);
-                }
-        );
-
-*/
-
-
         }
 
         @Override
@@ -122,28 +106,37 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             //check if this is the correct request and if everything went ok!
             if (requestCode == ADD_BED_REQUEST && resultCode == RESULT_OK){
                 String bedNumber = data.getStringExtra(AddBedActivity.BEDNUMBER);
-                String patientID = data.getStringExtra(AddBedActivity.PATIENTID);
+                String bedSize = data.getStringExtra(AddBedActivity.BEDSIZE);
+                String bedAdjustable = data.getStringExtra(AddBedActivity.BEDADJUSTABLE);
                 //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
 
-                BedEntity bed = new BedEntity(Integer.getInteger(bedNumber), Integer.getInteger(patientID));
+                BedEntity bed = new BedEntity(258/*Integer.getInteger(bedNumber)*/, 1);
                 viewModel.insert(bed);
-           /* viewModel.insert(patient, new OnAsyncEventListener() {
-                @Override
-                public void onSuccess() {
-                    Log.d(TAG, "createAccount: success");
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-                    Log.d(TAG, "createAccount: failure");
-                }
-            });
-
-            */
-
-                Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Bed saved", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
-            }        }
+                Toast.makeText(this, "Bed not saved", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.list_bed_activity_menu, menu);
+            return true;
+
+        }
+
+        @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+            switch (item.getItemId()){
+                case R.id.delete_all_beds:
+                    viewModel.deleteAllBeds();
+                    Toast.makeText(this, "All beds deleted", Toast.LENGTH_SHORT).show();
+                    return true;
+
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+        }
     }
 

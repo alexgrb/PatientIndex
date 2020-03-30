@@ -78,5 +78,38 @@ public class BedRepository {
             return null;
         }
     }
+    public void delete(BedEntity bed) {
+        new DeleteBedAsyncTask(bedDao).execute(bed);
+    }
 
+    public void deleteAllBeds() {
+        new DeleteAllBedsAsyncTask(bedDao).execute();
+    }
+    private static class DeleteBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
+        private BedDao bedDao;
+
+        private DeleteBedAsyncTask(BedDao bedDao) {
+            this.bedDao = bedDao;
+        }
+
+        @Override
+        protected Void doInBackground(BedEntity... beds) {
+            bedDao.delete(beds[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAllBedsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private BedDao bedDao;
+
+        private DeleteAllBedsAsyncTask(BedDao bedDao) {
+            this.bedDao = bedDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            bedDao.deleteAllNotes();
+            return null;
+        }
+    }
 }
