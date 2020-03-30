@@ -58,7 +58,7 @@ public class AddBedActivity extends AppCompatActivity implements AdapterView.OnI
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddBedActivity.this, DisplayBedActivity.class);
+                Intent intent = new Intent(AddBedActivity.this, ListBedActivity.class);
                 startActivity(intent);
             }
         });
