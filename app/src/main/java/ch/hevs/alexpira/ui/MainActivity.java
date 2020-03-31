@@ -1,6 +1,9 @@
 package ch.hevs.alexpira.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,16 +23,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.view.Menu;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.ui.admin.SettingsActivity;
 import ch.hevs.alexpira.ui.admin.StatisticsActivity;
 import ch.hevs.alexpira.ui.bed.AddEditBedActivity;
+import ch.hevs.alexpira.ui.bed.DisplayBedActivity;
 import ch.hevs.alexpira.ui.bed.SearchBedActivity;
 import ch.hevs.alexpira.ui.patient.AddEditPatientActivity;
+import ch.hevs.alexpira.ui.patient.DisplayPatientsActivity;
 import ch.hevs.alexpira.ui.patient.SearchPatientActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        changeLanguage();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -121,17 +130,26 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     //btnAddPatient_onClick
-    public void btnAddpatient_onClick(View view) {
-        Intent intent=new Intent(this, AddEditPatientActivity.class);
+    public void btnListPatients_onClick(View view) {
+        Intent intent=new Intent(this, DisplayPatientsActivity.class);
         startActivity(intent);
     }
 
     //bouton display bed
-    public void btnAddBed_onClick(View view) {
-        Intent intent=new Intent(this, AddEditBedActivity.class);
+    public void btnListbeds_onClick(View view) {
+        Intent intent=new Intent(this, DisplayBedActivity.class);
         startActivity(intent);
     }
-
+    public void changeLanguage() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String lang = sharedPrefs.getString("pref_lang", "en-US");
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Resources resources = getBaseContext().getResources();
+        Configuration config = resources.getConfiguration();
+        config.locale = myLocale;
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
 
 
 }

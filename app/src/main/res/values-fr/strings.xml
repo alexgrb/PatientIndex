@@ -38,8 +38,8 @@
     <string name="btn_pickdate">Choisis une date</string>
     <string name="activityDisplayBed_actualPlace">Place actuelle</string>
     <string name="activityDisplayBed_inRoom">Insére chambre actuelle</string>
-    <string name="menu_detailpatients">Liste des patients</string>
-    <string name="menu_detailbeds">Liste des lits</string>
+    <string name="menu_detailpatients">Liste patients</string>
+    <string name="menu_detailbeds">Liste lits</string>
     <string name="activityDisplayUser_">Modifier</string>
     <string name="edit">Modifier</string>
     <string name="delete">Supprimer</string>
@@ -56,4 +56,11 @@
     <string name="bedsizes_3">Taille grande (180-230cm)</string>
     <string name="bedsizes_et">Taille du lit</string>
     <string name="adjustable_et">Ajustable?</string>
+    <string name="search">Rechercher</string>
+    <string name="list">Listes</string>
+    <string name="info">Pour modifier la langue, veuillez noter que vous devez cliquer sur l\'icône de sauvegarde dans le coin supérieur droit. Ensuite, fermez l\'application, revenez et la langue devrait être changée.</string>
+    <string name="settings_changelanguage">Changer language</string>
+    <string name="changelanguage">Changer language</string>
+    <string name="pref_select_language">"Choisissez votre language "</string>
+    <string name="pref_summary">Définissez le language de votre choix</string>
 </resources>

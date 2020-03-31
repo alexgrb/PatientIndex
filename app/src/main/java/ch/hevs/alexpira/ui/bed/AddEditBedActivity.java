@@ -65,6 +65,9 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
                 editTextBedAdjustable.setText(radioButton_one.getText());
                 editTextBedSize.setText(radioButton_two.getText());
 
+                Toast.makeText(getApplicationContext(), "Changes applied", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 

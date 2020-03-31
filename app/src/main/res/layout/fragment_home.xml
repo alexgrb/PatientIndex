@@ -12,8 +12,8 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="384dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/menu_addpatient"
-        android:onClick="btnAddpatient_onClick"
+        android:text="@string/menu_detailpatients"
+        android:onClick="btnListPatients_onClick"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,10 +63,10 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/menu_addbed"
+        android:text="@string/menu_detailbeds"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="btnAddBed_onClick"
+        android:onClick="btnListbeds_onClick"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <ImageView

@@ -6,35 +6,22 @@
     <group android:checkableBehavior="single">
 
 
+        <!--
         <item
             android:id="@+id/nav_a_home"
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
 
+
         <item
             android:id="@+id/nav_a_displayuser"
             android:icon="@drawable/ic_menu_send"
             android:title="@string/menu_detailpatient" />
-        <item
-            android:id="@+id/nav_a_displayusers"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/menu_detailpatients" />
-
-        <item
-            android:id="@+id/nav_a_stats"
-            android:icon="@drawable/ic_charts"
-            android:title="@string/menu_stats" />
-        <item
-            android:id="@+id/nav_a_displaybeds"
-            android:icon="@drawable/ic_charts"
-            android:title="@string/menu_detailbeds" />
-
-
-
+-->
 
     </group>
 
-    <item android:title="Search">
+    <item android:title="@string/search">
         <menu>
 
             <item
@@ -53,29 +40,38 @@
         </menu>
     </item>
 
-    <item android:title="Add">
+    <item android:title="@string/list">
         <menu>
 
             <item
-                android:id="@+id/nav_a_adduser"
+                android:id="@+id/nav_a_displayusers"
                 android:icon="@drawable/ic_person_add"
-                android:title="@string/menu_addpatient" />
+                android:title="@string/menu_detailpatients" />
+
 
 
             <item
-                android:id="@+id/nav_addbed"
+                android:id="@+id/nav_a_displaybeds"
                 android:icon="@drawable/ic_bed"
-                android:title="@string/menu_addbed" />
+                android:title="@string/menu_detailbeds" />
 
 
         </menu>
     </item>
     <item android:title="Preferences">
         <menu>
+
+            <item
+                android:id="@+id/nav_a_stats"
+                android:icon="@drawable/ic_charts"
+                android:title="@string/menu_stats" />
+
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
                 android:title="@string/menu_settings" />
+
+
 
 
       

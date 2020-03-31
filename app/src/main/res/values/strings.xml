@@ -25,15 +25,16 @@
     <string name="home_statistic_button">Statistic</string>
     <string name="home_bedState_button">Add bed</string>
     <string name="home_settings_button">Settings</string>
-
-
     <!-- Settings PAGE -->
     <string name="settings_french_radio" translatable="false">FR</string>
     <string name="settings_english_radio" translatable="false">EN</string>
     <string name="settings_darktheme_switch">Dark Theme</string>
     <string name="settings_aboutus_text">About us</string>
+
     <string name="settings_loremipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
+    <string name="pref_summary">Define your preferred language</string>
+    <string name="pref_select_language">Select your language</string>
 
     <!-- for the "PatientEntity in" form -->
     <string name="firstName">Firstname</string>
@@ -118,8 +119,8 @@
 
     <!-- Activity DisplayUser -->
     <string name="activityDisplayUser_">Edit</string>
-    <string name="menu_detailpatients">List patient</string>
-    <string name="menu_detailbeds">List Beds</string>
+    <string name="menu_detailpatients">List patients</string>
+    <string name="menu_detailbeds">List beds</string>
 
     <string name="bedId" translatable="false">BED ID</string>
 
@@ -128,13 +129,18 @@
     <!-- Activity DisplayUser -->
     <string name="searchhere">Search here</string>
 
+    <string name="search">Search</string>
+    <string name="list">List</string>
+
+
     <!-- Activity Statistics -->
     <string name="percentageBrute" translatable="false">80%</string>
 
     <string name="deletepatient">Delete all patients</string>
     <string name="patientmenu">Delete all patients</string>
-
-
+    <string name="changelanguage">Change language</string>
+    <string name="info">In order for the language to be changed, please note that you need to click on the save icon on the upper right corner. Then close the app, come back and the language should be changed.</string>
+    <string name="settings_changelanguage">Change language</string>
 
 
     <!-- Activity DisplayPatient -->

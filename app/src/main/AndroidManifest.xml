@@ -13,7 +13,9 @@
         <activity
             android:name=".ui.bed.ListBedActivity"
             android:label="@string/menu_detailbed"
-            android:parentActivityName=".ui.MainActivity" />
+            android:parentActivityName=".ui.MainActivity"
+
+            />
         <activity
             android:name=".ui.admin.StatisticsActivity"
             android:label="@string/menu_stats"
@@ -28,6 +30,9 @@
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.HomeActivity"
+            android:label="@string/menu_home" />
+        <activity
+            android:name=".ui.admin.SecondSettingsActivity"
             android:label="@string/menu_home" />
         <activity
             android:name=".ui.patient.DisplayPatientActivity"
