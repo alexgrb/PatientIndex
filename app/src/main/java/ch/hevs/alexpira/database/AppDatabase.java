@@ -70,7 +70,7 @@ public abstract class AppDatabase extends RoomDatabase {
             database.runInTransaction(() -> {
                 Log.i(TAG, "Wipe database.");
                 database.patientDao().deleteAll();
-                //database.bedDao().deleteAll();
+                database.bedDao().deleteAllBeds();
 
                 DatabaseInitializer.populateDatabase(database);
             });

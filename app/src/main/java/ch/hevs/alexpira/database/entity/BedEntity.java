@@ -5,22 +5,9 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
-import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "beds",
-        foreignKeys =
-        @ForeignKey(
-                entity = PatientEntity.class,
-        parentColumns = "rowid",
-        childColumns = "patientId",
-        onDelete = ForeignKey.CASCADE),
-        indices = {
-        @Index(
-                value = {"patientId"}
-        )
-        }
-)
+@Entity(tableName = "beds")
 public class BedEntity {
 
     @PrimaryKey (autoGenerate = true)
@@ -36,8 +23,13 @@ public class BedEntity {
     @ColumnInfo(name="bedAdjustable")
     private String bedAdjustablee;
 
-    @ColumnInfo(name="patientId")
-    private int patientId;
+
+    @Ignore
+    public BedEntity(int bedNumber, String bedSize, String bedAdjustablee ){
+        this.bedNumber=bedNumber;
+        this.bedSize = bedSize;
+        this.bedAdjustablee = bedAdjustablee;
+    }
 
     public String getBedSize() {
         return bedSize;
@@ -55,11 +47,6 @@ public class BedEntity {
         this.bedAdjustablee = bedAdjustablee;
     }
 
-
-
-
-
-
     public int getId() {
         return id;
     }
@@ -76,26 +63,10 @@ public class BedEntity {
         this.bedNumber = bedNumber;
     }
 
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-
-
-
     public BedEntity(int bedNumber){
         this.bedNumber=bedNumber;
     }
 
-    @Ignore
-    public BedEntity(int bedNumber, int patientId, String bedSize, String bedAdjustablee ){
-        this.bedNumber=bedNumber;
-        this.patientId = patientId;
-        this.bedSize = bedSize;
-        this.bedAdjustablee = bedAdjustablee;
-    }
+
 }
 

@@ -37,12 +37,11 @@ public class BedListViewModel extends AndroidViewModel {
         observablePatients = new MediatorLiveData<>();
         observablePatients.setValue(null);
 
-        patientRepository = new PatientRepository(application);
         bedRepository = new BedRepository(application);
 
         LiveData<List<BedEntity>> allBeds = bedRepository.getAllBeds();
         LiveData<List<PatientWithBed>> allPatients =
-                patientRepository.getAllPatientsWithBeds();
+                bedRepository.getAllPatientsWithBeds();
 
         observableBeds.addSource(allBeds, observableBeds::setValue);
         observablePatients.addSource(allPatients, observablePatients::setValue);

@@ -121,6 +121,8 @@
     <string name="menu_detailpatients">List patient</string>
     <string name="menu_detailbeds">List Beds</string>
 
+    <string name="bedId" translatable="false">BED ID</string>
+
 
 
     <!-- Activity DisplayUser -->

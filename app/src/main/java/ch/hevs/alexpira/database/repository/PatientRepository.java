@@ -10,6 +10,7 @@ import java.util.List;
 
 import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.async.patient.CreatePatient;
+import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
@@ -22,21 +23,25 @@ public class PatientRepository {
     ////////////////////////////////////////
     //TEST CODIN FLOW
     private PatientDao patientDao;
-    private LiveData<List<PatientWithBed>> allPatientsWithBeds;
+    private BedDao bedDao;
+
     private LiveData<List<PatientEntity>> allPatients;
+    private LiveData<List<PatientWithBed>> allPatientsWithBed;
     public PatientRepository(Application application){
         AppDatabase database = AppDatabase.getInstance(application);
        patientDao = database.patientDao();
-        allPatientsWithBeds = patientDao.getAllWithBed();
+       bedDao = database.bedDao();
+
         allPatients = patientDao.getAll();
+        allPatientsWithBed = bedDao.getAllPatientsWithBed();
 
     }
 
-    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
-        return allPatientsWithBeds;
-    }
     public LiveData<List<PatientEntity>> getAllPatients() {
         return allPatients;
+    }
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBed() {
+        return allPatientsWithBed;
     }
 
     /////////////////////////////////////////
@@ -62,15 +67,6 @@ public class PatientRepository {
         return ((BaseApp) application).getDatabase().patientDao().getAll();
     }
 
-   /* public void insert(final PatientEntity client, OnAsyncEventListener callback,
-                       Application application) {
-        new CreatePatient(application, callback).execute(client);
-    }*/
-
-   public LiveData<List<PatientWithBed>> getAllById(
-                                                                     Application application) {
-       return ((BaseApp) application).getDatabase().patientDao().getAllWithBed();
-   }
     public void insert(PatientEntity patient) {
         new InsertPatientAsyncTask(patientDao).execute(patient);
     }

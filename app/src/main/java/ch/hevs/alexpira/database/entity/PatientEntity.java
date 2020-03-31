@@ -2,14 +2,28 @@ package ch.hevs.alexpira.database.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Fts4;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-//@Fts4 //This is added so we can support search in the table
-@Entity(tableName = "patients")
+//ENTITIY
+@Entity(tableName = "patients",
+        foreignKeys =
+        @ForeignKey(
+                entity = BedEntity.class,
+                parentColumns = "rowid",
+                childColumns = "bedId",
+                onDelete = ForeignKey.CASCADE),
+        indices = {
+                @Index(
+                        value = {"bedId"}
+                )
+        }
+)
 public class PatientEntity {
 
     @PrimaryKey(autoGenerate = true)
@@ -34,31 +48,59 @@ public class PatientEntity {
     @ColumnInfo(name = "patientNPA")
     private String patientNPA;
 
-    @Ignore
-    public PatientEntity(int rowid, String patientFirstName, String patientLastName) {
-        this.rowid = rowid;
+    public void setPatientAdress(String patientAdress) {
+        this.patientAdress = patientAdress;
+    }
+
+    public void setPatientDate(String patientDate) {
+        this.patientDate = patientDate;
+    }
+
+    public void setPatientcity(String patientcity) {
+        this.patientcity = patientcity;
+    }
+
+    public void setPatientNPA(String patientNPA) {
+        this.patientNPA = patientNPA;
+    }
+
+    public int getBedId() {
+        return bedId;
+    }
+
+    public void setBedId(int bedId) {
+        this.bedId = bedId;
+    }
+
+    @ColumnInfo(name = "bedId")
+    private int bedId;
+
+    //CONSTRUCTORS
+
+    public PatientEntity(String patientFirstName, String patientLastName, int bedId) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
+        this.bedId = bedId;
     }
     @Ignore
     public PatientEntity(String patientFirstName, String patientLastName) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
     }
-
-    public PatientEntity(String patientFirstName, String patientLastName, String patientAdress, String patientDate, String patientcity, String patientNPA) {
+    @Ignore
+    public PatientEntity(String patientFirstName, String patientLastName, String patientAdress, String patientDate, String patientcity, String patientNPA, int bedId) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
         this.patientAdress = patientAdress;
         this.patientDate = patientDate;
         this.patientcity = patientcity;
         this.patientNPA = patientNPA;
+        this.bedId = bedId;
     }
 
     public String getPatientAdress() {
         return patientAdress;
     }
-
 
     public String getPatientcity() {
         return patientcity;

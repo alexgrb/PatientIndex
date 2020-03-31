@@ -18,27 +18,42 @@ public class DatabaseInitializer {
         task.execute();
     }
     //This method will call patientDao and insert one patient.
-    private static void addPatient(final AppDatabase db, final int id, final String firstname, final String lastname) {
-        PatientEntity patient = new PatientEntity(id, firstname, lastname);
+    private static void addPatient(final AppDatabase db, final String firstname, final String lastname, int bedId) {
+        PatientEntity patient = new PatientEntity(firstname, lastname, bedId);
         db.patientDao().insert(patient);
     }
 
-    private static void addBed(final AppDatabase db, final int bedNumber, final int patientId, String bedSize, String bedAdjustable) {
-        BedEntity bed = new BedEntity(bedNumber, patientId, bedSize, bedAdjustable);
+    private static void addBed(final AppDatabase db, final int bedNumber, String bedSize, String bedAdjustable) {
+        BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
         db.bedDao().insert(bed);
     }
 
     //This method is deleting everything in the database and then populate it.
     private static void populateWithTestData(AppDatabase db) {
+        db.bedDao().deleteAllBeds();
         db.patientDao().deleteAll();
 
-        addPatient(db,1, "Yvan", "Neuilly");
-        addPatient(db,2, "Yvick", "Exact");
+        addBed(db,100, "Baby size", "Adjustable");
+        addBed(db,101, "King size", "Adjustable");
+        addBed(db,102, "King size", "Non-Adjustable");
+        addBed(db,103, "Baby size", "Adjustable");
+        addBed(db,104, "King size", "Non-Adjustable");
+        addBed(db,200, "Baby size", "Adjustable");
+        addBed(db,201, "King size", "Non-Adjustable");
+        addBed(db,202, "Baby size", "Adjustable");
+        addBed(db,203, "King size", "Non-Adjustable");
+        addBed(db,204, "Baby size", "Adjustable");
+        addBed(db,300, "Baby size", "Non-Adjustable");
+        addBed(db,301, "King size", "Non-Adjustable");
+        addBed(db,302, "King size", "Adjustable");
+        addBed(db,303, "Baby size", "Adjustable");
+        addBed(db,304, "King size", "Non-Adjustable");
 
-        db.bedDao().deleteAllNotes();
-
-        addBed(db,100, 1, "Baby size", "Adjustable");
-        addBed(db,200, 2, "King size", "Non-Adjustable");
+        addPatient(db, "Alex", "Gharbi", 1);
+        addPatient(db, "Pira", "Thambirajah", 2);
+        addPatient(db, "Goerge", "Vitte", 3);
+        addPatient(db, "Pierre", "Rapite", 4);
+        addPatient(db, "Christian", "Weber", 5);
 
         try{
             Thread.sleep(1000);

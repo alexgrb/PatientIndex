@@ -10,11 +10,11 @@ import ch.hevs.alexpira.database.entity.PatientEntity;
 
 public class PatientWithBed {
     @Embedded
-    public PatientEntity patientEntity;
+    public BedEntity bedEntity;
     @Relation(
             parentColumn = "rowid",
-            entityColumn = "patientId",
-            entity = BedEntity.class
+            entityColumn = "bedId",
+            entity = PatientEntity.class
     )
-    public BedEntity bedEntity;
+    public PatientEntity patientEntity;
 }

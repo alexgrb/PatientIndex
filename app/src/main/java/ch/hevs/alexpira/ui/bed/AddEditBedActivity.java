@@ -35,10 +35,6 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
     private EditText editTextBedSize;
     private RadioButton radioButton_one;
     private RadioButton radioButton_two;
-    private Spinner bedSizeList;
-
-    TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,33 +68,9 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
             }
         });
 
-
-
-        /*
-        //Populating spinner with the array "bedsize_array"
-        bedSizeList = findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.bedsizes_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        bedSizeList.setAdapter(adapter);
-        bedSizeList.setOnItemSelectedListener(this);
-
-
-         */
-
-
         Intent intent = getIntent();
         if (intent.hasExtra(ID)) {
             setTitle("Edit Bed");
-            /*int radioId = radioGroup.getCheckedRadioButtonId();
-
-            radioButton = findViewById(radioId);
-            if(radioButton.toString().equals(intent.getStringExtra(BEDADJUSTABLE))) {
-                radioButton.setChecked(true);
-            }
-            else{
-                radioButton.setChecked(false);
-            }*/
             editTextBedAdjustable.setText(intent.getStringExtra(BEDADJUSTABLE));
             editTextBedSize.setText(intent.getStringExtra(BEDSIZE));
             editTextBedNumber.setText(intent.getStringExtra(BEDNUMBER));

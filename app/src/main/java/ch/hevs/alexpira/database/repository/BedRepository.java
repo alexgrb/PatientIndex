@@ -10,9 +10,8 @@ import java.util.List;
 import ch.hevs.alexpira.BaseApp;
 import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.dao.BedDao;
-import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
-import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 
 public class BedRepository {
 
@@ -22,15 +21,20 @@ public class BedRepository {
     //TEST CODIN FLOW
     private BedDao bedDao;
     private LiveData<List<BedEntity>> allBeds;
+    private LiveData<List<PatientWithBed>> allPatientsWithBeds;
 
     public BedRepository(Application application){
         AppDatabase database = AppDatabase.getInstance(application);
         bedDao = database.bedDao();
         allBeds = bedDao.getAll();
+        allPatientsWithBeds = bedDao.getAllPatientsWithBed();
     }
 
     public LiveData<List<BedEntity>> getAllBeds() {
         return allBeds;
+    }
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
+        return allPatientsWithBeds;
     }
 
     /////////////////////////////////////////
@@ -60,6 +64,11 @@ public class BedRepository {
                        Application application) {
         new CreatePatient(application, callback).execute(client);
     }*/
+
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBed(
+            Application application) {
+        return ((BaseApp) application).getDatabase().bedDao().getAllPatientsWithBed();
+    }
 
     public void insert(BedEntity bedEntity) {
         new BedRepository.InsertBedAsyncTask(bedDao).execute(bedEntity);
@@ -108,7 +117,7 @@ public class BedRepository {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            bedDao.deleteAllNotes();
+            bedDao.deleteAllBeds();
             return null;
         }
     }

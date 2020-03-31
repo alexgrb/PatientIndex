@@ -13,9 +13,10 @@ import java.util.List;
 
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientHolder> {
-    private List<PatientEntity> patients = new ArrayList<>();
+    private List<PatientWithBed> patients = new ArrayList<>();
     private OnItemClickListener listener;
 
     @NonNull
@@ -28,15 +29,17 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
     @Override
     public void onBindViewHolder(@NonNull PatientHolder holder, int position) {
-        if (patients != null) {
-            PatientEntity currentPatient = patients.get(position);
-            holder.textViewLastName.setText(currentPatient.getPatientLastName());
-            holder.textViewFirstName.setText(currentPatient.getPatientFirstName());
-        } else {
-            holder.textViewLastName.setText("NomFamille");
-            holder.textViewFirstName.setText("Pas trouvé");
+      //  if (patients != null) {
+            PatientWithBed currentPatient = patients.get(position);
+            //if(currentPatient != null && !currentPatient.patientEntity.getPatientLastName().isEmpty()  ){
+                holder.textViewLastName.setText(currentPatient.patientEntity.getPatientLastName());
+                holder.textViewFirstName.setText(currentPatient.patientEntity.getPatientFirstName());
+          //  }
+           // else{
+           //     patients.remove(currentPatient);
+           // }
         }
-    }
+
 
     @Override
     public int getItemCount() {
@@ -48,10 +51,10 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
     //this method is used to get a patient at a certain position
     public PatientEntity getPatientAt(int position) {
-        return patients.get(position);
+        return patients.get(position).patientEntity;
     }
 
-    public void setPatients(List<PatientEntity> patients) {
+    public void setPatients(List<PatientWithBed> patients) {
         if (patients != null) {
             this.patients = patients;
         }
@@ -85,7 +88,8 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
     }
 
     public interface OnItemClickListener {
-        void onItemClick(PatientEntity patient);
+        void onItemClick(PatientWithBed patient);
+
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

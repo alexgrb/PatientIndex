@@ -18,16 +18,13 @@ import ch.hevs.alexpira.database.pojo.PatientWithBed;
 @Dao
 public interface PatientDao {
 
-
-    @Query("SELECT *, `rowid` FROM patients")
+    @Query("SELECT * FROM patients")
     LiveData<List<PatientEntity>> getAll();
 
-    @Query("SELECT *,`rowid` FROM patients WHERE rowid = :rowid")
+    @Query("SELECT * FROM patients WHERE rowid = :rowid")
     LiveData<PatientEntity> getById(int rowid);
 
-    @Transaction
-    @Query("SELECT * FROM patients")
-    LiveData<List<PatientWithBed>> getAllWithBed();
+
 
     @Query("SELECT *,`rowid` FROM patients WHERE rowid IN (:rowid)")
     List<PatientEntity> loadAllByIds(int[] rowid);
@@ -41,8 +38,6 @@ public interface PatientDao {
     @Insert
     long insert(PatientEntity patient) throws SQLiteConstraintException;
 
-    @Update
-    void updateFruits(PatientEntity... patients);
 
     @Update
     void update(PatientEntity patients);
@@ -52,8 +47,4 @@ public interface PatientDao {
 
     @Query("DELETE FROM patients")
     void deleteAll();
-
-    @Transaction
-    @Query("SELECT *, `rowid` FROM patients")
-    public LiveData<List<PatientWithBed>> getPatientWithBed();
 }

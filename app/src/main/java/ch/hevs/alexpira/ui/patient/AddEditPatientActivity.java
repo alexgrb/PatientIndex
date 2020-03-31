@@ -34,6 +34,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
     public static final String BIRTHDATE = "BIRTHDATE";
     public static final String CITY = "CITY";
     public static final String NPA = "NPA";
+    public static final int BEDID = -1;
 
     private Button pickdate;
     private EditText firstname;
@@ -42,6 +43,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
     private EditText birthdate;
     private EditText city;
     private EditText npa;
+    private EditText bedid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +52,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
-        //  appDatabase = AppDatabase.getAppDatabase(this);
-       /* submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePatient();
-                openDisplayPatient();
-            }
-        });
-*/
         pickdate = findViewById(R.id.btn_pickdate);
         pickdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +67,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         birthdate = findViewById(R.id.et_birthdate);
         city = findViewById(R.id.et_city);
         npa = findViewById(R.id.et_NPA);
+        bedid = findViewById(R.id.et_bedID);
         //setting the edit text uneditable
         birthdate.setEnabled(false);
 
@@ -88,6 +82,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
             birthdate.setText(intent.getStringExtra(BIRTHDATE));
             city.setText(intent.getStringExtra(CITY));
             npa.setText(intent.getStringExtra(NPA));
+            bedid.setText(intent.getStringExtra(String.valueOf(BEDID)));
         } else {
             setTitle("Add Patient");
         }
@@ -101,6 +96,8 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         String s_birthdate = birthdate.getText().toString();
         String s_city = city.getText().toString();
         String s_npa = npa.getText().toString();
+        String s_bedId = bedid.getText().toString();
+
 
         //Just in case the user left an empty textfield (not our case since we have the TextWatcher right?)
 
@@ -118,6 +115,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         data.putExtra(BIRTHDATE, s_birthdate);
         data.putExtra(CITY, s_city);
         data.putExtra(NPA, s_npa);
+        data.putExtra(String.valueOf(BEDID), s_bedId);
 
 
         //get the id of the selected patient so the DB knows which patient needs to be edited
@@ -130,7 +128,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         setResult(RESULT_OK, data);
         finish();
     }
-
+/*
     public void openDisplayPatient() {
         EditText firstName = (EditText) findViewById(R.id.et_firstName);
         String textfirstname = firstName.getText().toString();
@@ -148,7 +146,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
 
         PatientEntity patient = new PatientEntity(textfirstname, textlastname);
         appDatabase.patientDao().insertAll(patient);
-*/
+
         Intent intent = new Intent(this, DisplayPatientActivity.class);
         intent.putExtra(FIRSTNAME, textfirstname);
         intent.putExtra(LASTNAME, textlastname);
@@ -159,7 +157,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
 
         startActivity(intent);
     }
-
+*/
     // we have set AddPatientActivity to the OnDateSetListener. This is why this method is overriden.
     // in this method we are setting our textview to the date we picked.
     @Override

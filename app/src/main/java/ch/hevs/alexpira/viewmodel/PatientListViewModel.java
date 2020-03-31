@@ -13,6 +13,7 @@ import java.util.List;
 
 import ch.hevs.alexpira.BaseApp;
 import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.database.repository.PatientRepository;
 public class PatientListViewModel extends AndroidViewModel {
 
@@ -20,6 +21,7 @@ public class PatientListViewModel extends AndroidViewModel {
 
     private PatientRepository patientRepository;
     private final MediatorLiveData<List<PatientEntity>> observablePatients;
+    private final MediatorLiveData<List<PatientWithBed>> observablePatientsWithBed;
 
     /////////////////////////////
     public PatientListViewModel(@NonNull Application application){
@@ -27,11 +29,18 @@ public class PatientListViewModel extends AndroidViewModel {
         observablePatients = new MediatorLiveData<>();
         observablePatients.setValue(null);
 
+        observablePatientsWithBed = new MediatorLiveData<>();
+        observablePatientsWithBed.setValue(null);
+
+
+
         patientRepository = new PatientRepository(application);
 
         LiveData<List<PatientEntity>> allPatients = patientRepository.getAllPatients();
+        LiveData<List<PatientWithBed>> allPatientsWithBed = patientRepository.getAllPatientsWithBed();
 
         observablePatients.addSource(allPatients, observablePatients::setValue);
+        observablePatientsWithBed.addSource(allPatientsWithBed, observablePatientsWithBed::setValue);
     }
 
     ////////////////////////////
@@ -45,10 +54,16 @@ public class PatientListViewModel extends AndroidViewModel {
         observablePatients = new MediatorLiveData<>();
         observablePatients.setValue(null);
 
+        observablePatientsWithBed = new MediatorLiveData<>();
+        observablePatientsWithBed.setValue(null);
         LiveData<List<PatientEntity>> patients =
                 patientRepository.getPatients(application);
 
+        LiveData<List<PatientWithBed>> allPatientsWithBed = patientRepository.getAllPatientsWithBed();
+
         observablePatients.addSource(patients, observablePatients::setValue);
+
+        observablePatientsWithBed.addSource(allPatientsWithBed, observablePatientsWithBed::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory{
@@ -71,6 +86,9 @@ public class PatientListViewModel extends AndroidViewModel {
 
     public LiveData<List<PatientEntity>> getPatients() {
         return observablePatients;
+    }
+    public LiveData<List<PatientWithBed>> getPatientsWithBed() {
+        return observablePatientsWithBed;
     }
     public void insert(PatientEntity patient){
     patientRepository.insert(patient);

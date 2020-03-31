@@ -108,7 +108,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
                 String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
                 //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
 
-                BedEntity bed = new BedEntity(bedNumber, 1, bedSize, bedAdjustable);
+                BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
                 viewModel.insert(bed);
                 Toast.makeText(this, "Bed saved", Toast.LENGTH_SHORT).show();
             } else if (requestCode == EDIT_BED_REQUEST && resultCode == RESULT_OK){
@@ -122,7 +122,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
                 String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
                 String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
 
-                BedEntity bed = new BedEntity(bedNumber,1,bedSize, bedAdjustable);
+                BedEntity bed = new BedEntity(bedNumber,bedSize, bedAdjustable);
                 bed.setId(id);
                 viewModel.update(bed );
             } else {
