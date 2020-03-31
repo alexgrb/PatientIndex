@@ -12,11 +12,11 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/text_view_prioritybed"
+            android:id="@+id/text_view_patientLastname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Patient N°"
+            android:text="NoPatient"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView

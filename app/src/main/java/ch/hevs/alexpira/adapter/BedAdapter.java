@@ -12,11 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.hevs.alexpira.R;
+import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
+import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 
 public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
-    private List<BedEntity> beds = new ArrayList<>();
+    private List<PatientWithBed> beds = new ArrayList<>();
     private OnItemClickListener listener;
+    private PatientDao patient;
 
     @NonNull
     @Override
@@ -29,13 +33,15 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     @Override
     public void onBindViewHolder(@NonNull BedHolder holder, int position) {
         if (beds != null) {
-            BedEntity currentBed = beds.get(position);
-            holder.textViewBedID.setText(String.valueOf(currentBed.getPatientId()));
-            holder.textViewBedNumber.setText(String.valueOf(currentBed.getBedNumber()));
+            PatientWithBed currentBed = beds.get(position);
+            holder.textViewBedID.setText(String.valueOf(currentBed.bedEntity.getId()));
+            holder.textViewBedNumber.setText(String.valueOf(currentBed.bedEntity.getBedNumber()));
+            holder.textViewPatientLastname.setText(String.valueOf(currentBed.patientEntity.getPatientLastName()));
 
         } else {
             holder.textViewBedID.setText("Numéro introuvable");
             holder.textViewBedNumber.setText("Pas trouvé");
+            holder.textViewPatientLastname.setText("NoPatient");
         }
     }
     @Override
@@ -46,7 +52,7 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
             return 1;
     }
 
-    public void setBeds(List<BedEntity> beds) {
+    public void setBeds(List<PatientWithBed> beds) {
         if (beds != null) {
             this.beds = beds;
         }
@@ -54,16 +60,18 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     }
 
     public BedEntity getBedAt(int position){
-        return beds.get(position);
+        return beds.get(position).bedEntity;
     }
 
     class BedHolder extends RecyclerView.ViewHolder {
         private TextView textViewBedID;
         private TextView textViewBedNumber;
         private TextView textViewBedSize;
+        private TextView textViewPatientLastname;
 
         public BedHolder(View itemView) {
             super(itemView);
+            textViewPatientLastname = itemView.findViewById(R.id.text_view_patientLastname);
             textViewBedID = itemView.findViewById(R.id.text_view_titlebed);
             textViewBedNumber = itemView.findViewById(R.id.edit_text_bedNumber);
             textViewBedSize = itemView.findViewById(R.id.edit_text_bedSize);
@@ -82,7 +90,7 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(BedEntity bed);
+        void onItemClick(PatientWithBed bed);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

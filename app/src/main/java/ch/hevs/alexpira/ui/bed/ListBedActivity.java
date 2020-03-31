@@ -24,6 +24,7 @@ import java.util.List;
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.BedAdapter;
 import ch.hevs.alexpira.database.entity.BedEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.viewmodel.BedListViewModel;
 
 public class ListBedActivity extends AppCompatActivity { //BaseActivity {
@@ -43,6 +44,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 
             setContentView(R.layout.activity_list_bed);
 
+            //Add button to add bed
             FloatingActionButton buttonAddBed = findViewById(R.id.button_add_bed);
             buttonAddBed.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -51,6 +53,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
                     startActivityForResult(intent,ADD_BED_REQUEST);
                 }
             });
+            //Creating and setting the view
             RecyclerView recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setHasFixedSize(true);
@@ -58,18 +61,15 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             final BedAdapter adapter = new BedAdapter();
             recyclerView.setAdapter(adapter);
 
-            //PatientListViewModel.Factory factory = new PatientListViewModel.Factory(getApplication());
-
             viewModel = new ViewModelProvider(this).get(BedListViewModel.class);
-            viewModel.getBeds().observe(this, new Observer<List<BedEntity>>() {
+            viewModel.getPatients().observe(this, new Observer<List<PatientWithBed>>() {
                 @Override
-                public void onChanged(@Nullable List<BedEntity> bedEntities) {
+                public void onChanged(@Nullable List<PatientWithBed> bedEntities) {
                     adapter.setBeds(bedEntities);
                     //adapter.onCreateViewHolder(patientEntities)
                     Toast.makeText(ch.hevs.alexpira.ui.bed.ListBedActivity.this, "Bed list loaded", Toast.LENGTH_SHORT).show();
                 }
             });
-
 
             new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
                 @Override
@@ -87,12 +87,12 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 
             adapter.setOnItemClickListener(new BedAdapter.OnItemClickListener() {
                 @Override
-                public void onItemClick(BedEntity bed) {
+                public void onItemClick(PatientWithBed bed) {
                     Intent intent = new Intent(ch.hevs.alexpira.ui.bed.ListBedActivity.this, AddEditBedActivity.class);
-                    intent.putExtra(AddEditBedActivity.ID, bed.getId());
-                    intent.putExtra(AddEditBedActivity.BEDSIZE, bed.getBedSize());
-                    intent.putExtra(AddEditBedActivity.BEDNUMBER, String.valueOf(bed.getBedNumber()));
-                    intent.putExtra(AddEditBedActivity.BEDADJUSTABLE, bed.getBedAdjustablee());
+                    intent.putExtra(AddEditBedActivity.ID, bed.bedEntity.getId());
+                    intent.putExtra(AddEditBedActivity.BEDSIZE, bed.bedEntity.getBedSize());
+                    intent.putExtra(AddEditBedActivity.BEDNUMBER, String.valueOf(bed.bedEntity.getBedNumber()));
+                    intent.putExtra(AddEditBedActivity.BEDADJUSTABLE, bed.bedEntity.getBedAdjustablee());
                     startActivityForResult(intent, EDIT_BED_REQUEST);
                 }
             });
@@ -124,7 +124,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 
                 BedEntity bed = new BedEntity(bedNumber,1,bedSize, bedAdjustable);
                 bed.setId(id);
-                viewModel.update(bed);
+                viewModel.update(bed );
             } else {
                 Toast.makeText(this, "Bed not saved", Toast.LENGTH_SHORT).show();
             }

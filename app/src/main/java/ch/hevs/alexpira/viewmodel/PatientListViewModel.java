@@ -14,8 +14,6 @@ import java.util.List;
 import ch.hevs.alexpira.BaseApp;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.repository.PatientRepository;
-import ch.hevs.alexpira.util.OnAsyncEventListener;
-
 public class PatientListViewModel extends AndroidViewModel {
 
     private Application application;
@@ -74,12 +72,6 @@ public class PatientListViewModel extends AndroidViewModel {
     public LiveData<List<PatientEntity>> getPatients() {
         return observablePatients;
     }
-
-    /*public void insert(PatientEntity patientEntity, OnAsyncEventListener onAsyncEventListener) {
-        patientRepository.insert(patientEntity, onAsyncEventListener, application);
-    }*/
-
-
     public void insert(PatientEntity patient){
     patientRepository.insert(patient);
     }

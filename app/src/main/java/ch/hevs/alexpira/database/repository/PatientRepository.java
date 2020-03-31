@@ -12,6 +12,7 @@ import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.async.patient.CreatePatient;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class PatientRepository {
@@ -21,14 +22,19 @@ public class PatientRepository {
     ////////////////////////////////////////
     //TEST CODIN FLOW
     private PatientDao patientDao;
+    private LiveData<List<PatientWithBed>> allPatientsWithBeds;
     private LiveData<List<PatientEntity>> allPatients;
-
     public PatientRepository(Application application){
         AppDatabase database = AppDatabase.getInstance(application);
        patientDao = database.patientDao();
-       allPatients = patientDao.getAll();
+        allPatientsWithBeds = patientDao.getAllWithBed();
+        allPatients = patientDao.getAll();
+
     }
 
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
+        return allPatientsWithBeds;
+    }
     public LiveData<List<PatientEntity>> getAllPatients() {
         return allPatients;
     }
@@ -61,6 +67,10 @@ public class PatientRepository {
         new CreatePatient(application, callback).execute(client);
     }*/
 
+   public LiveData<List<PatientWithBed>> getAllById(
+                                                                     Application application) {
+       return ((BaseApp) application).getDatabase().patientDao().getAllWithBed();
+   }
     public void insert(PatientEntity patient) {
         new InsertPatientAsyncTask(patientDao).execute(patient);
     }

@@ -66,8 +66,6 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
                 int radioId2 = radioGroup_two.getCheckedRadioButtonId();
                 radioButton_two = findViewById(radioId2);
 
-
-
                 editTextBedAdjustable.setText(radioButton_one.getText());
                 editTextBedSize.setText(radioButton_two.getText());
 
@@ -125,7 +123,6 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
         if(id!=-1){
             data.putExtra(ID,id);
         }
-
 
         setResult(RESULT_OK, data);
         //Finish the activity

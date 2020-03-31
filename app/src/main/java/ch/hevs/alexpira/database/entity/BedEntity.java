@@ -2,10 +2,25 @@ package ch.hevs.alexpira.database.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "beds")
+@Entity(tableName = "beds",
+        foreignKeys =
+        @ForeignKey(
+                entity = PatientEntity.class,
+        parentColumns = "rowid",
+        childColumns = "patientId",
+        onDelete = ForeignKey.CASCADE),
+        indices = {
+        @Index(
+                value = {"patientId"}
+        )
+        }
+)
 public class BedEntity {
 
     @PrimaryKey (autoGenerate = true)
@@ -17,6 +32,12 @@ public class BedEntity {
 
     @ColumnInfo(name="bedSize")
     private String bedSize;
+
+    @ColumnInfo(name="bedAdjustable")
+    private String bedAdjustablee;
+
+    @ColumnInfo(name="patientId")
+    private int patientId;
 
     public String getBedSize() {
         return bedSize;
@@ -34,8 +55,9 @@ public class BedEntity {
         this.bedAdjustablee = bedAdjustablee;
     }
 
-    @ColumnInfo(name="bedAdjustable")
-    private String bedAdjustablee;
+
+
+
 
 
     public int getId() {
@@ -62,8 +84,7 @@ public class BedEntity {
         this.patientId = patientId;
     }
 
-    @ColumnInfo(name="patientId")
-    private int patientId;
+
 
     public BedEntity(int bedNumber){
         this.bedNumber=bedNumber;

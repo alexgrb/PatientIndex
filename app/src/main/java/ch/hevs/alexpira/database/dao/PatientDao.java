@@ -25,6 +25,10 @@ public interface PatientDao {
     @Query("SELECT *,`rowid` FROM patients WHERE rowid = :rowid")
     LiveData<PatientEntity> getById(int rowid);
 
+    @Transaction
+    @Query("SELECT * FROM patients")
+    LiveData<List<PatientWithBed>> getAllWithBed();
+
     @Query("SELECT *,`rowid` FROM patients WHERE rowid IN (:rowid)")
     List<PatientEntity> loadAllByIds(int[] rowid);
 
