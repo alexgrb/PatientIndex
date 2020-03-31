@@ -20,8 +20,8 @@
 
     <!-- HOME PAGE -->
     <string name="text_home">Welcome on Valais Hospital App</string>
-    <string name="home_searchPatient_button">Search by Patient</string>
-    <string name="home_searchRoom_button">Search by Bed</string>
+    <string name="home_searchPatient_button">Search Patient</string>
+    <string name="home_searchRoom_button">Search Bed</string>
     <string name="home_statistic_button">Statistic</string>
     <string name="home_bedState_button">Add bed</string>
     <string name="home_settings_button">Settings</string>
