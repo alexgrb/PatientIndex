@@ -24,20 +24,8 @@ public interface PatientDao {
     @Query("SELECT * FROM patients WHERE rowid = :rowid")
     LiveData<PatientEntity> getById(int rowid);
 
-
-
-    @Query("SELECT *,`rowid` FROM patients WHERE rowid IN (:rowid)")
-    List<PatientEntity> loadAllByIds(int[] rowid);
-
-    @Query("SELECT *,`rowid` FROM patients WHERE patientFirstName LIKE :patientFirstName LIMIT 1")
-    PatientEntity findByName(String patientFirstName);
-
-    @Insert
-    void insertAll(PatientEntity... patients) throws SQLiteConstraintException;
-
     @Insert
     long insert(PatientEntity patient) throws SQLiteConstraintException;
-
 
     @Update
     void update(PatientEntity patients);

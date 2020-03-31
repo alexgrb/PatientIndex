@@ -19,7 +19,6 @@ import ch.hevs.alexpira.database.pojo.PatientWithBed;
 public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     private List<PatientWithBed> beds = new ArrayList<>();
     private OnItemClickListener listener;
-    private PatientDao patient;
 
     @NonNull
     @Override
@@ -35,15 +34,15 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
             PatientWithBed currentBed = beds.get(position);
             holder.textViewBedID.setText(String.valueOf(currentBed.bedEntity.getId()));
             holder.textViewBedNumber.setText(String.valueOf(currentBed.bedEntity.getBedNumber()));
-            if(currentBed.patientEntity != null){
+            if (currentBed.patientEntity != null) {
                 holder.textViewPatientLastname.setText(currentBed.patientEntity.getPatientLastName());
-            }
-            else{
+            } else {
                 holder.textViewPatientLastname.setText("No Patient");
             }
 
         }
     }
+
     @Override
     public int getItemCount() {
         if (beds != null)
@@ -59,7 +58,7 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
         notifyDataSetChanged();
     }
 
-    public BedEntity getBedAt(int position){
+    public BedEntity getBedAt(int position) {
         return beds.get(position).bedEntity;
     }
 

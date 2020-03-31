@@ -23,7 +23,6 @@ import ch.hevs.alexpira.R;
 public class AddEditBedActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String ID = "ID";
-    public static final String PATIENTID = "PATIENTID";
     public static final String BEDNUMBER = "BEDNUMBER";
     public static final String BEDSIZE = "BEDSIZE";
     public static final String BEDADJUSTABLE = "BEDADJUSTABLE";
@@ -124,16 +123,12 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
             }
     }
 
-
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
         editTextBedSize.setText(text);
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
-
-
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

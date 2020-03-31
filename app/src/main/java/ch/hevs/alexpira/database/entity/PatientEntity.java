@@ -76,7 +76,6 @@ public class PatientEntity {
     private int bedId;
 
     //CONSTRUCTORS
-
     public PatientEntity(String patientFirstName, String patientLastName, int bedId) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;

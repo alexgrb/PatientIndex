@@ -14,7 +14,7 @@ import ch.hevs.alexpira.R;
 
 public abstract class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    //We are planning to use this activity later to better separate everything and inheritance
     public static final String PREFS_NAME = "SharedPrefs";
     public static final String PREFS_USER = "LoggedIn";
 
@@ -28,10 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-
-        //frameLayout = findViewById(R.id.fab);
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -85,7 +85,6 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
     public interface OnItemClickListener {
         void onItemClick(PatientWithBed patient);
-
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

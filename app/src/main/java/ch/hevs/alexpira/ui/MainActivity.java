@@ -53,13 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -73,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-
 
     }
 
@@ -91,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent intent=new Intent(this,SettingsActivity.class);
+                Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
-            default :
+            default:
                 return super.onOptionsItemSelected(item);
         }
 
@@ -109,38 +102,40 @@ public class MainActivity extends AppCompatActivity {
 
     //button settings
     public void btnSettings_onClick(View view) {
-        Intent intent=new Intent(this,SettingsActivity.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
     //bouton StatisticsActivity
     public void btnStatistics_onClick(View view) {
-        Intent intent=new Intent(this, StatisticsActivity.class);
+        Intent intent = new Intent(this, StatisticsActivity.class);
         startActivity(intent);
     }
 
     //bouton search bed
     public void btnSearchBed_onClick(View view) {
-        Intent intent=new Intent(this, SearchBedActivity.class);
+        Intent intent = new Intent(this, SearchBedActivity.class);
         startActivity(intent);
     }
 
     //bouton search patient
     public void btnSearchPatient_onClick(View view) {
-        Intent intent=new Intent(this, SearchPatientActivity.class);
+        Intent intent = new Intent(this, SearchPatientActivity.class);
         startActivity(intent);
     }
+
     //btnAddPatient_onClick
     public void btnListPatients_onClick(View view) {
-        Intent intent=new Intent(this, DisplayPatientsActivity.class);
+        Intent intent = new Intent(this, DisplayPatientsActivity.class);
         startActivity(intent);
     }
 
     //bouton display bed
     public void btnListbeds_onClick(View view) {
-        Intent intent=new Intent(this, ListBedActivity.class);
+        Intent intent = new Intent(this, ListBedActivity.class);
         startActivity(intent);
     }
+
     public void changeLanguage() {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String lang = sharedPrefs.getString("pref_lang", "en-US");

@@ -16,9 +16,6 @@ import ch.hevs.alexpira.database.pojo.PatientWithBed;
 public class BedRepository {
 
     private static BedRepository instance;
-
-    ////////////////////////////////////////
-    //TEST CODIN FLOW
     private BedDao bedDao;
     private LiveData<List<BedEntity>> allBeds;
     private LiveData<List<PatientWithBed>> allPatientsWithBeds;
@@ -36,11 +33,9 @@ public class BedRepository {
     public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
         return allPatientsWithBeds;
     }
-
-    /////////////////////////////////////////
     private BedRepository(){
-
     }
+
     public static BedRepository getInstance(){
         if(instance == null){
             synchronized (BedRepository.class){
@@ -55,15 +50,6 @@ public class BedRepository {
     public LiveData<BedEntity> getBed(final int bedid, Application application){
         return ((BaseApp) application).getDatabase().bedDao().getById(bedid);
     }
-
-    public LiveData<List<BedEntity>> getBeds (Application application){
-        return ((BaseApp) application).getDatabase().bedDao().getAll();
-    }
-
-   /* public void insert(final PatientEntity client, OnAsyncEventListener callback,
-                       Application application) {
-        new CreatePatient(application, callback).execute(client);
-    }*/
 
     public LiveData<List<PatientWithBed>> getAllPatientsWithBed(
             Application application) {

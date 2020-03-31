@@ -8,7 +8,6 @@ import ch.hevs.alexpira.R;
 
 public class SearchBedActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //adding an up button to the AppBar

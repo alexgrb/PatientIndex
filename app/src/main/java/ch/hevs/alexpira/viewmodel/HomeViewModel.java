@@ -1,4 +1,4 @@
-package ch.hevs.alexpira.ui.home;
+package ch.hevs.alexpira.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

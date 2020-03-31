@@ -7,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,36 +15,25 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.PatientAdapter;
-import ch.hevs.alexpira.adapter.RecyclerAdapter;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.viewmodel.PatientListViewModel;
 
-public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity {
+public class DisplayPatientsActivity extends AppCompatActivity {
 
     public static final int ADD_PATIENT_REQUEST = 1;
     public static final int EDIT_PATIENT_REQUEST = 2;
-
-    private static final String TAG = "DisplayPatientsActivity";
-
-    private List<PatientWithBed> patients;
-    private RecyclerAdapter<PatientEntity> adapter;
     private PatientListViewModel viewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //getLayoutInflater().inflate(R.layout.activity_display_patients, frameLayout);
 
         setContentView(R.layout.activity_display_patients);
 
@@ -66,10 +54,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
         final PatientAdapter adapter = new PatientAdapter();
         recyclerView.setAdapter(adapter);
 
-        //PatientListViewModel.Factory factory = new PatientListViewModel.Factory(getApplication());
-
         viewModel = new ViewModelProvider(this).get(PatientListViewModel.class);
-        //viewModel = new ViewModelProvider(this, factory).get(PatientListViewModel.class);
         viewModel.getPatientsWithBed().observe(this, new Observer<List<PatientWithBed>>() {
             @Override
             public void onChanged(@Nullable List<PatientWithBed> patientEntities) {
@@ -140,7 +125,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
         } else if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditPatientActivity.ID, -1);
 
-            //something went wrong
+            //something went wrong if we get here
             if (id == -1) {
                 Toast.makeText(this, "Patient can't be updated", Toast.LENGTH_SHORT).show();
                 return;

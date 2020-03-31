@@ -17,9 +17,6 @@ import ch.hevs.alexpira.database.pojo.PatientWithBed;
 public class PatientRepository {
 
     private static PatientRepository instance;
-
-    ////////////////////////////////////////
-    //TEST CODIN FLOW
     private PatientDao patientDao;
     private BedDao bedDao;
 
@@ -42,7 +39,6 @@ public class PatientRepository {
         return allPatientsWithBed;
     }
 
-    /////////////////////////////////////////
     private PatientRepository(){
 
     }

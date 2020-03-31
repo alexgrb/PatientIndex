@@ -35,9 +35,6 @@
             android:name=".ui.admin.SecondSettingsActivity"
             android:label="@string/menu_home" />
         <activity
-            android:name=".ui.patient.DisplayPatientActivity"
-            android:label="@string/menu_detailpatient" />
-        <activity
             android:name=".ui.patient.AddEditPatientActivity"
             android:label="@string/menu_addpatient"
             android:parentActivityName=".ui.patient.DisplayPatientsActivity" />

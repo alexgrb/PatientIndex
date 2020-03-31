@@ -2,13 +2,10 @@ package ch.hevs.alexpira.ui.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,15 +14,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.text.DateFormat;
-
 import ch.hevs.alexpira.R;
-import ch.hevs.alexpira.database.AppDatabase;
-
 
 public class AddEditPatientActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-
 
     public static final String ID = "ID";
     public static final String FIRSTNAME = "FIRSTNAME";
@@ -98,9 +90,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         String s_npa = npa.getText().toString();
         String s_bedId = bedid.getText().toString();
 
-
         //Just in case the user left an empty textfield (not our case since we have the TextWatcher right?)
-
         if (s_firstname.trim().isEmpty() || s_lastname.trim().isEmpty() || s_adress.trim().isEmpty()
                 || s_birthdate.trim().isEmpty() || s_city.trim().isEmpty() || s_npa.trim().isEmpty()) {
             Toast.makeText(this, "Please fill all the values", Toast.LENGTH_SHORT).show();
@@ -117,7 +107,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         data.putExtra(NPA, s_npa);
         data.putExtra(String.valueOf(BEDID), s_bedId);
 
-
         //get the id of the selected patient so the DB knows which patient needs to be edited
         int id = getIntent().getIntExtra(ID, -1);
         if (id != -1) {
@@ -128,36 +117,6 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         setResult(RESULT_OK, data);
         finish();
     }
-/*
-    public void openDisplayPatient() {
-        EditText firstName = (EditText) findViewById(R.id.et_firstName);
-        String textfirstname = firstName.getText().toString();
-        EditText lastname = (EditText) findViewById(R.id.et_lastname);
-        String textlastname = lastname.getText().toString();
-        EditText adress = (EditText) findViewById(R.id.et_address);
-        String textadress = adress.getText().toString();
-        EditText birthdate = (EditText) findViewById(R.id.et_birthdate);
-        String textbirthdate = birthdate.getText().toString();
-        EditText city = (EditText) findViewById(R.id.et_city);
-        String textcity = city.getText().toString();
-        /*
-        EditText npa = (EditText) findViewById(R.id.et_enpea);
-        String textnpa = npa.getText().toString();
-
-        PatientEntity patient = new PatientEntity(textfirstname, textlastname);
-        appDatabase.patientDao().insertAll(patient);
-
-        Intent intent = new Intent(this, DisplayPatientActivity.class);
-        intent.putExtra(FIRSTNAME, textfirstname);
-        intent.putExtra(LASTNAME, textlastname);
-        intent.putExtra(ADDRESS, textadress);
-        intent.putExtra(BIRTHDATE, textbirthdate);
-        intent.putExtra(CITY, textcity);
-        //intent.putExtra(NPA, textnpa);
-
-        startActivity(intent);
-    }
-*/
     // we have set AddPatientActivity to the OnDateSetListener. This is why this method is overriden.
     // in this method we are setting our textview to the date we picked.
     @Override

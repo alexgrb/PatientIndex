@@ -24,15 +24,10 @@ public abstract class AppDatabase extends RoomDatabase {
 
     //This tag will be used in our logs.
     private static final String TAG = "AppDatabase";
-
     private static AppDatabase INSTANCE;
-
     private static final String DATABASE_NAME = "hospital-database";
-
     public abstract PatientDao patientDao();
     public abstract BedDao bedDao();
-
-    //public abstract BedDao bedDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
