@@ -35,6 +35,7 @@ import ch.hevs.alexpira.ui.admin.SettingsActivity;
 import ch.hevs.alexpira.ui.admin.StatisticsActivity;
 import ch.hevs.alexpira.ui.bed.AddEditBedActivity;
 import ch.hevs.alexpira.ui.bed.DisplayBedActivity;
+import ch.hevs.alexpira.ui.bed.ListBedActivity;
 import ch.hevs.alexpira.ui.bed.SearchBedActivity;
 import ch.hevs.alexpira.ui.patient.AddEditPatientActivity;
 import ch.hevs.alexpira.ui.patient.DisplayPatientsActivity;
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
     //bouton display bed
     public void btnListbeds_onClick(View view) {
-        Intent intent=new Intent(this, DisplayBedActivity.class);
+        Intent intent=new Intent(this, ListBedActivity.class);
         startActivity(intent);
     }
     public void changeLanguage() {
