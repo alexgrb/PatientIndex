@@ -97,7 +97,7 @@ public class PatientListViewModel extends AndroidViewModel {
         patientRepository.delete(patient);
     }
     public void deleteAllPatients() {
-        patientRepository.deleteAllNotes();
+        patientRepository.deleteAllPatients();
     }
     public void update(PatientEntity patient) {
         patientRepository.update(patient);

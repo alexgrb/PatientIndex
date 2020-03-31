@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ch.hevs.alexpira.R;
@@ -65,9 +66,17 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             viewModel.getPatients().observe(this, new Observer<List<PatientWithBed>>() {
                 @Override
                 public void onChanged(@Nullable List<PatientWithBed> bedEntities) {
-                    adapter.setBeds(bedEntities);
-                    //adapter.onCreateViewHolder(patientEntities)
-                    Toast.makeText(ch.hevs.alexpira.ui.bed.ListBedActivity.this, "Bed list loaded", Toast.LENGTH_SHORT).show();
+                    if (bedEntities != null) {
+                        List<PatientWithBed> bedNotNull = new ArrayList<>();
+                        for (PatientWithBed bed : bedEntities) {
+                            if (bed.bedEntity != null) {
+                                bedNotNull.add(bed);
+                            }
+                        }
+                        adapter.setBeds(bedNotNull);
+                        //adapter.onCreateViewHolder(patientEntities)
+                        Toast.makeText(ch.hevs.alexpira.ui.bed.ListBedActivity.this, "Bed list loaded", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 

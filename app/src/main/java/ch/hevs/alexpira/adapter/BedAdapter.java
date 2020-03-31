@@ -32,22 +32,10 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     @Override
     public void onBindViewHolder(@NonNull BedHolder holder, int position) {
         if (beds != null) {
-            System.out.println("GRTEZ: "+ beds.get(0).patientEntity.getPatientLastName());
             PatientWithBed currentBed = beds.get(position);
-            if(currentBed != null) {
-                holder.textViewBedID.setText(String.valueOf(currentBed.bedEntity.getId()));
-                holder.textViewBedNumber.setText(String.valueOf(currentBed.bedEntity.getBedNumber()));
-                if(currentBed.patientEntity != null && !currentBed.patientEntity.getPatientLastName().isEmpty() ) {
-                    holder.textViewPatientLastname.setText(currentBed.patientEntity.getPatientLastName());
-                }
-                else{
-                    holder.textViewPatientLastname.setText("No patient");
-                }
-            }
-        } else {
-            holder.textViewBedID.setText("Numéro introuvable");
-            holder.textViewBedNumber.setText("Pas trouvé");
-            holder.textViewPatientLastname.setText("NoPatient");
+            holder.textViewBedID.setText(String.valueOf(currentBed.bedEntity.getId()));
+            holder.textViewBedNumber.setText(String.valueOf(currentBed.bedEntity.getBedNumber()));
+            holder.textViewPatientLastname.setText(currentBed.patientEntity.getPatientLastName());
         }
     }
     @Override

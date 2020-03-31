@@ -34,7 +34,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
     public static final String BIRTHDATE = "BIRTHDATE";
     public static final String CITY = "CITY";
     public static final String NPA = "NPA";
-    public static final int BEDID = -1;
+    public static final String BEDID = "BEDNUMBER";
 
     private Button pickdate;
     private EditText firstname;
@@ -82,7 +82,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
             birthdate.setText(intent.getStringExtra(BIRTHDATE));
             city.setText(intent.getStringExtra(CITY));
             npa.setText(intent.getStringExtra(NPA));
-            bedid.setText(intent.getStringExtra(String.valueOf(BEDID)));
+            bedid.setText(intent.getStringExtra(BEDID));
         } else {
             setTitle("Add Patient");
         }

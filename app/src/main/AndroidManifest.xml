@@ -48,6 +48,8 @@
         <activity
             android:name=".ui.patient.DisplayPatientsActivity"
             android:label="@string/menu_detailpatients"
+
+            android:screenOrientation = "portrait"
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.admin.SettingsActivity"

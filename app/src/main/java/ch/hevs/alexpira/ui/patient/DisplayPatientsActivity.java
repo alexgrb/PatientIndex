@@ -74,15 +74,13 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             @Override
             public void onChanged(@Nullable List<PatientWithBed> patientEntities) {
                 if (patientEntities != null) {
-                    //method creer une autre liste
-                    System.out.println("EUWQTPORGHQEROGHEQEOGIHQRèIHGQERPIGVAEPIBN : " +patientEntities.size());
+                    //Eliminate useless row in the list. We only want patients.
                     List<PatientWithBed> patientsOnly = new ArrayList<>();
                     for (PatientWithBed patient : patientEntities) {
                         if (patient.patientEntity != null) {
                             patientsOnly.add(patient);
                         }
                     }
-                    System.out.println("EUWQTPORGHQEROGHEQEOGIHQRèIHGQERPIGVAEPIBN : " +patientsOnly.size());
                     adapter.setPatients(patientsOnly);
                     Toast.makeText(DisplayPatientsActivity.this, "Patient list loaded", Toast.LENGTH_SHORT).show();
                 }
@@ -115,7 +113,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
                 intent.putExtra(AddEditPatientActivity.BIRTHDATE, patient.patientEntity.getPatientDate());
                 intent.putExtra(AddEditPatientActivity.CITY, patient.patientEntity.getPatientcity());
                 intent.putExtra(AddEditPatientActivity.NPA, patient.patientEntity.getPatientNPA());
-                intent.putExtra(String.valueOf(AddEditPatientActivity.BEDID), patient.patientEntity.getBedId());
+                intent.putExtra((AddEditPatientActivity.BEDID), patient.patientEntity.getBedId());
 
                 startActivityForResult(intent, EDIT_PATIENT_REQUEST);
             }
@@ -134,7 +132,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             String birthdate = data.getStringExtra(AddEditPatientActivity.BIRTHDATE);
             String city = data.getStringExtra(AddEditPatientActivity.CITY);
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
-            int bedId = data.getIntExtra(String.valueOf(AddEditPatientActivity.BEDID), 1);
+            int bedId = Integer.valueOf(data.getStringExtra(AddEditPatientActivity.BEDID));
 
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
             viewModel.insert(patient);
@@ -154,7 +152,7 @@ public class DisplayPatientsActivity extends AppCompatActivity { //BaseActivity 
             String birthdate = data.getStringExtra(AddEditPatientActivity.BIRTHDATE);
             String city = data.getStringExtra(AddEditPatientActivity.CITY);
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
-            int bedId = data.getIntExtra(String.valueOf(AddEditPatientActivity.BEDID), 1);
+            int bedId = Integer.valueOf(data.getStringExtra((AddEditPatientActivity.BEDID)));
 
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
             patient.setRowid(id);

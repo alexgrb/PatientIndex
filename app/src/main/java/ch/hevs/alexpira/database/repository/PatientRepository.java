@@ -9,12 +9,10 @@ import ch.hevs.alexpira.BaseApp;
 import java.util.List;
 
 import ch.hevs.alexpira.database.AppDatabase;
-import ch.hevs.alexpira.database.async.patient.CreatePatient;
 import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
-import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class PatientRepository {
 
@@ -73,17 +71,17 @@ public class PatientRepository {
     public void delete(PatientEntity patient) {
         new DeleteNoteAsyncTask(patientDao).execute(patient);
     }
-    public void deleteAllNotes() {
-        new DeleteAllNotesAsyncTask(patientDao).execute();
+    public void deleteAllPatients() {
+        new DeleteAllPatientsAsyncTask(patientDao).execute();
     }
     public void update(PatientEntity patient) {
-        new UpdateNoteAsyncTask(patientDao).execute(patient);
+        new UpdatePatientAsyncTask(patientDao).execute(patient);
     }
 
-    private static class UpdateNoteAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+    private static class UpdatePatientAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
         private PatientDao patientDao;
 
-        private UpdateNoteAsyncTask(PatientDao patientDao) {
+        private UpdatePatientAsyncTask(PatientDao patientDao) {
             this.patientDao= patientDao;
         }
 
@@ -108,10 +106,10 @@ public class PatientRepository {
         }
     }
 
-    private static class DeleteAllNotesAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
+    private static class DeleteAllPatientsAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
         private PatientDao patientDao;
 
-        private DeleteAllNotesAsyncTask(PatientDao patientDao) {
+        private DeleteAllPatientsAsyncTask(PatientDao patientDao) {
             this.patientDao= patientDao;
         }
 

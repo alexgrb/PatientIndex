@@ -29,17 +29,11 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
     @Override
     public void onBindViewHolder(@NonNull PatientHolder holder, int position) {
-      //  if (patients != null) {
-            PatientWithBed currentPatient = patients.get(position);
-            //if(currentPatient != null && !currentPatient.patientEntity.getPatientLastName().isEmpty()  ){
-                holder.textViewLastName.setText(currentPatient.patientEntity.getPatientLastName());
-                holder.textViewFirstName.setText(currentPatient.patientEntity.getPatientFirstName());
-          //  }
-           // else{
-           //     patients.remove(currentPatient);
-           // }
-        }
-
+        PatientWithBed currentPatient = patients.get(position);
+        holder.textViewLastName.setText(currentPatient.patientEntity.getPatientLastName());
+        holder.textViewFirstName.setText(currentPatient.patientEntity.getPatientFirstName());
+        holder.textViewPatientBedNumber.setText(String.valueOf(currentPatient.patientEntity.getBedId()));
+    }
 
     @Override
     public int getItemCount() {
@@ -64,11 +58,13 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
     class PatientHolder extends RecyclerView.ViewHolder {
         private TextView textViewLastName;
         private TextView textViewFirstName;
+        private TextView textViewPatientBedNumber;
 
         public PatientHolder(View itemView) {
             super(itemView);
             textViewLastName = itemView.findViewById(R.id.text_view_title);
             textViewFirstName = itemView.findViewById(R.id.text_view_description);
+            textViewPatientBedNumber = itemView.findViewById(R.id.text_view_patientBedNumber);
 
             //we click on our itemView
             itemView.setOnClickListener(new View.OnClickListener() {
