@@ -42,7 +42,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="24dp"
         android:text="@string/titlesize"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,10 +53,13 @@
         android:layout_width="198dp"
         android:layout_height="43dp"
         android:layout_marginStart="28dp"
-        android:hint="Bed Size in cm"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="32dp"
+        android:hint="@string/bedsizes_et"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/textView1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
     <TextView
         android:id="@+id/textView1"
@@ -65,20 +68,109 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:text="@string/titlesettings"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_bedSize" />
+
 
     <EditText
         android:id="@+id/edit_text_bedAdjustable"
         android:layout_width="198dp"
         android:layout_height="43dp"
         android:layout_marginStart="28dp"
-        android:hint="Is adjustable?"
+        android:layout_marginTop="4dp"
+        android:hint="@string/adjustable_et"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+        <RadioButton
+            android:id="@+id/radio_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="checkButton"
+            android:text="@string/adjust" />
+
+        <RadioButton
+            android:id="@+id/radio_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="@string/nonadjust" />
+
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <RadioButton
+            android:id="@+id/radiosize_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="checkButton2"
+            android:text="@string/bedsizes_1" />
+
+        <RadioButton
+            android:id="@+id/radiosize_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton2"
+            android:text="@string/bedsizes_2" />
+
+        <RadioButton
+            android:id="@+id/radiosize_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton2"
+            android:text="@string/bedsizes_3" />
+
+
+    </RadioGroup>
+
+
+
+
+    <Button
+        android:id="@+id/button_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="81dp"
+        android:text="apply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_bedAdjustable" />
+
+    <!--
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="292dp"
+        tools:layout_editor_absoluteY="228dp" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

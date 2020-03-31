@@ -28,12 +28,16 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
     public static final String BEDSIZE = "BEDSIZE";
     public static final String BEDADJUSTABLE = "BEDADJUSTABLE";
 
-    private RadioGroup radioGroup;
+    private RadioGroup radioGroup_one;
+    private RadioGroup radioGroup_two;
     private EditText editTextBedNumber;
     private EditText editTextBedAdjustable;
     private EditText editTextBedSize;
-    private RadioButton radioButton;
+    private RadioButton radioButton_one;
+    private RadioButton radioButton_two;
     private Spinner bedSizeList;
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,31 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
         editTextBedNumber = findViewById(R.id.edit_text_bedNumber);
         editTextBedSize = findViewById(R.id.edit_text_bedSize);
         editTextBedAdjustable = findViewById(R.id.edit_text_bedAdjustable);
+        radioGroup_one = findViewById(R.id.radioGroup);
+        radioGroup_two = findViewById(R.id.radioGroup2);
+
+        editTextBedSize.setEnabled(false);
+        editTextBedAdjustable.setEnabled(false);
+
+        Button buttonApply = findViewById(R.id.button_apply);
+        buttonApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioId = radioGroup_one.getCheckedRadioButtonId();
+                radioButton_one = findViewById(radioId);
+
+                int radioId2 = radioGroup_two.getCheckedRadioButtonId();
+                radioButton_two = findViewById(radioId2);
+
+
+
+                editTextBedAdjustable.setText(radioButton_one.getText());
+                editTextBedSize.setText(radioButton_two.getText());
+
+            }
+        });
+
+
 
         /*
         //Populating spinner with the array "bedsize_array"
@@ -56,10 +85,10 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
         bedSizeList.setAdapter(adapter);
         bedSizeList.setOnItemSelectedListener(this);
 
-        //Radio buttons
-        radioGroup = findViewById(R.id.radioGroup);
 
-*/
+         */
+
+
         Intent intent = getIntent();
         if (intent.hasExtra(ID)) {
             setTitle("Edit Bed");
@@ -124,15 +153,36 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
     }
 
 
-    //method to
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
+        editTextBedSize.setText(text);
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void checkButton(View v) {
+        int radioId = radioGroup_one.getCheckedRadioButtonId();
+
+        radioButton_one = findViewById(radioId);
+
+        Toast.makeText(this, "Selected Radio Button: " + radioButton_one.getText(),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void checkButton2(View v) {
+        int radioId = radioGroup_two.getCheckedRadioButtonId();
+
+        radioButton_two = findViewById(radioId);
+
+        Toast.makeText(this, "Selected Radio Button: " + radioButton_two.getText(),
+                Toast.LENGTH_SHORT).show();
     }
 }

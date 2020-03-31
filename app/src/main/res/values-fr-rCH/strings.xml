@@ -51,4 +51,9 @@
     <string name="deletepatient">Supprimer tous les patients</string>
     <string name="patientmenu">Suppriemr tous les patients</string>
     <string name="activityDisplaypatient">Détails du patient</string>
+    <string name="bedsizes_1">Taille bébé (90cm)</string>
+    <string name="bedsizes_2">Taille médium (90-180cm)</string>
+    <string name="bedsizes_3">Taille grande (180-230cm)</string>
+    <string name="bedsizes_et">Taille du lit</string>
+    <string name="adjustable_et">Ajustable?</string>
 </resources>
