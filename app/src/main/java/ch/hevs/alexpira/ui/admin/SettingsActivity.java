@@ -30,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
         changeLanguage();
         setContentView(R.layout.settings_activity);
         Button button = findViewById(R.id.darktheme_btn);
-
+//test cloud
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 
-
+//test cloud feature
     }
 
     public void changeLanguage() {
