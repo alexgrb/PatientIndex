@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "923752409894",
+    "firebase_url": "https://patientindex-2b798.firebaseio.com",
+    "project_id": "patientindex-2b798",
+    "storage_bucket": "patientindex-2b798.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923752409894:android:8e95e7a89ed1e27b2aafe7",
+        "android_client_info": {
+          "package_name": "ch.hevs.alexpira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923752409894-helv83escc8bs39atqbu8vv43hdnprdl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0yI_ryrOw8e6FA2cPHabQiHQ-gpXnUTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923752409894-helv83escc8bs39atqbu8vv43hdnprdl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

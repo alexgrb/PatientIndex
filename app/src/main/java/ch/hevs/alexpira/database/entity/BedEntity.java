@@ -1,24 +1,13 @@
 package ch.hevs.alexpira.database.entity;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
+import com.google.firebase.firestore.Exclude;
 
-@Entity(tableName = "beds")
 public class BedEntity {
 
-    @PrimaryKey (autoGenerate = true)
-    @ColumnInfo(name="rowid")
     private int id;
-
-    @ColumnInfo(name="bedNumber")
     private int bedNumber;
-
-    @ColumnInfo(name="bedSize")
     private String bedSize;
-
-    @ColumnInfo(name="bedAdjustable")
     private String bedAdjustablee;
 
 
@@ -45,6 +34,7 @@ public class BedEntity {
         this.bedAdjustablee = bedAdjustablee;
     }
 
+    @Exclude
     public int getId() {
         return id;
     }

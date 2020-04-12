@@ -8,9 +8,12 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.util.Date;
 
 //ENTITIY
+/*
 @Entity(tableName = "patients",
         foreignKeys =
         @ForeignKey(
@@ -23,29 +26,21 @@ import java.util.Date;
                         value = {"bedId"}
                 )
         }
-)
+)*/
 public class PatientEntity {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "rowid")
     private int rowid;
 
-    @ColumnInfo(name = "patientFirstName")
     private String patientFirstName;
 
-    @ColumnInfo(name = "patientLastName")
     private String patientLastName;
 
-    @ColumnInfo(name = "patientadress")
     private String patientAdress;
 
-    @ColumnInfo(name = "patientBirthdate")
     private String patientDate;
 
-    @ColumnInfo(name = "patientcity")
     private String patientcity;
 
-    @ColumnInfo(name = "patientNPA")
     private String patientNPA;
 
     public void setPatientAdress(String patientAdress) {
@@ -113,6 +108,7 @@ public class PatientEntity {
         return patientNPA;
     }
 
+    @Exclude
     public int getRowid() {
         return rowid;
     }

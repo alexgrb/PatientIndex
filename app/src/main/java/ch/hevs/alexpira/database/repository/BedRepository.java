@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 import ch.hevs.alexpira.BaseApp;
@@ -20,26 +23,17 @@ public class BedRepository {
     private LiveData<List<BedEntity>> allBeds;
     private LiveData<List<PatientWithBed>> allPatientsWithBeds;
 
-    public BedRepository(Application application){
+    public BedRepository(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
         bedDao = database.bedDao();
         allBeds = bedDao.getAll();
         allPatientsWithBeds = bedDao.getAllPatientsWithBed();
     }
 
-    public LiveData<List<BedEntity>> getAllBeds() {
-        return allBeds;
-    }
-    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
-        return allPatientsWithBeds;
-    }
-    private BedRepository(){
-    }
-
-    public static BedRepository getInstance(){
-        if(instance == null){
-            synchronized (BedRepository.class){
-                if(instance == null){
+    public static BedRepository getInstance() {
+        if (instance == null) {
+            synchronized (BedRepository.class) {
+                if (instance == null) {
                     instance = new BedRepository();
                 }
             }
@@ -47,8 +41,28 @@ public class BedRepository {
         return instance;
     }
 
-    public LiveData<BedEntity> getBed(final int bedid, Application application){
-        return ((BaseApp) application).getDatabase().bedDao().getById(bedid);
+    public LiveData<List<BedEntity>> getAllBeds() {
+        return allBeds;
+    }
+
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
+        return allPatientsWithBeds;
+    }
+
+    private BedRepository() {
+    }
+
+
+    /*
+        public LiveData<BedEntity> getBed(final int bedid, Application application){
+            return ((BaseApp) application).getDatabase().bedDao().getById(bedid);
+        }
+     */
+    public LiveData<BedEntity> getBed(final int bedid) {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+            .getReference("beds")
+            .child(bedid);
+        return new BedLiveData(reference);
     }
 
     public LiveData<List<PatientWithBed>> getAllPatientsWithBed(
@@ -64,7 +78,7 @@ public class BedRepository {
         private BedDao bedDao;
 
         private InsertBedAsyncTask(BedDao bedDao) {
-            this.bedDao= bedDao;
+            this.bedDao = bedDao;
         }
 
         @Override
@@ -73,6 +87,7 @@ public class BedRepository {
             return null;
         }
     }
+
     public void delete(BedEntity bed) {
         new DeleteBedAsyncTask(bedDao).execute(bed);
     }
@@ -80,6 +95,7 @@ public class BedRepository {
     public void deleteAllBeds() {
         new DeleteAllBedsAsyncTask(bedDao).execute();
     }
+
     private static class DeleteBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
         private BedDao bedDao;
 
