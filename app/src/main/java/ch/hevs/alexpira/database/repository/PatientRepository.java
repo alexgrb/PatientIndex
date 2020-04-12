@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import ch.hevs.alexpira.BaseApp;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class PatientRepository {
 
@@ -22,6 +26,7 @@ public class PatientRepository {
 
     private LiveData<List<PatientEntity>> allPatients;
     private LiveData<List<PatientWithBed>> allPatientsWithBed;
+
     public PatientRepository(Application application){
         AppDatabase database = AppDatabase.getInstance(application);
        patientDao = database.patientDao();
@@ -32,16 +37,6 @@ public class PatientRepository {
 
     }
 
-    public LiveData<List<PatientEntity>> getAllPatients() {
-        return allPatients;
-    }
-    public LiveData<List<PatientWithBed>> getAllPatientsWithBed() {
-        return allPatientsWithBed;
-    }
-
-    private PatientRepository(){
-
-    }
     public static PatientRepository getInstance(){
         if(instance == null){
             synchronized (BedRepository.class){
@@ -53,80 +48,68 @@ public class PatientRepository {
         return instance;
     }
 
-    public LiveData<PatientEntity> getPatient(final int patientId, Application application){
-        return ((BaseApp) application).getDatabase().patientDao().getById(patientId);
+    public LiveData<List<PatientEntity>> getAllPatients() {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("patients");
+        return new PatientListLiveData(reference);
+    }
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBed() {
+        return allPatientsWithBed;
+    }
+
+    private PatientRepository(){
+
+    }
+
+
+    public LiveData<PatientEntity> getPatient(final int patientId){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("patients")
+                .child(patientId);
+        return new PatientLiveData(reference);
     }
 
     public LiveData<List<PatientEntity>> getPatients(Application application){
         return ((BaseApp) application).getDatabase().patientDao().getAll();
     }
 
-    public void insert(PatientEntity patient) {
-        new InsertPatientAsyncTask(patientDao).execute(patient);
-    }
-    public void delete(PatientEntity patient) {
-        new DeleteNoteAsyncTask(patientDao).execute(patient);
-    }
-    public void deleteAllPatients() {
-        new DeleteAllPatientsAsyncTask(patientDao).execute();
-    }
-    public void update(PatientEntity patient) {
-        new UpdatePatientAsyncTask(patientDao).execute(patient);
-    }
-
-    private static class UpdatePatientAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
-        private PatientDao patientDao;
-
-        private UpdatePatientAsyncTask(PatientDao patientDao) {
-            this.patientDao= patientDao;
-        }
-
-        @Override
-        protected Void doInBackground(PatientEntity... patients) {
-            patientDao.update(patients[0]);
-            return null;
-        }
+    public void insert(final PatientEntity patient, final OnAsyncEventListener callback) {
+        String id = FirebaseDatabase.getInstance().getReference("patients").push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference("patients")
+                .child(id)
+                .setValue(patient, (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    private static class InsertPatientAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
-        private PatientDao patientDao;
-
-        private InsertPatientAsyncTask(PatientDao patientDao) {
-            this.patientDao= patientDao;
-        }
-
-        @Override
-        protected Void doInBackground(PatientEntity... patients) {
-            patientDao.insert(patients[0]);
-            return null;
-        }
+    public void update(final PatientEntity patient, final OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("patients")
+                .child(String.valueOf(patient.getRowid()))
+                .updateChildren(patient.toMap(), (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    private static class DeleteAllPatientsAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
-        private PatientDao patientDao;
-
-        private DeleteAllPatientsAsyncTask(PatientDao patientDao) {
-            this.patientDao= patientDao;
-        }
-
-        @Override
-        protected Void doInBackground(PatientEntity... patients) {
-            patientDao.deleteAll();
-            return null;
-        }
-    }
-
-    private static class DeleteNoteAsyncTask extends AsyncTask<PatientEntity, Void, Void> {
-        private PatientDao patientDao;
-
-        private DeleteNoteAsyncTask(PatientDao patientDao) {
-            this.patientDao = patientDao;
-        }
-
-        @Override
-        protected Void doInBackground(PatientEntity... patients) {
-            patientDao.delete(patients[0]);
-            return null;
-        }
+    public void delete(final PatientEntity patient, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("patients")
+                .child(String.valueOf(patient.getRowid()))
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 }

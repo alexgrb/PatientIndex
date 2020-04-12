@@ -15,6 +15,7 @@ import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class BedRepository {
 
@@ -26,7 +27,7 @@ public class BedRepository {
     public BedRepository(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
         bedDao = database.bedDao();
-        allBeds = bedDao.getAll();
+        allBeds = getAllBeds();
         allPatientsWithBeds = bedDao.getAllPatientsWithBed();
     }
 
@@ -40,19 +41,6 @@ public class BedRepository {
         }
         return instance;
     }
-
-    public LiveData<List<BedEntity>> getAllBeds() {
-        return allBeds;
-    }
-
-    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
-        return allPatientsWithBeds;
-    }
-
-    private BedRepository() {
-    }
-
-
     /*
         public LiveData<BedEntity> getBed(final int bedid, Application application){
             return ((BaseApp) application).getDatabase().bedDao().getById(bedid);
@@ -65,80 +53,63 @@ public class BedRepository {
         return new BedLiveData(reference);
     }
 
+    public LiveData<List<BedEntity>> getAllBeds() {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("beds");
+        return new BedListLiveData(reference);
+    }
+
+    public void insert(final BedEntity bed, final OnAsyncEventListener callback) {
+        String id = FirebaseDatabase.getInstance().getReference("beds").push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference("beds")
+                .child(id)
+                .setValue(bed, (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+    }
+
+    public void update(final BedEntity bed, final OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("clients")
+                .child(String.valueOf(bed.getId()))
+                .updateChildren(bed.toMap(), (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+    }
+
+    public void delete(final BedEntity bed, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("clients")
+                .child(String.valueOf(bed.getId()))
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+    }
+
     public LiveData<List<PatientWithBed>> getAllPatientsWithBed(
             Application application) {
         return ((BaseApp) application).getDatabase().bedDao().getAllPatientsWithBed();
     }
 
-    public void insert(BedEntity bedEntity) {
-        new BedRepository.InsertBedAsyncTask(bedDao).execute(bedEntity);
+    public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
+        return allPatientsWithBeds;
     }
 
-    private static class InsertBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
-        private BedDao bedDao;
-
-        private InsertBedAsyncTask(BedDao bedDao) {
-            this.bedDao = bedDao;
-        }
-
-        @Override
-        protected Void doInBackground(BedEntity... bedEntities) {
-            bedDao.insert(bedEntities[0]);
-            return null;
-        }
+    private BedRepository() {
     }
 
-    public void delete(BedEntity bed) {
-        new DeleteBedAsyncTask(bedDao).execute(bed);
-    }
 
-    public void deleteAllBeds() {
-        new DeleteAllBedsAsyncTask(bedDao).execute();
-    }
-
-    private static class DeleteBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
-        private BedDao bedDao;
-
-        private DeleteBedAsyncTask(BedDao bedDao) {
-            this.bedDao = bedDao;
-        }
-
-        @Override
-        protected Void doInBackground(BedEntity... beds) {
-            bedDao.delete(beds[0]);
-            return null;
-        }
-    }
-
-    private static class DeleteAllBedsAsyncTask extends AsyncTask<Void, Void, Void> {
-        private BedDao bedDao;
-
-        private DeleteAllBedsAsyncTask(BedDao bedDao) {
-            this.bedDao = bedDao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            bedDao.deleteAllBeds();
-            return null;
-        }
-    }
-
-    public void update(BedEntity bed) {
-        new UpdateBedAsyncTask(bedDao).execute(bed);
-    }
-
-    private static class UpdateBedAsyncTask extends AsyncTask<BedEntity, Void, Void> {
-        private BedDao bedDao;
-
-        private UpdateBedAsyncTask(BedDao bedDao) {
-            this.bedDao = bedDao;
-        }
-
-        @Override
-        protected Void doInBackground(BedEntity... bed) {
-            bedDao.update(bed[0]);
-            return null;
-        }
-    }
 }

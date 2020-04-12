@@ -3,6 +3,9 @@ package ch.hevs.alexpira.database.entity;
 import androidx.room.Ignore;
 import com.google.firebase.firestore.Exclude;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BedEntity {
 
     private int id;
@@ -55,6 +58,14 @@ public class BedEntity {
         this.bedNumber=bedNumber;
     }
 
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("bedNumber", bedNumber);
+        result.put("bedAdjustablee", bedAdjustablee);
+        result.put("bedSize", bedSize);
+        return result;
+    }
 
 }
 

@@ -11,6 +11,8 @@ import androidx.room.PrimaryKey;
 import com.google.firebase.firestore.Exclude;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 //ENTITIY
 /*
@@ -136,4 +138,18 @@ public class PatientEntity {
     public void setId(int rowid) {
         this.rowid = rowid;
     }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("patientFirstName", patientFirstName);
+        result.put("patientLastName", patientLastName);
+        result.put("patientAdress", patientAdress);
+        result.put("patientDate", patientDate);
+        result.put("patientcity", patientcity);
+        result.put("patientNPA", patientNPA);
+        result.put("bedId", bedId);
+        return result;
+    }
+
 }
