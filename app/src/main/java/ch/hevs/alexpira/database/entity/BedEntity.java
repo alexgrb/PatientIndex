@@ -1,5 +1,6 @@
 package ch.hevs.alexpira.database.entity;
 
+import androidx.room.Entity;
 import androidx.room.Ignore;
 import com.google.firebase.firestore.Exclude;
 

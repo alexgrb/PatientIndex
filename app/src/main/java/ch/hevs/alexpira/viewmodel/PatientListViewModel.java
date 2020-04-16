@@ -10,6 +10,8 @@ import java.util.List;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.database.repository.PatientRepository;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
+
 public class PatientListViewModel extends AndroidViewModel {
 
     private Application application;
@@ -26,7 +28,7 @@ public class PatientListViewModel extends AndroidViewModel {
         observablePatientsWithBed.setValue(null);
         patientRepository = new PatientRepository(application);
 
-        LiveData<List<PatientEntity>> allPatients = patientRepository.getAllPatients();
+        LiveData<List<PatientEntity>> allPatients = patientRepository.getAll();
         LiveData<List<PatientWithBed>> allPatientsWithBed = patientRepository.getAllPatientsWithBed();
 
         observablePatients.addSource(allPatients, observablePatients::setValue);
@@ -40,17 +42,17 @@ public class PatientListViewModel extends AndroidViewModel {
     public LiveData<List<PatientWithBed>> getPatientsWithBed() {
         return observablePatientsWithBed;
     }
-    public void insert(PatientEntity patient){
-    patientRepository.insert(patient);
+    public void insert(PatientEntity patient, OnAsyncEventListener callback){
+    patientRepository.insert(patient, callback);
     }
-    public void delete(PatientEntity patient) {
-        patientRepository.delete(patient);
+    public void delete(PatientEntity patient, OnAsyncEventListener callback) {
+        patientRepository.delete(patient, callback);
     }
-    public void deleteAllPatients() {
+    /*public void deleteAllPatients() {
         patientRepository.deleteAllPatients();
-    }
-    public void update(PatientEntity patient) {
-        patientRepository.update(patient);
+    }*/
+    public void update(PatientEntity patient, OnAsyncEventListener callback) {
+        patientRepository.update(patient, callback);
     }
 
 }

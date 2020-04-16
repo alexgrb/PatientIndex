@@ -39,7 +39,7 @@ public class BedLiveData extends LiveData<BedEntity> {
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             if (dataSnapshot.exists()) {
                 BedEntity entity = dataSnapshot.getValue(BedEntity.class);
-                entity.setId(Integer.valueOf(dataSnapshot.getKey()));
+                entity.setId(dataSnapshot.getKey());
                 setValue(entity);
             }
         }

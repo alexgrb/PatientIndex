@@ -1,19 +1,15 @@
 package ch.hevs.alexpira.database.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import ch.hevs.alexpira.BaseApp;
 import java.util.List;
 
 import ch.hevs.alexpira.database.AppDatabase;
-import ch.hevs.alexpira.database.dao.BedDao;
-import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.firebase.BedListLiveData;
 import ch.hevs.alexpira.database.firebase.PatientListLiveData;
@@ -70,9 +66,6 @@ public class PatientRepository {
         return new PatientLiveData(reference);
     }
 
-    public LiveData<List<PatientEntity>> getPatients(Application application){
-        return ((BaseApp) application).getDatabase().patientDao().getAll();
-    }
 
     public void insert(final PatientEntity patient, final OnAsyncEventListener callback) {
         String id = FirebaseDatabase.getInstance().getReference("patients").push().getKey();

@@ -22,6 +22,7 @@ import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.PatientAdapter;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 import ch.hevs.alexpira.viewmodel.PatientListViewModel;
 
 public class DisplayPatientsActivity extends AppCompatActivity {
@@ -82,7 +83,8 @@ public class DisplayPatientsActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                viewModel.delete(adapter.getPatientAt(viewHolder.getAdapterPosition()));
+                OnAsyncEventListener callback = null;
+                viewModel.delete(adapter.getPatientAt(viewHolder.getAdapterPosition()), callback);
                 Toast.makeText(DisplayPatientsActivity.this, "Note deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
@@ -118,9 +120,9 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             String city = data.getStringExtra(AddEditPatientActivity.CITY);
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
             int bedId = Integer.valueOf(data.getStringExtra(AddEditPatientActivity.BEDID));
-
+            OnAsyncEventListener callback = null;
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
-            viewModel.insert(patient);
+            viewModel.insert(patient, callback);
             Toast.makeText(this, "Patient saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditPatientActivity.ID, -1);
@@ -138,10 +140,10 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             String city = data.getStringExtra(AddEditPatientActivity.CITY);
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
             int bedId = Integer.valueOf(data.getStringExtra((AddEditPatientActivity.BEDID)));
-
+            OnAsyncEventListener callback = null;
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
             patient.setRowid(id);
-            viewModel.update(patient);
+            viewModel.update(patient, callback);
 
             Toast.makeText(this, "Patient updated", Toast.LENGTH_SHORT).show();
 
@@ -161,7 +163,7 @@ public class DisplayPatientsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_all_patients:
-                viewModel.deleteAllPatients();
+                //viewModel.deleteAllPatients();
                 Toast.makeText(this, "All patients deleted", Toast.LENGTH_SHORT).show();
                 return true;
             default:

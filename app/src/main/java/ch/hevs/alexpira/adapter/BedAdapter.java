@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.hevs.alexpira.R;
-import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
 

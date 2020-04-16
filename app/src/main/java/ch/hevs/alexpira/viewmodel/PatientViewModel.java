@@ -32,7 +32,7 @@ public class PatientViewModel extends AndroidViewModel {
         //Null until the database initialize it.
         observablePatient = new MediatorLiveData<>();
 
-        LiveData<PatientEntity> patient = repository.getPatient(patientId, application);
+        LiveData<PatientEntity> patient = repository.getPatient(String.valueOf(patientId));
 
         observablePatient.addSource(patient, observablePatient::setValue);
     }

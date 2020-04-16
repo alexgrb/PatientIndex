@@ -26,6 +26,7 @@ import ch.hevs.alexpira.R;
 import ch.hevs.alexpira.adapter.BedAdapter;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 import ch.hevs.alexpira.viewmodel.BedListViewModel;
 
 public class ListBedActivity extends AppCompatActivity { //BaseActivity {
@@ -83,7 +84,8 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                viewModel.delete(adapter.getBedAt(viewHolder.getAdapterPosition()));
+                OnAsyncEventListener callback = null;
+                viewModel.delete(adapter.getBedAt(viewHolder.getAdapterPosition()),callback);
                 Toast.makeText(ListBedActivity.this, "Bed deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
@@ -111,9 +113,9 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
             String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
             //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
-
+            OnAsyncEventListener callback = null;
             BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
-            viewModel.insert(bed);
+            viewModel.insert(bed, callback);
             Toast.makeText(this, "Bed saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_BED_REQUEST && resultCode == RESULT_OK) {
 
@@ -125,10 +127,10 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             int bedNumber = data.getIntExtra(AddEditBedActivity.BEDNUMBER, 299);
             String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
             String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
-
+            OnAsyncEventListener callback = null;
             BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
-            bed.setId(id);
-            viewModel.update(bed);
+            bed.setId(String.valueOf(id));
+            viewModel.update(bed, callback);
         } else {
             Toast.makeText(this, "Bed not saved", Toast.LENGTH_SHORT).show();
         }
@@ -145,7 +147,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_all_beds:
-                viewModel.deleteAllBeds();
+                //viewModel.deleteAllBeds();
                 Toast.makeText(this, "All beds deleted", Toast.LENGTH_SHORT).show();
                 return true;
 

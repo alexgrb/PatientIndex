@@ -12,6 +12,7 @@ import java.util.List;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.database.repository.BedRepository;
+import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class BedListViewModel extends AndroidViewModel {
 
@@ -19,7 +20,7 @@ public class BedListViewModel extends AndroidViewModel {
     private BedRepository bedRepository;
 
     private final MediatorLiveData<List<PatientWithBed>> observablePatients;
-    private final MediatorLiveData<List<BedEntity>> observableBeds;
+    private final MediatorLiveData<List<PatientWithBed>> observableBeds;
 
     public BedListViewModel(@NonNull Application application){
         super(application);
@@ -31,7 +32,7 @@ public class BedListViewModel extends AndroidViewModel {
 
         bedRepository = new BedRepository(application);
 
-        LiveData<List<BedEntity>> allBeds = bedRepository.getAllBeds();
+        LiveData<List<PatientWithBed>> allBeds = bedRepository.getAllBeds();
         LiveData<List<PatientWithBed>> allPatients =
                 bedRepository.getAllPatientsWithBeds();
 
@@ -43,20 +44,20 @@ public class BedListViewModel extends AndroidViewModel {
         return observablePatients;
     }
 
-    public void insert(BedEntity bed){
-        bedRepository.insert(bed);
+    public void insert(BedEntity bed,  OnAsyncEventListener callback){
+        bedRepository.insert(bed, callback);
     }
 
-    public void delete(BedEntity bed) {
-        bedRepository.delete(bed);
+    public void delete(BedEntity bed,  OnAsyncEventListener callback) {
+        bedRepository.delete(bed, callback);
     }
-
-    public void deleteAllBeds() {
-        bedRepository.deleteAllBeds();
+/*
+    public void deleteAllBeds( OnAsyncEventListener callback) {
+        bedRepository.deleteAllBeds(callback);
     }
+*/
 
-
-    public void update(BedEntity bed) {
-        bedRepository.update(bed);
+    public void update(BedEntity bed,  OnAsyncEventListener callback) {
+        bedRepository.update(bed, callback);
     }
 }

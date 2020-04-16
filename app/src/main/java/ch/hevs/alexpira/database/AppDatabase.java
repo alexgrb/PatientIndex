@@ -14,20 +14,15 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.Executors;
 
-import ch.hevs.alexpira.database.dao.BedDao;
-import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 
-@Database(entities = {PatientEntity.class, BedEntity.class}, exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     //This tag will be used in our logs.
     private static final String TAG = "AppDatabase";
     private static AppDatabase INSTANCE;
     private static final String DATABASE_NAME = "hospital-database";
-    public abstract PatientDao patientDao();
-    public abstract BedDao bedDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
@@ -58,18 +53,6 @@ public abstract class AppDatabase extends RoomDatabase {
                         });
                     }
                 }).build();
-    }
-
-    public static void initializeDemoData(final AppDatabase database){
-        Executors.newSingleThreadExecutor().execute(() -> {
-            database.runInTransaction(() -> {
-                Log.i(TAG, "Wipe database.");
-                database.patientDao().deleteAll();
-                database.bedDao().deleteAllBeds();
-
-                DatabaseInitializer.populateDatabase(database);
-            });
-        });
     }
 
     private void updateDatabaseCreated(final Context context){

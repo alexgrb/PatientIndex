@@ -32,7 +32,7 @@ public class BedViewModel  extends AndroidViewModel {
         //Null until the database initialize it.
         observableBed = new MediatorLiveData<>();
 
-        LiveData<BedEntity> bed = repository.getBed(rowId,application);
+        LiveData<BedEntity> bed = repository.getBed(rowId);
 
         observableBed.addSource(bed, observableBed::setValue);
     }

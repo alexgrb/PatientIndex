@@ -20,18 +20,18 @@ public class DatabaseInitializer {
     //This method will call patientDao and insert one patient.
     private static void addPatient(final AppDatabase db, final String firstname, final String lastname, int bedId) {
         PatientEntity patient = new PatientEntity(firstname, lastname, bedId);
-        db.patientDao().insert(patient);
+      //  db.patientDao().insert(patient);
     }
 
     private static void addBed(final AppDatabase db, final int bedNumber, String bedSize, String bedAdjustable) {
         BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
-        db.bedDao().insert(bed);
+        //db.bedDao().insert(bed);
     }
 
     //This method is deleting everything in the database and then populate it.
     private static void populateWithTestData(AppDatabase db) {
-        db.bedDao().deleteAllBeds();
-        db.patientDao().deleteAll();
+       // db.bedDao().deleteAllBeds();
+        //db.patientDao().deleteAll();
 
         addBed(db,100, "Baby size", "Adjustable");
         addBed(db,101, "King size", "Adjustable");

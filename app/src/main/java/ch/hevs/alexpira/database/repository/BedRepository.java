@@ -1,7 +1,6 @@
 package ch.hevs.alexpira.database.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -12,7 +11,6 @@ import java.util.List;
 
 import ch.hevs.alexpira.BaseApp;
 import ch.hevs.alexpira.database.AppDatabase;
-import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.firebase.BedListLiveData;
 import ch.hevs.alexpira.database.firebase.BedLiveData;
@@ -22,13 +20,11 @@ import ch.hevs.alexpira.util.OnAsyncEventListener;
 public class BedRepository {
 
     private static BedRepository instance;
-    private BedDao bedDao;
     private LiveData<List<PatientWithBed>> allBeds;
     private LiveData<List<PatientWithBed>> allPatientsWithBeds;
 
     public BedRepository(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
-        bedDao = database.bedDao();
         allBeds = getAllBeds();
         allPatientsWithBeds = getAllPatientsWithBed();
     }
@@ -44,10 +40,10 @@ public class BedRepository {
         return instance;
     }
 
-    public LiveData<BedEntity> getBed(final String bedid) {
+    public LiveData<BedEntity> getBed(final int bedid) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
             .getReference("beds")
-            .child(bedid);
+            .child(String.valueOf(bedid));
         return new BedLiveData(reference);
     }
 
@@ -103,10 +99,8 @@ public class BedRepository {
                 });
     }
 
-    public LiveData<List<PatientWithBed>> getAllPatientsWithBed(
-            Application application) {
-        return ((BaseApp) application).getDatabase().bedDao().getAllPatientsWithBed();
-    }
+
+
 
     public LiveData<List<PatientWithBed>> getAllPatientsWithBeds() {
         return allPatientsWithBeds;
