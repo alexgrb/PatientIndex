@@ -150,7 +150,7 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         data.putExtra(BEDID, s_bedId);
 
         //get the id of the selected patient so the DB knows which patient needs to be edited
-        int id = getIntent().getIntExtra(ID, -1);
+        int id = getIntent().getIntExtra(BEDID, -1);
         if (id != -1) {
             //put id inside the intent
             data.putExtra(ID, id);

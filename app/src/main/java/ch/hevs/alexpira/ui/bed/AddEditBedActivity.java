@@ -86,17 +86,20 @@ public class AddEditBedActivity extends AppCompatActivity implements AdapterView
         int bedNumber = Integer.valueOf(editTextBedNumber.getText().toString());
         String bedSize = editTextBedSize.getText().toString();
         String bedAdjustable = editTextBedAdjustable.getText().toString();
-
+        String id = getIntent().getStringExtra(ID);
         //To keep it simple we are going to send this info back to the List activity and it will insert it.
         Intent data = new Intent();
         data.putExtra(BEDNUMBER, bedNumber);
         data.putExtra(BEDSIZE, bedSize);
         data.putExtra(BEDADJUSTABLE, bedAdjustable);
 
-        int id = getIntent().getIntExtra(ID,  -1);
-        if(id!=-1){
+        /*String id = getIntent().getStringExtra(ID);
+        if(!id.equals("ID")){
             data.putExtra(ID,id);
-        }
+        }*/
+
+            data.putExtra(ID, id);
+
 
         setResult(RESULT_OK, data);
         //Finish the activity

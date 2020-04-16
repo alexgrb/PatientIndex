@@ -88,8 +88,17 @@ public class DisplayPatientsActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                OnAsyncEventListener callback = null;
-                viewModel.delete(adapter.getPatientAt(viewHolder.getAdapterPosition()), callback);
+                viewModel.delete(adapter.getPatientAt(viewHolder.getAdapterPosition()), new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
                 Toast.makeText(DisplayPatientsActivity.this, "Note deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
@@ -139,10 +148,10 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             });
             Toast.makeText(this, "Patient saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK) {
-            int id = data.getIntExtra(AddEditPatientActivity.ID, -1);
+            String id = data.getStringExtra(AddEditPatientActivity.BEDID);
 
             //something went wrong if we get here
-            if (id == -1) {
+            if (id.equals("-1")) {
                 Toast.makeText(this, "Patient can't be updated", Toast.LENGTH_SHORT).show();
                 return;
             }

@@ -85,7 +85,17 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 OnAsyncEventListener callback = null;
-                viewModel.delete(adapter.getBedAt(viewHolder.getAdapterPosition()),callback);
+                viewModel.delete(adapter.getBedAt(viewHolder.getAdapterPosition()), new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
                 Toast.makeText(ListBedActivity.this, "Bed deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
@@ -128,18 +138,28 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             Toast.makeText(this, "Bed saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_BED_REQUEST && resultCode == RESULT_OK) {
 
-            int id = data.getIntExtra(AddEditBedActivity.ID, -1);
-            if (id == -1) {
+            String id = data.getStringExtra(AddEditBedActivity.ID);
+            if (id.equals(null)) {
                 Toast.makeText(this, "not can't be updated", Toast.LENGTH_SHORT).show();
                 return;
             }
             int bedNumber = data.getIntExtra(AddEditBedActivity.BEDNUMBER, 299);
             String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
             String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
-            OnAsyncEventListener callback = null;
+
             BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
-            bed.setId(String.valueOf(id));
-            viewModel.update(bed, callback);
+            bed.setId(id);
+            viewModel.update(bed, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+
+                }
+            });
         } else {
             Toast.makeText(this, "Bed not saved", Toast.LENGTH_SHORT).show();
         }

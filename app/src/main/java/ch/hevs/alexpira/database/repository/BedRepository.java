@@ -72,8 +72,8 @@ public class BedRepository {
 
     public void update(final BedEntity bed, final OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference("clients")
-                .child(String.valueOf(bed.getId()))
+                .getReference("beds")
+                .child((bed.getId()))
                 .updateChildren(bed.toMap(), (databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
@@ -85,8 +85,8 @@ public class BedRepository {
 
     public void delete(final BedEntity bed, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference("clients")
-                .child(String.valueOf(bed.getId()))
+                .getReference("beds")
+                .child(bed.getId())
                 .removeValue((databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
