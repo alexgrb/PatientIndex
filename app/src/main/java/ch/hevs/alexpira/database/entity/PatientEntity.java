@@ -1,7 +1,5 @@
 package ch.hevs.alexpira.database.entity;
 
-import androidx.room.Entity;
-import androidx.room.Ignore;
 import com.google.firebase.firestore.Exclude;
 
 import java.util.HashMap;
@@ -56,12 +54,12 @@ public class PatientEntity {
         this.patientLastName = patientLastName;
         this.bedId = bedId;
     }
-    @Ignore
+
     public PatientEntity(String patientFirstName, String patientLastName) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
     }
-    @Ignore
+
     public PatientEntity(String patientFirstName, String patientLastName, String patientAdress, String patientDate, String patientcity, String patientNPA, int bedId) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;

@@ -9,8 +9,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-import ch.hevs.alexpira.BaseApp;
-import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.firebase.BedListLiveData;
 import ch.hevs.alexpira.database.firebase.BedLiveData;
@@ -24,7 +22,6 @@ public class BedRepository {
     private LiveData<List<PatientWithBed>> allPatientsWithBeds;
 
     public BedRepository(Application application) {
-        AppDatabase database = AppDatabase.getInstance(application);
         allBeds = getAllBeds();
         allPatientsWithBeds = getAllPatientsWithBed();
     }

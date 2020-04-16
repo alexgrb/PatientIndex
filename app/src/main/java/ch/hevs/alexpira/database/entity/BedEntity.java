@@ -1,7 +1,5 @@
 package ch.hevs.alexpira.database.entity;
 
-import androidx.room.Entity;
-import androidx.room.Ignore;
 import com.google.firebase.firestore.Exclude;
 
 import java.util.HashMap;
@@ -14,8 +12,8 @@ public class BedEntity {
     private String bedSize;
     private String bedAdjustablee;
 
+    public BedEntity() {}
 
-    @Ignore
     public BedEntity(int bedNumber, String bedSize, String bedAdjustablee ){
         this.bedNumber=bedNumber;
         this.bedSize = bedSize;
