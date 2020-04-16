@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +20,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 import ch.hevs.alexpira.R;
+import ch.hevs.alexpira.adapter.ListAdapter;
 import ch.hevs.alexpira.adapter.PatientAdapter;
+import ch.hevs.alexpira.database.entity.BedEntity;
 import ch.hevs.alexpira.database.entity.PatientEntity;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.util.OnAsyncEventListener;
@@ -31,12 +34,15 @@ public class DisplayPatientsActivity extends AppCompatActivity {
     public static final int EDIT_PATIENT_REQUEST = 2;
     private PatientListViewModel viewModel;
 
+    private Spinner spinnerBedNumber;
+    private ListAdapter<String> adapterBedNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_display_patients);
+        setupBedNumberSpinner();
 
         FloatingActionButton buttonAddPatient = findViewById(R.id.btn_add_patient);
         buttonAddPatient.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +74,13 @@ public class DisplayPatientsActivity extends AppCompatActivity {
                         }
                     }
                     adapter.setPatients(patientsOnly);
+                    List<String> emptyBedsOnly = new ArrayList<>();
+                    for (PatientWithBed bed : patientEntities){
+                        if(bed.bedEntity != null){
+                            emptyBedsOnly.add(bed.bedEntity.getId());
+                        }
+                    }
+                    updateFromAccSpinner(emptyBedsOnly);
                     Toast.makeText(DisplayPatientsActivity.this, "Patient list loaded", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -106,6 +119,16 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setupBedNumberSpinner() {
+        spinnerBedNumber = findViewById(R.id.spinner_from);
+        adapterBedNumber = new ListAdapter<>(this, R.layout.row_client, new ArrayList<>());
+        spinnerBedNumber.setAdapter(adapterBedNumber);
+    }
+
+    private void updateFromAccSpinner(List<String> beds) {
+        adapterBedNumber.updateData(new ArrayList<>(beds));
     }
 
     @Override

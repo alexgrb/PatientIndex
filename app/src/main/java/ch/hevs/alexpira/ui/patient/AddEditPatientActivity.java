@@ -10,12 +10,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import ch.hevs.alexpira.R;
+import ch.hevs.alexpira.adapter.ListAdapter;
+import ch.hevs.alexpira.database.entity.BedEntity;
 
 public class AddEditPatientActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -27,6 +34,9 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
     public static final String CITY = "CITY";
     public static final String NPA = "NPA";
     public static final String BEDID = "BEDNUMBER";
+
+    private Spinner spinnerBedNumber;
+    private ListAdapter<BedEntity> adapterBedNumber;
 
     private Button pickdate;
     private EditText firstname;
@@ -43,6 +53,8 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+
+
 
         pickdate = findViewById(R.id.btn_pickdate);
         pickdate.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +91,8 @@ public class AddEditPatientActivity extends AppCompatActivity implements DatePic
             setTitle("Add Patient");
         }
     }
+
+
 
     public void savePatient() {
         //getting the input from the edittextfields
