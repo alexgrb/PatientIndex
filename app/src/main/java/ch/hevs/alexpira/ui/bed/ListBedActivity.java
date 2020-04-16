@@ -113,9 +113,18 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
             String bedSize = data.getStringExtra(AddEditBedActivity.BEDSIZE);
             String bedAdjustable = data.getStringExtra(AddEditBedActivity.BEDADJUSTABLE);
             //int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
-            OnAsyncEventListener callback = null;
             BedEntity bed = new BedEntity(bedNumber, bedSize, bedAdjustable);
-            viewModel.insert(bed, callback);
+            viewModel.insert(bed, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+
+                }
+            });
             Toast.makeText(this, "Bed saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_BED_REQUEST && resultCode == RESULT_OK) {
 

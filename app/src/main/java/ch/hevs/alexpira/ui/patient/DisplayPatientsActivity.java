@@ -34,15 +34,13 @@ public class DisplayPatientsActivity extends AppCompatActivity {
     public static final int EDIT_PATIENT_REQUEST = 2;
     private PatientListViewModel viewModel;
 
-    private Spinner spinnerBedNumber;
-    private ListAdapter<String> adapterBedNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_display_patients);
-        setupBedNumberSpinner();
+
 
         FloatingActionButton buttonAddPatient = findViewById(R.id.btn_add_patient);
         buttonAddPatient.setOnClickListener(new View.OnClickListener() {
@@ -74,13 +72,7 @@ public class DisplayPatientsActivity extends AppCompatActivity {
                         }
                     }
                     adapter.setPatients(patientsOnly);
-                    List<String> emptyBedsOnly = new ArrayList<>();
-                    for (PatientWithBed bed : patientEntities){
-                        if(bed.bedEntity != null){
-                            emptyBedsOnly.add(bed.bedEntity.getId());
-                        }
-                    }
-                    updateFromAccSpinner(emptyBedsOnly);
+
                     Toast.makeText(DisplayPatientsActivity.this, "Patient list loaded", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -106,14 +98,12 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(PatientWithBed patient) {
                 Intent intent = new Intent(DisplayPatientsActivity.this, AddEditPatientActivity.class);
-                intent.putExtra(AddEditPatientActivity.ID, patient.patientEntity.getRowid());
                 intent.putExtra(AddEditPatientActivity.LASTNAME, patient.patientEntity.getPatientLastName());
                 intent.putExtra(AddEditPatientActivity.FIRSTNAME, patient.patientEntity.getPatientFirstName());
                 intent.putExtra(AddEditPatientActivity.ADDRESS, patient.patientEntity.getPatientAdress());
                 intent.putExtra(AddEditPatientActivity.BIRTHDATE, patient.patientEntity.getPatientDate());
                 intent.putExtra(AddEditPatientActivity.CITY, patient.patientEntity.getPatientcity());
                 intent.putExtra(AddEditPatientActivity.NPA, patient.patientEntity.getPatientNPA());
-                intent.putExtra((AddEditPatientActivity.BEDID), patient.patientEntity.getBedId());
 
                 startActivityForResult(intent, EDIT_PATIENT_REQUEST);
             }
@@ -121,15 +111,6 @@ public class DisplayPatientsActivity extends AppCompatActivity {
 
     }
 
-    private void setupBedNumberSpinner() {
-        spinnerBedNumber = findViewById(R.id.spinner_from);
-        adapterBedNumber = new ListAdapter<>(this, R.layout.row_client, new ArrayList<>());
-        spinnerBedNumber.setAdapter(adapterBedNumber);
-    }
-
-    private void updateFromAccSpinner(List<String> beds) {
-        adapterBedNumber.updateData(new ArrayList<>(beds));
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -142,10 +123,20 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             String birthdate = data.getStringExtra(AddEditPatientActivity.BIRTHDATE);
             String city = data.getStringExtra(AddEditPatientActivity.CITY);
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
-            int bedId = Integer.valueOf(data.getStringExtra(AddEditPatientActivity.BEDID));
-            OnAsyncEventListener callback = null;
+            String bedId = data.getStringExtra(AddEditPatientActivity.BEDID);
+
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
-            viewModel.insert(patient, callback);
+            viewModel.insert(patient, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+
+                }
+            });
             Toast.makeText(this, "Patient saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditPatientActivity.ID, -1);
@@ -162,11 +153,20 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             String birthdate = data.getStringExtra(AddEditPatientActivity.BIRTHDATE);
             String city = data.getStringExtra(AddEditPatientActivity.CITY);
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
-            int bedId = Integer.valueOf(data.getStringExtra((AddEditPatientActivity.BEDID)));
-            OnAsyncEventListener callback = null;
+            String bedId = data.getStringExtra((AddEditPatientActivity.BEDID));
+
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
-            patient.setRowid(id);
-            viewModel.update(patient, callback);
+            viewModel.update(patient, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+
+                }
+            });
 
             Toast.makeText(this, "Patient updated", Toast.LENGTH_SHORT).show();
 

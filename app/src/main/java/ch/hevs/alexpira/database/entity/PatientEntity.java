@@ -7,8 +7,6 @@ import java.util.Map;
 
 public class PatientEntity {
 
-    private int rowid;
-
     private String patientFirstName;
 
     private String patientLastName;
@@ -21,7 +19,7 @@ public class PatientEntity {
 
     private String patientNPA;
 
-    private int bedId;
+    private String bedId;
 
     public void setPatientAdress(String patientAdress) {
         this.patientAdress = patientAdress;
@@ -39,17 +37,19 @@ public class PatientEntity {
         this.patientNPA = patientNPA;
     }
 
-    public int getBedId() {
+    public String getBedId() {
         return bedId;
     }
 
-    public void setBedId(int bedId) {
+    public void setBedId(String bedId) {
         this.bedId = bedId;
     }
 
 
     //CONSTRUCTORS
-    public PatientEntity(String patientFirstName, String patientLastName, int bedId) {
+    public PatientEntity() {}
+
+    public PatientEntity(String patientFirstName, String patientLastName, String bedId) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
         this.bedId = bedId;
@@ -60,7 +60,7 @@ public class PatientEntity {
         this.patientLastName = patientLastName;
     }
 
-    public PatientEntity(String patientFirstName, String patientLastName, String patientAdress, String patientDate, String patientcity, String patientNPA, int bedId) {
+    public PatientEntity(String patientFirstName, String patientLastName, String patientAdress, String patientDate, String patientcity, String patientNPA, String bedId) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
         this.patientAdress = patientAdress;
@@ -86,15 +86,6 @@ public class PatientEntity {
         return patientNPA;
     }
 
-    @Exclude
-    public int getRowid() {
-        return rowid;
-    }
-
-    public void setRowid(int rowid) {
-        this.rowid = rowid;
-    }
-
     public String getPatientFirstName() {
         return patientFirstName;
     }
@@ -112,7 +103,6 @@ public class PatientEntity {
     }
 
     public void setId(int rowid) {
-        this.rowid = rowid;
     }
 
     @Exclude

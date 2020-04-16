@@ -65,10 +65,10 @@ public class PatientRepository {
 
 
     public void insert(final PatientEntity patient, final OnAsyncEventListener callback) {
-        String id = FirebaseDatabase.getInstance().getReference("patients").push().getKey();
         FirebaseDatabase.getInstance()
-                .getReference("patients")
-                .child(id)
+                .getReference("beds")
+                .child(patient.getBedId())
+                .child("patient")
                 .setValue(patient, (databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
@@ -80,8 +80,9 @@ public class PatientRepository {
 
     public void update(final PatientEntity patient, final OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference("patients")
-                .child(String.valueOf(patient.getRowid()))
+                .getReference("beds")
+                .child(String.valueOf(patient.getBedId()))
+                .child("patient")
                 .updateChildren(patient.toMap(), (databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
@@ -93,8 +94,8 @@ public class PatientRepository {
 
     public void delete(final PatientEntity patient, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference("patients")
-                .child(String.valueOf(patient.getRowid()))
+                .getReference("beds")
+                .child(String.valueOf(patient.getBedId()))
                 .removeValue((databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
