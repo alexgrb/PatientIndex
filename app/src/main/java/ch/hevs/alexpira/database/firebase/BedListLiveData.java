@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.hevs.alexpira.database.entity.BedEntity;
+import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.pojo.PatientWithBed;
 
-public class BedListLiveData extends LiveData<List<BedEntity>> {
+public class BedListLiveData extends LiveData<List<PatientWithBed>> {
 
     private static final String TAG = "ClientAccountsLiveData";
 
@@ -40,7 +42,7 @@ public class BedListLiveData extends LiveData<List<BedEntity>> {
     private class MyValueEventListener implements ValueEventListener {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            setValue(toClientList(dataSnapshot));
+            setValue(toPatientWithBedList(dataSnapshot));
         }
 
         @Override
@@ -49,11 +51,27 @@ public class BedListLiveData extends LiveData<List<BedEntity>> {
         }
     }
 
-    private List<BedEntity> toClientList(DataSnapshot snapshot) {
+    private List<PatientWithBed> toPatientWithBedList(DataSnapshot snapshot) {
+        List<PatientWithBed> patientWithBedList = new ArrayList<>();
+        for (DataSnapshot childBed : snapshot.getChildren()) {
+            PatientWithBed patientWithBed = new PatientWithBed();
+
+            BedEntity newBed = childBed.getValue(BedEntity.class);
+            newBed.setId(childBed.getKey());
+            patientWithBed.bedEntity = newBed;
+
+            PatientEntity newPatient = childBed.child("patient").getValue(PatientEntity.class);
+            patientWithBed.patientEntity = newPatient;
+            patientWithBedList.add(patientWithBed);
+        }
+        return patientWithBedList;
+    }
+
+    private List<BedEntity> toBedList(DataSnapshot snapshot) {
         List<BedEntity> bed = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
             BedEntity entity = childSnapshot.getValue(BedEntity.class);
-            entity.setId(Integer.valueOf(childSnapshot.getKey()));
+            entity.setId(childSnapshot.getKey());
             bed.add(entity);
         }
         return bed;

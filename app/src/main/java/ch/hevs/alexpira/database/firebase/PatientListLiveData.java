@@ -52,7 +52,7 @@ public class PatientListLiveData extends LiveData<List<PatientEntity>> {
     private List<PatientEntity> toClientList(DataSnapshot snapshot) {
         List<PatientEntity> patient = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-            PatientEntity entity = childSnapshot.getValue(PatientEntity.class);
+            PatientEntity entity = childSnapshot.child("patients").getValue(PatientEntity.class);
             entity.setId(Integer.valueOf(childSnapshot.getKey()));
             patient.add(entity);
         }

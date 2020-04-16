@@ -52,7 +52,7 @@ public abstract class AppDatabase extends RoomDatabase {
                         super.onCreate(db);
                         Executors.newSingleThreadExecutor().execute(() ->{
                             AppDatabase database = AppDatabase.getInstance(appContext);
-                            initializeDemoData(database);
+                           // initializeDemoData(database);
                             //Now we can notify that the database has been created.
                             database.setDatabaseCreated();
                         });

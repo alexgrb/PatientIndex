@@ -15,25 +15,23 @@ import ch.hevs.alexpira.database.AppDatabase;
 import ch.hevs.alexpira.database.dao.BedDao;
 import ch.hevs.alexpira.database.dao.PatientDao;
 import ch.hevs.alexpira.database.entity.PatientEntity;
+import ch.hevs.alexpira.database.firebase.BedListLiveData;
+import ch.hevs.alexpira.database.firebase.PatientListLiveData;
+import ch.hevs.alexpira.database.firebase.PatientLiveData;
 import ch.hevs.alexpira.database.pojo.PatientWithBed;
 import ch.hevs.alexpira.util.OnAsyncEventListener;
 
 public class PatientRepository {
 
     private static PatientRepository instance;
-    private PatientDao patientDao;
-    private BedDao bedDao;
-
     private LiveData<List<PatientEntity>> allPatients;
     private LiveData<List<PatientWithBed>> allPatientsWithBed;
 
     public PatientRepository(Application application){
         AppDatabase database = AppDatabase.getInstance(application);
-       patientDao = database.patientDao();
-       bedDao = database.bedDao();
 
-        allPatients = patientDao.getAll();
-        allPatientsWithBed = bedDao.getAllPatientsWithBed();
+        allPatients = getAll();
+        allPatientsWithBed = getAllPatientsWithBed();
 
     }
 
@@ -48,13 +46,16 @@ public class PatientRepository {
         return instance;
     }
 
-    public LiveData<List<PatientEntity>> getAllPatients() {
+    public LiveData<List<PatientEntity>> getAll() {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("patients");
         return new PatientListLiveData(reference);
     }
+
     public LiveData<List<PatientWithBed>> getAllPatientsWithBed() {
-        return allPatientsWithBed;
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("beds");
+        return new BedListLiveData(reference);
     }
 
     private PatientRepository(){
@@ -62,7 +63,7 @@ public class PatientRepository {
     }
 
 
-    public LiveData<PatientEntity> getPatient(final int patientId){
+    public LiveData<PatientEntity> getPatient(final String patientId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("patients")
                 .child(patientId);

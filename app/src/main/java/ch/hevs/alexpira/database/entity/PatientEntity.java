@@ -1,34 +1,12 @@
 package ch.hevs.alexpira.database.entity;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.Fts4;
 import androidx.room.Ignore;
-import androidx.room.Index;
-import androidx.room.PrimaryKey;
-
 import com.google.firebase.firestore.Exclude;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-//ENTITIY
-/*
-@Entity(tableName = "patients",
-        foreignKeys =
-        @ForeignKey(
-                entity = BedEntity.class,
-                parentColumns = "rowid",
-                childColumns = "bedId",
-                onDelete = ForeignKey.CASCADE),
-        indices = {
-                @Index(
-                        value = {"bedId"}
-                )
-        }
-)*/
 public class PatientEntity {
 
     private int rowid;
@@ -44,6 +22,8 @@ public class PatientEntity {
     private String patientcity;
 
     private String patientNPA;
+
+    private int bedId;
 
     public void setPatientAdress(String patientAdress) {
         this.patientAdress = patientAdress;
@@ -69,8 +49,6 @@ public class PatientEntity {
         this.bedId = bedId;
     }
 
-    @ColumnInfo(name = "bedId")
-    private int bedId;
 
     //CONSTRUCTORS
     public PatientEntity(String patientFirstName, String patientLastName, int bedId) {

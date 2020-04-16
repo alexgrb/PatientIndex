@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class BedEntity {
 
-    private int id;
+    private String id;
     private int bedNumber;
     private String bedSize;
     private String bedAdjustablee;
@@ -38,11 +38,11 @@ public class BedEntity {
     }
 
     @Exclude
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
