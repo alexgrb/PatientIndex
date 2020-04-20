@@ -134,6 +134,11 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
             String bedId = data.getStringExtra(AddEditPatientActivity.BEDID);
 
+            System.out.println("BED ID _: "+bedId);
+            if(bedId.isEmpty()){
+                Toast.makeText(this, "Patient can't be added", Toast.LENGTH_SHORT).show();
+                return;
+            }
             PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
             viewModel.insert(patient, new OnAsyncEventListener() {
                 @Override
