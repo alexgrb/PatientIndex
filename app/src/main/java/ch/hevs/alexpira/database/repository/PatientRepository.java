@@ -104,4 +104,16 @@ public class PatientRepository {
                     }
                 });
     }
+
+    public void deleteAllPatients(OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("beds")
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+    }
 }

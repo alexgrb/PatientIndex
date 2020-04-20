@@ -51,11 +51,11 @@ public class BedListViewModel extends AndroidViewModel {
     public void delete(BedEntity bed,  OnAsyncEventListener callback) {
         bedRepository.delete(bed, callback);
     }
-/*
-    public void deleteAllBeds( OnAsyncEventListener callback) {
+
+    public void deleteAllBeds(OnAsyncEventListener callback) {
         bedRepository.deleteAllBeds(callback);
     }
-*/
+
 
     public void update(BedEntity bed,  OnAsyncEventListener callback) {
         bedRepository.update(bed, callback);

@@ -176,7 +176,17 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_all_beds:
-                //viewModel.deleteAllBeds();
+                viewModel.deleteAllBeds(new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
                 Toast.makeText(this, "All beds deleted", Toast.LENGTH_SHORT).show();
                 return true;
 

@@ -73,7 +73,7 @@ public class DisplayPatientsActivity extends AppCompatActivity {
                     }
                     adapter.setPatients(patientsOnly);
 
-                    Toast.makeText(DisplayPatientsActivity.this, "Patient list loaded", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(DisplayPatientsActivity.this, "Patient list loaded", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -134,24 +134,31 @@ public class DisplayPatientsActivity extends AppCompatActivity {
             String npa = data.getStringExtra(AddEditPatientActivity.NPA);
             String bedId = data.getStringExtra(AddEditPatientActivity.BEDID);
 
-            System.out.println("BED ID _: "+bedId);
+            /*System.out.println("BED ID _: "+bedId);
             if(bedId.isEmpty()){
                 Toast.makeText(this, "Patient can't be added", Toast.LENGTH_SHORT).show();
                 return;
+            }*/
+            try {
+                PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
+                viewModel.insert(patient, new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
+                Toast.makeText(this, "Patient saved", Toast.LENGTH_SHORT).show();
+            }catch (java.lang.NullPointerException e){
+                Toast toast = Toast.makeText(getApplicationContext(), "Patient can't be added", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
             }
-            PatientEntity patient = new PatientEntity(firstname, lastname, adress, birthdate, city, npa, bedId);
-            viewModel.insert(patient, new OnAsyncEventListener() {
-                @Override
-                public void onSuccess() {
 
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-
-                }
-            });
-            Toast.makeText(this, "Patient saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_PATIENT_REQUEST && resultCode == RESULT_OK) {
             String id = data.getStringExtra(AddEditPatientActivity.BEDID);
 
@@ -200,7 +207,17 @@ public class DisplayPatientsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_all_patients:
-                //viewModel.deleteAllPatients();
+                viewModel.deleteAllPatients(new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
                 Toast.makeText(this, "All patients deleted", Toast.LENGTH_SHORT).show();
                 return true;
             default:

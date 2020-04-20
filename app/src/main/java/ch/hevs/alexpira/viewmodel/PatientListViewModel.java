@@ -48,9 +48,9 @@ public class PatientListViewModel extends AndroidViewModel {
     public void delete(PatientEntity patient, OnAsyncEventListener callback) {
         patientRepository.delete(patient, callback);
     }
-    /*public void deleteAllPatients() {
-        patientRepository.deleteAllPatients();
-    }*/
+    public void deleteAllPatients(OnAsyncEventListener callback) {
+        patientRepository.deleteAllPatients(callback);
+    }
     public void update(PatientEntity patient, OnAsyncEventListener callback) {
         patientRepository.update(patient, callback);
     }

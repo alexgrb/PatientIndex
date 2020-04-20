@@ -95,6 +95,17 @@ public class BedRepository {
                     }
                 });
     }
+    public void deleteAllBeds(OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("beds")
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+    }
 
 
 
