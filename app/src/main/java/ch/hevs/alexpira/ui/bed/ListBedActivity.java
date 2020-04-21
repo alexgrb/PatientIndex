@@ -140,7 +140,7 @@ public class ListBedActivity extends AppCompatActivity { //BaseActivity {
 
             String id = data.getStringExtra(AddEditBedActivity.ID);
             if (id.equals(null)) {
-                Toast.makeText(this, "not can't be updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Bed can't be updated", Toast.LENGTH_SHORT).show();
                 return;
             }
             int bedNumber = data.getIntExtra(AddEditBedActivity.BEDNUMBER, 299);

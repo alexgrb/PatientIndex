@@ -32,7 +32,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
         PatientWithBed currentPatient = patients.get(position);
         holder.textViewLastName.setText(currentPatient.patientEntity.getPatientLastName());
         holder.textViewFirstName.setText(currentPatient.patientEntity.getPatientFirstName());
-        holder.textViewPatientBedNumber.setText(String.valueOf(currentPatient.patientEntity.getBedId()));
+        holder.textViewPatientBedNumber.setText(String.valueOf(currentPatient.bedEntity.getBedNumber()));
     }
 
     @Override

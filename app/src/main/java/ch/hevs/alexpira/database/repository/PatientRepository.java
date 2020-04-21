@@ -96,6 +96,7 @@ public class PatientRepository {
         FirebaseDatabase.getInstance()
                 .getReference("beds")
                 .child(String.valueOf(patient.getBedId()))
+                .child("patient")
                 .removeValue((databaseError, databaseReference) -> {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());

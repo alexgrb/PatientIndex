@@ -31,8 +31,8 @@ public class BedAdapter extends RecyclerView.Adapter<BedAdapter.BedHolder> {
     public void onBindViewHolder(@NonNull BedHolder holder, int position) {
         if (beds != null) {
             PatientWithBed currentBed = beds.get(position);
-            holder.textViewBedID.setText(String.valueOf(currentBed.bedEntity.getId()));
-            holder.textViewBedNumber.setText(String.valueOf(currentBed.bedEntity.getBedNumber()));
+            holder.textViewBedNumber.setText(String.valueOf(currentBed.bedEntity.getId()));
+            holder.textViewBedID.setText(String.valueOf(currentBed.bedEntity.getBedNumber()));
             if (currentBed.patientEntity != null) {
                 holder.textViewPatientLastname.setText(currentBed.patientEntity.getPatientLastName());
             } else {
